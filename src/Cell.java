@@ -3,6 +3,6 @@ public class Cell {
     int m,n;
     Cell[][] position = new Cell[100][100];
     public Cell coor(int x, int y){
-        return position[x][y];
+        return position[y][x];
     }
 }
