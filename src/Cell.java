@@ -1,8 +1,7 @@
 public class Cell {
-    int Atk;
-    int m,n;
-    Cell[][] position = new Cell[100][100];
-    public Cell coor(int x, int y){
-        return position[y][x];
-    }
+    protected final String[] element = {"fire", "water", "glass"};
+    int Atk, HP;
+    String type; // type of each cell
+    Organ organ; // เพื่อบอกว่า cell ตัวนี้อยู่ที่ organ ไหน
+
 }
