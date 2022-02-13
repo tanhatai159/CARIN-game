@@ -1,18 +1,18 @@
 public class Antibody extends Cell {
-    int atk, HP, moveCost, hpGain;
-    static int placementCost;
-    static int amountOfAntibody = 0;
+    int HP;
+    static int placementCost, atk, startHP, hpGain, moveCost,amountOfAntibody = 0;
     Virus attackByThisVirus; //to tell which current virus attack this antibody and to use when this antibody dead.
     public Antibody(Organ organ,int typeNumber){
-        this.organ = organ;
+        this.currentOrgan = organ;
         this.type = element[typeNumber];
+        this.HP = Antibody.startHP;
         amountOfAntibody++;
     }
-    public void update(int atk, int HP, int moveCost,int placementCost ,int hpGain){
-        this.atk = atk;
-        this.HP = HP;
-        this.moveCost = moveCost;
+    public static void update(int atk, int HP, int moveCost,int placementCost ,int hpGain){
+        Antibody.atk = atk;
+        Antibody.startHP = HP;
+        Antibody.moveCost = moveCost;
         Antibody.placementCost = placementCost;
-        this.hpGain = hpGain;
+        Antibody.hpGain = hpGain;
     }
 }

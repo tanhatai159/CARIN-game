@@ -67,6 +67,12 @@ public class ReadConfig {
                 if(moveCost < 0 || moveCost >= antibodyHP || moveCost >= credits){
                     throw new Exception();
                 }
+                //update All class value
+                Organ.update(m,n);
+                Antibody.update(antibodyAtk,antibodyHP,moveCost,buyCost,antibodyGain);
+                Virus.update(virusAtk,virusHP,virusGain);
+                Player.update(credits);
+
             }catch (NumberFormatException | IndexOutOfBoundsException e){
                 throw new Exception();
             }
@@ -80,5 +86,6 @@ public class ReadConfig {
 
     public static void main(String[] args) throws Exception {
         ReadConfig.readConfig();
+        System.out.println("5555");
     }
 }

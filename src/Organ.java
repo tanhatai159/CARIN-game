@@ -1,11 +1,15 @@
 import java.util.Random;
 
 public class Organ {
-    int m,n;
+    static int m,n;
     Random rand = new Random();
     Cell[][] position;
 
-    public Cell coor(int x, int y){
+    public Organ(){
+        position = new Cell[m][n];
+    }
+
+    public Cell coordinate(int x, int y){
         return position[y][x];
     }
 
@@ -16,9 +20,8 @@ public class Organ {
         }
     }
 
-    public void update(int m, int n){
-        this.m = m;
-        this.n = n;
-        position = new Cell[m][n];
+    public static void update(int m, int n){
+        Organ.m = m;
+        Organ.n = n;
     }
 }
