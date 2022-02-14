@@ -2,7 +2,6 @@ import java.util.Random;
 
 public class Organ {
     static int m,n;
-    Random rand = new Random();
     Cell[][] position;
 
     public Organ(){
@@ -13,10 +12,12 @@ public class Organ {
         return position[y][x];
     }
 
-    public void generateVirus(int x, int y){
-        int type = rand.nextInt(3);
+    public void generateVirus(){
+        int type = RandomEverything.useRandom().nextInt(3);
+        int x = RandomEverything.useRandom().nextInt(n);
+        int y = RandomEverything.useRandom().nextInt(m);
         if(position[y][x] == null){
-            position[y][x] = new Virus(this, type);
+            position[y][x] = new Virus(this, type,x,y);
         }
     }
 
