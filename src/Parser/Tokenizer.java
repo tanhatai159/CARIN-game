@@ -27,24 +27,30 @@ public class Tokenizer {
             genarate(sb.toString());
         } catch (IOException e) {
         }
-        System.out.println(parse);
     }
 
     public String consume() {
         return parse.poll();
     }
+
+    public void consume(String s) throws Exception {
+        if(s.equals(parse.peek())) consume();
+        else throw new Exception();
+
+    }
+
     public boolean hasNext(){
         return parse.isEmpty();
     }
-    public String Next(){
-        return parse.poll();
+    public String peek(){
+        return parse.peek();
     }
 
-    public void Print(){
+    public void print(){
         System.out.println(parse);
     }
     public void genarate(String input) {
-        parse = new LinkedList<String>();
+        parse = new LinkedList<>();
         String line = input;
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < line.length(); i++) {
@@ -54,7 +60,7 @@ public class Tokenizer {
                     sb = new StringBuilder();}
                 continue;
             }
-                if(line.charAt(i) == '(' || line.charAt(i) == ')' || line.charAt(i) == '+' || line.charAt(i) == '-' || line.charAt(i) == '*' || line.charAt(i) == '/' || line.charAt(i) == '=' || line.charAt(i) == '%' || line.charAt(i) == '{' || line.charAt(i) == '}'){
+                if(line.charAt(i) == '(' || line.charAt(i) == ')' || line.charAt(i) == '+' || line.charAt(i) == '-' || line.charAt(i) == '*' || line.charAt(i) == '/' || line.charAt(i) == '=' || line.charAt(i) == '%' || line.charAt(i) == '{' || line.charAt(i) == '}' || line.charAt(i) == '^'){
                     if(!sb.isEmpty()){this.parse.add(sb.toString());
                     sb = new StringBuilder();}
                     sb.append(line.charAt(i));
