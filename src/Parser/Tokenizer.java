@@ -42,15 +42,15 @@ public class Tokenizer {
     public boolean hasNext(){
         return parse.isEmpty();
     }
-    public String Peek(){
+    public String peek(){
         return parse.peek();
     }
 
-    public void Print(){
+    public void print(){
         System.out.println(parse);
     }
     public void genarate(String input) {
-        parse = new LinkedList<String>();
+        parse = new LinkedList<>();
         String line = input;
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < line.length(); i++) {
