@@ -1,7 +1,9 @@
 public class Virus extends Cell {
     int HP;
     static int amountOfVirus = 0, atk, startHP, hpGain;
-    public Virus(Organ organ, int type){
+    public Virus(Organ organ, int type,int x,int y){
+        this.x = x;
+        this.y = y;
         this.currentOrgan = organ;
         this.HP = startHP;
         this.type = this.element[type];
