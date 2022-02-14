@@ -27,7 +27,6 @@ public class Tokenizer {
             genarate(sb.toString());
         } catch (IOException e) {
         }
-        System.out.println(parse);
     }
 
     public String consume() {
@@ -43,8 +42,8 @@ public class Tokenizer {
     public boolean hasNext(){
         return parse.isEmpty();
     }
-    public String Next(){
-        return parse.poll();
+    public String Peek(){
+        return parse.peek();
     }
 
     public void Print(){
