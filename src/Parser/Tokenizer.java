@@ -29,7 +29,14 @@ public class Tokenizer {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < line.length(); i++) {
 //            if(line.charAt(i) == ' ') continue;
-
+                if(line.charAt(i) == '(' || line.charAt(i) == ')' || line.charAt(i) == '+' || line.charAt(i) == '-' || line.charAt(i) == '*' || line.charAt(i) == '/' || line.charAt(i) == '=' || line.charAt(i) == '%'){
+                    if(!sb.isEmpty()){this.parse.add(sb.toString());
+                    sb = new StringBuilder();}
+                    sb.append(line.charAt(i));
+                    this.parse.add(sb.toString());
+                    sb = new StringBuilder();
+                    continue;
+                }
                 if (line.charAt(i) == ' ') {
                     if(sb.isEmpty()) continue;
                     this.parse.add(sb.toString());
@@ -43,7 +50,7 @@ public class Tokenizer {
     }
 
     public static void main(String[] args) {
-        Tokenizer a = new Tokenizer("Flan Laplus Callie");
+        Tokenizer a = new Tokenizer("Flan (Laplus +Callie-LaK*JAI/DJ%Neko=KO)");
         String X = a.consume();
         a.Print();
         System.out.println(X);
