@@ -1,12 +1,32 @@
 package Parser;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.LinkedList;
 
 public class Tokenizer {
     LinkedList<String> parse;
 
     public Tokenizer(String s) {
-        genarate(s);
+        Path file = Paths.get(s);
+        StringBuilder sb = new StringBuilder();
+        String line;
+        Charset charset = StandardCharsets.US_ASCII;
+        try(BufferedReader reader = Files.newBufferedReader(file,charset)){
+            line = reader.readLine();
+            while(line != null){
+                sb.append(line);
+                sb.append("\n");
+                line = reader.readLine();
+            }
+            genarate(sb.toString());
+        } catch (IOException e) {
+        }
         System.out.println(parse);
     }
 
@@ -29,7 +49,12 @@ public class Tokenizer {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < line.length(); i++) {
 //            if(line.charAt(i) == ' ') continue;
-                if(line.charAt(i) == '(' || line.charAt(i) == ')' || line.charAt(i) == '+' || line.charAt(i) == '-' || line.charAt(i) == '*' || line.charAt(i) == '/' || line.charAt(i) == '=' || line.charAt(i) == '%'){
+            if(line.charAt(i) == '\n'){
+                if(!sb.isEmpty()){this.parse.add(sb.toString());
+                    sb = new StringBuilder();}
+                continue;
+            }
+                if(line.charAt(i) == '(' || line.charAt(i) == ')' || line.charAt(i) == '+' || line.charAt(i) == '-' || line.charAt(i) == '*' || line.charAt(i) == '/' || line.charAt(i) == '=' || line.charAt(i) == '%' || line.charAt(i) == '{' || line.charAt(i) == '}'){
                     if(!sb.isEmpty()){this.parse.add(sb.toString());
                     sb = new StringBuilder();}
                     sb.append(line.charAt(i));
@@ -50,9 +75,6 @@ public class Tokenizer {
     }
 
     public static void main(String[] args) {
-        Tokenizer a = new Tokenizer("Flan (Laplus +Callie-LaK*JAI/DJ%Neko=KO)");
-        String X = a.consume();
-        a.Print();
-        System.out.println(X);
+        Tokenizer a = new Tokenizer("Genetic_Code\\Genetic_Code.txt");
     }
 }
