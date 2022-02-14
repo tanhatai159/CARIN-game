@@ -33,6 +33,13 @@ public class Tokenizer {
     public String consume() {
         return parse.poll();
     }
+
+    public void consume(String s) throws Exception {
+        if(s.equals(parse.peek())) consume();
+        else throw new Exception();
+
+    }
+
     public boolean hasNext(){
         return parse.isEmpty();
     }
@@ -54,7 +61,7 @@ public class Tokenizer {
                     sb = new StringBuilder();}
                 continue;
             }
-                if(line.charAt(i) == '(' || line.charAt(i) == ')' || line.charAt(i) == '+' || line.charAt(i) == '-' || line.charAt(i) == '*' || line.charAt(i) == '/' || line.charAt(i) == '=' || line.charAt(i) == '%' || line.charAt(i) == '{' || line.charAt(i) == '}'){
+                if(line.charAt(i) == '(' || line.charAt(i) == ')' || line.charAt(i) == '+' || line.charAt(i) == '-' || line.charAt(i) == '*' || line.charAt(i) == '/' || line.charAt(i) == '=' || line.charAt(i) == '%' || line.charAt(i) == '{' || line.charAt(i) == '}' || line.charAt(i) == '^'){
                     if(!sb.isEmpty()){this.parse.add(sb.toString());
                     sb = new StringBuilder();}
                     sb.append(line.charAt(i));
