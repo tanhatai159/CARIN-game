@@ -24,8 +24,8 @@ public class NodeFactory {
         return new BinaryExpression(l,r,op);
     }
 
-    public BlockStatementNode newBlockStatementNode(StatementNode statement){
-        return new BlockStatementNode(statement);
+    public BlockStatementNode newBlockStatementNode(){
+        return new BlockStatementNode();
     }
 
     public IdentifierExpression newIdentifierExpression(String identifier){

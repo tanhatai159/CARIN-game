@@ -1,5 +1,9 @@
 package Node;
 
+import MainClass.Cell;
+
+import java.util.Map;
+
 public class BinaryExpression implements Expression{
     Expression l, r;
     String op;
@@ -9,8 +13,7 @@ public class BinaryExpression implements Expression{
         this.op = op;
     }
     @Override
-    public int eval() {
-
+    public int eval(Cell host, Map<String,Integer> bindingMap){
         return 0;
     }
 }

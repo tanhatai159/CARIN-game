@@ -5,7 +5,10 @@ import java.util.Queue;
 
 public class BlockStatementNode implements StatementNode{
     Queue<StatementNode> q = new LinkedList<>();
-    public BlockStatementNode(StatementNode statement){
+    public BlockStatementNode(){
+
+    }
+    public void addStatement(StatementNode statement){
         q.add(statement);
     }
 }
