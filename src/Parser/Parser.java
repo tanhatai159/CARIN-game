@@ -257,7 +257,19 @@ public class Parser {
         return e;
     }
     public Expression ParseSensorExpression(){
-
-        return null;
+        String command = AllToken.consume(), direction = null;
+        SensorExpression e = null;
+        try{
+            if(isDirection(AllToken.peek())){
+                direction = AllToken.consume();
+            }
+            else{
+                throw new Exception();
+            }
+        }catch (Exception ex){
+            System.err.println("this word isn't direction");
+        }
+        e = nf.newSensorExpression(command,direction);
+        return e;
     }
 }
