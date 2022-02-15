@@ -72,21 +72,35 @@ public class Cell {
     }
 
     public int scanVirus(){
-        int min = Integer.MAX_VALUE;
+        int closest = Integer.MAX_VALUE;
         for(int i = 0;i < Direction.length;i++){
             if(nearby(Direction[i]) != 0){
-                int findmin = nearby(Direction[i]);
-                if(findmin < min){
-                    if(findmin)
-                    min = findmin;
+                int findCloset = nearby(Direction[i]);
+                if(findCloset< closest){
+                    if((findCloset%10)-1 == 0) closest = findCloset;
                 }
             }
         }
-        if(min == Integer.MAX_VALUE) return  0;
+        if(closest == Integer.MAX_VALUE) return  0;
         else{
+            return closest;
         }
     }
-//    public int scanAntibody(){}
+    public int scanAntibody(){
+        int closest = Integer.MAX_VALUE;
+        for(int i = 0;i < Direction.length;i++){
+            if(nearby(Direction[i]) != 0){
+                int findCloset = nearby(Direction[i]);
+                if(findCloset< closest){
+                    if((findCloset%10)-2 == 0) closest = findCloset;
+                }
+            }
+        }
+        if(closest == Integer.MAX_VALUE) return  0;
+        else{
+            return closest;
+        }
+    }
 
     public int nearby(String direction){
         int range = 3, distance = 0;
