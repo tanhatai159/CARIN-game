@@ -50,9 +50,7 @@ public class Parser {
 
     public ProgramNode Parse(){
         ProgramNode p = nf.newProgramNode();
-        if(AllToken.hasNext()){
-            return null;
-        }
+        p = ParseProgram();
         return p;
     }
     public ProgramNode ParseProgram(){
@@ -137,10 +135,10 @@ public class Parser {
     public StatementNode ParseBlockStatement(){
         BlockStatementNode s = nf.newBlockStatementNode();
         try {
-            while (AllToken.hasNext()){
+            while (AllToken.hasNext() && !AllToken.peek("}")){
                 s.addStatement(ParseStatement());
-                AllToken.consume("}");
             }
+            AllToken.consume("}");
         }catch (Exception ex){
             System.err.println("Don't have '}'");
         }

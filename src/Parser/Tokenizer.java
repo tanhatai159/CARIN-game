@@ -40,7 +40,7 @@ public class Tokenizer {
     }
 
     public boolean hasNext(){
-        return parse.isEmpty();
+        return !parse.isEmpty();
     }
     public String peek(){
         return parse.peek();
