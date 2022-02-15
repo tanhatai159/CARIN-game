@@ -1,6 +1,7 @@
+import java.util.Objects;
 
 public class Cell {
-    protected final String[] element = {"fire", "water", "glass"};
+    protected final String[] element = {"fire", "water", "grass"}; //grass <-- fire <-- water <-- grass
     String type; // type of each cell
     Organ currentOrgan; // เพื่อบอกว่า cell ตัวนี้อยู่ที่ organ ไหน
     int x, y;
@@ -54,8 +55,9 @@ public class Cell {
         int enemyHP = enemy.hp;
         if (enemy instanceof Antibody){
             ((Antibody) enemy).attackByThisVirus = (Virus) this;
-        }
-        enemyHP = enemyHP - this.dmg;
+        }if((this.type.equals("fire") && enemy.type.equals("grass"))||(this.type.equals("water") && enemy.type.equals("fire"))||(this.type.equals("grass") && enemy.type.equals("water"))){
+            enemyHP = enemyHP - (this.dmg*2);
+        }else enemyHP = enemyHP - this.dmg;
     }
 
 //    public int virusScan(){}
