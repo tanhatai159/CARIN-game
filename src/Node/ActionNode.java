@@ -11,6 +11,11 @@ public class ActionNode implements StatementNode {
         this.direction = direction;
     }
     public void eval(Cell host, Map<String,Integer> bindingMap){
-
+        if(command.equals("shoot")){
+            host.shoot(direction);
+        }
+        else if(command.equals("move")){
+            host.move(direction);
+        }
     }
 }
