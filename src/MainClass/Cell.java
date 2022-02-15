@@ -58,13 +58,49 @@ public class Cell {
         }if((this.type.equals("fire") && enemy.type.equals("grass"))||(this.type.equals("water") && enemy.type.equals("fire"))||(this.type.equals("grass") && enemy.type.equals("water"))){
             enemyHP = enemyHP - (this.dmg*2);
         }else enemyHP = enemyHP - this.dmg;
-        if(enemyHP<1) {enemyHP = 0;}
+        if(enemyHP<1) { enemyHP = 0;}
 
 
     }
 
 //    public int virusScan(){}
 //    public int antibodyScan(){}
-//    public int nearby(){}
+
+    public int nearby(String direction){
+        int range = 3, distance = 0;
+        Cell target;
+        int xTarget = x, yTarget = y;
+
+        do{
+            distance++; // update distance
+        switch (direction) {
+            case "left" -> xTarget = x - distance;
+            case "right" -> xTarget = x + distance;
+            case "up" -> yTarget = y - distance;
+            case "down" -> yTarget = y + distance;
+            case "upleft" -> {
+                xTarget = x - distance;
+                yTarget = y - distance;
+            }case "upright" -> {
+                xTarget = x + distance;
+                yTarget = y - distance;
+            }case "downleft" -> {
+                xTarget = x - distance;
+                yTarget = y + distance;
+            }case "downright" -> {
+                xTarget = x + distance;
+                yTarget = y + distance;
+            }
+        }
+            target = currentOrgan.coordinate(xTarget,yTarget); // update target
+
+        }while (distance<range && target == null);
+
+        if (target instanceof Virus) {
+            return (10*distance)+1;
+        }else if (target instanceof Antibody){
+            return (10*distance)+2;
+        }else return  0;
+    }
 
 }
