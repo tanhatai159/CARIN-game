@@ -45,6 +45,12 @@ public class Tokenizer {
     public String peek(){
         return parse.peek();
     }
+    public boolean peek(String word){
+        if(peek() == null){
+            return false;
+        }
+        return peek().equals(word);
+    }
 
     public void print(){
         System.out.println(parse);
