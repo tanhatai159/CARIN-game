@@ -16,22 +16,34 @@ public class Parser {
         AllToken = new Tokenizer(path);
     }
 
-    public void Parse(){
-
+    public ProgramNode Parse(){
+        ProgramNode p = ParseProgram();
+        if(AllToken.hasNext()){
+            return null;
+        }
+        return p;
     }
-    public void ParseProgram(){
+    public ProgramNode ParseProgram(){
         ProgramNode p = new ProgramNode();
         while (AllToken.hasNext()){
             p.addStatement(ParseStatement());
         }
+        return p;
     }
     public StatementNode ParseStatement(){
+        StatementNode s;
 
         if(isCommand(AllToken.peek())){
 
         }
         else if(AllToken.peek().equals("if") || AllToken.peek().equals("else")){
-
+            s = ParseIfStatement();
+        }
+        else if(AllToken.peek().equals("{")){
+            s = ParseBlockStatement();
+        }
+        else if(AllToken.peek().equals("while")){
+            s = ParseWhileStatement();
         }
         return null;
     }
@@ -50,14 +62,15 @@ public class Parser {
     public void ParseAttackCommand(){
 
     }
-    public void ParseBlockStatement(){
-
+    public StatementNode ParseBlockStatement(){
+        return null;
     }
-    public void ParseIfStatement(){
+    public StatementNode ParseIfStatement(){
 
+        return null;
     }
-    public void ParseWhileStatement(){
-
+    public StatementNode ParseWhileStatement(){
+        return null;
     }
     public void ParseExpression(){
 
