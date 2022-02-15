@@ -14,6 +14,22 @@ public class BinaryExpression implements Expression{
     }
     @Override
     public int eval(Cell host, Map<String,Integer> bindingMap){
+        int left = l.eval(host,bindingMap), right = r.eval(host,bindingMap);
+        if(op.equals("+")){
+
+        }
+        else if(op.equals("-")){
+
+        }
+        else if(op.equals("*")){
+
+        }
+        else if(op.equals("/")){
+
+        }
+        else if(op.equals("^")){
+
+        }
         return 0;
     }
 }

@@ -12,6 +12,8 @@ public class ProgramNode implements Program {
         q.add(statement);
     }
     public void eval(Cell host, Map<String,Integer> bindingMap){
-
+        while (!q.isEmpty()){
+            q.poll().eval(host,bindingMap);
+        }
     }
 }

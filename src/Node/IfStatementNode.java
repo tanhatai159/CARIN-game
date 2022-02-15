@@ -1,5 +1,9 @@
 package Node;
 
+import MainClass.Cell;
+
+import java.util.Map;
+
 public class IfStatementNode implements StatementNode {
     Expression e;
     StatementNode statement1;
@@ -8,5 +12,9 @@ public class IfStatementNode implements StatementNode {
         this.statement1 = statement1;
         this.statement2 = statement2;
         this.e = e;
+    }
+    @Override
+    public void eval(Cell host, Map<String,Integer> bindingMap){
+
     }
 }

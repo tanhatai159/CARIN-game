@@ -1,6 +1,9 @@
 package Node;
 
+import MainClass.Cell;
+
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 
 public class BlockStatementNode implements StatementNode{
@@ -10,5 +13,10 @@ public class BlockStatementNode implements StatementNode{
     }
     public void addStatement(StatementNode statement){
         q.add(statement);
+    }
+
+    @Override
+    public void eval(Cell host, Map<String,Integer> bindingMap){
+
     }
 }

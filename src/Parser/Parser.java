@@ -260,11 +260,13 @@ public class Parser {
         String command = AllToken.consume(), direction = null;
         SensorExpression e = null;
         try{
-            if(isDirection(AllToken.peek())){
-                direction = AllToken.consume();
-            }
-            else{
-                throw new Exception();
+            if(command.equals("nearby")){
+                if(isDirection(AllToken.peek())){
+                    direction = AllToken.consume();
+                }
+                else{
+                    throw new Exception();
+                }
             }
         }catch (Exception ex){
             System.err.println("this word isn't direction");
