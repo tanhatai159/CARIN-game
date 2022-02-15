@@ -1,11 +1,19 @@
 package MainClass;
 
+import static MainClass.Organ.n;
+import static MainClass.Organ.m;
+
 public class Cell {
     protected final String[] element = {"fire", "water", "grass"}; //grass <-- fire <-- water <-- grass
+    protected final String[] Direction = {"left", "right", "up","down","upleft","upright","downleft","downright",};
     String type; // type of each cell
     Organ currentOrgan; // เพื่อบอกว่า cell ตัวนี้อยู่ที่ organ ไหน
     int x, y;
     int hp,dmg;
+
+    public void readGenetic_Code(String path){
+
+    }
 
     public void move(String direction){
         switch (direction) {
@@ -63,13 +71,28 @@ public class Cell {
 
     }
 
-//    public int virusScan(){}
-//    public int antibodyScan(){}
+    public int scanVirus(){
+        int min = Integer.MAX_VALUE;
+        for(int i = 0;i < Direction.length;i++){
+            if(nearby(Direction[i]) != 0){
+                int findmin = nearby(Direction[i]);
+                if(findmin < min){
+                    if(findmin)
+                    min = findmin;
+                }
+            }
+        }
+        if(min == Integer.MAX_VALUE) return  0;
+        else{
+        }
+    }
+//    public int scanAntibody(){}
 
     public int nearby(String direction){
         int range = 3, distance = 0;
-        Cell target;
         int xTarget = x, yTarget = y;
+        Cell target;
+
 
         do{
             distance++; // update distance
@@ -94,7 +117,7 @@ public class Cell {
         }
             target = currentOrgan.coordinate(xTarget,yTarget); // update target
 
-        }while (distance<range && target == null);
+        }while (distance<range && target == null && x < n && y < m);
 
         if (target instanceof Virus) {
             return (10*distance)+1;
