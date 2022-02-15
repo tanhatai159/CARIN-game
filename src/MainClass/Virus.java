@@ -1,3 +1,5 @@
+package MainClass;
+
 public class Virus extends Cell {
     int HP;
     static int amountOfVirus = 0, atk, startHP, hpGain;

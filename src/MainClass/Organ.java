@@ -1,4 +1,4 @@
-import java.util.Random;
+package MainClass;
 
 public class Organ {
     static int m,n;

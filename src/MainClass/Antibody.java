@@ -1,3 +1,5 @@
+package MainClass;
+
 public class Antibody extends Cell {
     int HP;
     static int placementCost, atk, startHP, hpGain, moveCost,amountOfAntibody = 0;

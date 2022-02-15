@@ -1,3 +1,5 @@
+package MainClass;
+
 public class Player {
     int credits;
     static int initialCredits, time = 0;
