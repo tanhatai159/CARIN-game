@@ -29,6 +29,7 @@ public class Cell {
         }
     }
 
+
     public void shoot(String direction){
         int xEnemy = x, yEnemy = y;
         switch (direction) {
@@ -57,6 +58,7 @@ public class Cell {
         }if((this.type.equals("fire") && enemy.type.equals("grass"))||(this.type.equals("water") && enemy.type.equals("fire"))||(this.type.equals("grass") && enemy.type.equals("water"))){
             enemyHP = enemyHP - (this.dmg*2);
         }else enemyHP = enemyHP - this.dmg;
+        if(enemyHP<1) {enemyHP = 0;}
 
 
     }
