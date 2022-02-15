@@ -1,5 +1,9 @@
 package Node;
 
+import MainClass.Cell;
+
+import java.util.Map;
+
 public class SensorExpression implements Expression{
     String command,direction;
 
@@ -9,7 +13,7 @@ public class SensorExpression implements Expression{
     }
 
     @Override
-    public int eval() {
+    public int eval(Cell host, Map<String,Integer> bindingMap) {
         return 0;
     }
 }

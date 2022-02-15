@@ -1,5 +1,9 @@
 package Node;
 
+import MainClass.Cell;
+
+import java.util.Map;
+
 class IntLitExpression implements Expression {
     int val;
 
@@ -8,7 +12,7 @@ class IntLitExpression implements Expression {
     }
 
     @Override
-    public int eval() {
+    public int eval(Cell host, Map<String,Integer> bindingMap) {
         return val;
     }
 }
