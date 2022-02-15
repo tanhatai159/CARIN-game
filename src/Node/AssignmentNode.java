@@ -1,6 +1,7 @@
 package Node;
 
 import MainClass.Cell;
+import MainClass.MainGame;
 
 import java.util.Map;
 
@@ -13,6 +14,12 @@ public class AssignmentNode implements StatementNode{
     }
     public void eval(Cell host, Map<String,Integer> bindingMap){
         String name = ((IdentifierExpression)i).getName();
-        bindingMap.put(name,e.eval(host,bindingMap));
+        int result = e.eval(host,bindingMap);
+        if(name.equals("t")){
+            MainGame.setTimeUnit(result);
+        }
+        else{
+            bindingMap.put(name,e.eval(host,bindingMap));
+        }
     }
 }

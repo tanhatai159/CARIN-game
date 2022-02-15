@@ -14,6 +14,15 @@ public class SensorExpression implements Expression{
 
     @Override
     public int eval(Cell host, Map<String,Integer> bindingMap) {
+        if(command.equals("virus")){
+           return host.scanVirus();
+        }
+        else if(command.equals("antibody")){
+           return host.scanAntibody();
+        }
+        else if(command.equals("nearby")){
+            return host.nearby(direction);
+        }
         return 0;
     }
 }

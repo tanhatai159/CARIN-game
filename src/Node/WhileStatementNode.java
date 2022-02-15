@@ -14,5 +14,8 @@ public class WhileStatementNode implements StatementNode {
     @Override
     public void eval(Cell host, Map<String,Integer> bindingMap){
 
+        while (e.eval(host,bindingMap) == 0){
+            statement.eval(host,bindingMap);
+        }
     }
 }

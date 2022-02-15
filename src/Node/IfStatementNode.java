@@ -15,6 +15,11 @@ public class IfStatementNode implements StatementNode {
     }
     @Override
     public void eval(Cell host, Map<String,Integer> bindingMap){
-
+        if(e.eval(host,bindingMap) == 0){
+            statement1.eval(host,bindingMap);
+        }
+        else{
+            statement2.eval(host,bindingMap);
+        }
     }
 }

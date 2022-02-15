@@ -12,7 +12,10 @@ public class IdentifierExpression implements Expression{
     }
     @Override
     public int eval(Cell host, Map<String,Integer> bindingMap) {
-        if(bindingMap.containsKey(identifier)){
+        if(identifier.equals("t")){
+            return MainGame.getTimeUnit();
+        }
+        else if(bindingMap.containsKey(identifier)){
             return bindingMap.get(identifier);
         }
         else{
