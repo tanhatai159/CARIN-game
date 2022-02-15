@@ -1,5 +1,6 @@
 package Parser;
 
+import Node.ActionNode;
 import Node.ProgramNode;
 import Node.StatementNode;
 
@@ -10,6 +11,10 @@ public class Parser {
 
     private boolean isCommand(String word){
         return word.equals("move") || word.equals("shoot");
+    }
+
+    private boolean isDirection(String word){
+        return word.equals("up") || word.equals("upright") || word.equals("right") || word.equals("downright") || word.equals("down") || word.equals("downleft") || word.equals("left") || word.equals("upleft");
     }
 
     public Parser(String path){
@@ -31,12 +36,9 @@ public class Parser {
         return p;
     }
     public StatementNode ParseStatement(){
-        StatementNode s;
+        StatementNode s = null;
 
-        if(isCommand(AllToken.peek())){
-
-        }
-        else if(AllToken.peek().equals("if") || AllToken.peek().equals("else")){
+        if(AllToken.peek().equals("if") || AllToken.peek().equals("else")){
             s = ParseIfStatement();
         }
         else if(AllToken.peek().equals("{")){
@@ -45,23 +47,49 @@ public class Parser {
         else if(AllToken.peek().equals("while")){
             s = ParseWhileStatement();
         }
+        else{
+            s = ParseCommand();
+        }
+        return s;
+    }
+    public StatementNode ParseCommand(){
+        StatementNode s = null;
+        if(isCommand(AllToken.peek())){
+            s = ParseActionCommand();
+        }
+        else{
+            s = ParseAssignmentStatement();
+        }
         return null;
     }
-    public void ParseCommand(){
+    public StatementNode ParseAssignmentStatement(){
+        StatementNode s = null;
 
+        return null;
     }
-    public void ParseAssignmentStatement(){
-
+    public StatementNode ParseActionCommand(){
+        StatementNode s = null;
+        String command = AllToken.consume();
+        String direction = null;
+        try {
+            if(isDirection(AllToken.peek())){
+                direction = AllToken.consume();
+            }
+            else{
+                throw new Exception();
+            }
+        }catch (Exception e){
+            System.err.println("Can't use this genetic code.");
+        }
+        s = new ActionNode(command,direction);
+        return null;
     }
-    public void ParseActionCommand(){
-
-    }
-    public void ParseMoveCommand(){
-
-    }
-    public void ParseAttackCommand(){
-
-    }
+//    public void ParseMoveCommand(){
+//
+//    }
+//    public void ParseAttackCommand(){
+//
+//    }
     public StatementNode ParseBlockStatement(){
         return null;
     }
