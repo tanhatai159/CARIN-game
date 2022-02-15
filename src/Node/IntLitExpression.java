@@ -1,9 +1,9 @@
 package Node;
 
-class intLitExpression implements Expression {
+class IntLitExpression implements Expression {
     int val;
 
-    public intLitExpression(int val) {
+    public IntLitExpression(int val) {
         this.val = val;
     }
 
