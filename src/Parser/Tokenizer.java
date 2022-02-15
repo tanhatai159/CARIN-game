@@ -24,7 +24,7 @@ public class Tokenizer {
                 sb.append("\n");
                 line = reader.readLine();
             }
-            genarate(sb.toString());
+            generate(sb.toString());
         } catch (IOException e) {
         }
     }
@@ -49,7 +49,7 @@ public class Tokenizer {
     public void print(){
         System.out.println(parse);
     }
-    public void genarate(String input) {
+    public void generate(String input) {
         parse = new LinkedList<>();
         String line = input;
         StringBuilder sb = new StringBuilder();
