@@ -1,10 +1,12 @@
 package MainClass;
 
+import java.util.ArrayList;
+
 import static MainClass.Organ.n;
 import static MainClass.Organ.m;
 
 public class Cell {
-    protected final String[] element = {"fire", "water", "grass"}; //grass <-- fire <-- water <-- grass
+    protected static ArrayList<String> elementList = null; //grass <-- fire <-- water <-- grass
     protected final String[] Direction = {"left", "right", "up","down","upleft","upright","downleft","downright",};
     String type; // type of each cell
     Organ currentOrgan; // เพื่อบอกว่า cell ตัวนี้อยู่ที่ organ ไหน
@@ -139,5 +141,10 @@ public class Cell {
             return (10*distance)+2;
         }else return  0;
     }
-
+    public static void update(){
+        elementList = new ArrayList<>();
+        elementList.add("fire");
+        elementList.add("water");
+        elementList.add("grass");
+    }
 }

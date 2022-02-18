@@ -70,6 +70,7 @@ public class ReadConfig {
                 }
                 //update All class value
                 Organ.update(m,n);
+                Cell.update();
                 Antibody.update(antibodyAtk,antibodyHP,moveCost,buyCost,antibodyGain);
                 Virus.update(virusAtk,virusHP,virusGain);
                 Player.update(credits);

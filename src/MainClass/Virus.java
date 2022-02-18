@@ -8,7 +8,7 @@ public class Virus extends Cell {
         this.y = y;
         this.currentOrgan = organ;
         this.HP = startHP;
-        this.type = this.element[type];
+        this.type = elementList.get(type);
         amountOfVirus++;
     }
     public static void update(int atk, int HP, int hpGain) {
