@@ -1,10 +1,14 @@
 package MainClass;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class MainGame extends Thread {
     private static int timeUnit = 0;
     private int state = 1;
     private boolean gameStart = false, gameEnd = false;
     private Body body;
+    static Queue<Cell> cellQueue;
     public static int getTimeUnit(){
         return timeUnit;
     }
@@ -24,6 +28,7 @@ public class MainGame extends Thread {
         if(state == 1){
             ReadConfig.readConfig("config.txt");
             body = new Body();
+            cellQueue = new LinkedList<>();
         }
         else if(state == 2){
 

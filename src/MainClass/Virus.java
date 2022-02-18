@@ -10,6 +10,7 @@ public class Virus extends Cell {
         this.HP = startHP;
         this.type = elementList.get(type);
         amountOfVirus++;
+        MainGame.cellQueue.add(this);
     }
     public static void update(int atk, int HP, int hpGain) {
         Virus.atk = atk;

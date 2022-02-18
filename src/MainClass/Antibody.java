@@ -11,6 +11,7 @@ public class Antibody extends Cell {
         this.type = elementList.get(typeNumber);
         this.HP = Antibody.startHP;
         amountOfAntibody++;
+        MainGame.cellQueue.add(this);
     }
     public static void update(int atk, int HP, int moveCost,int placementCost ,int hpGain){
         Antibody.atk = atk;
