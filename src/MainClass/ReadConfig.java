@@ -74,7 +74,7 @@ public class ReadConfig {
                     throw new Exception();
                 }
                 //update All class value
-                Organ.update(m,n);
+                Organ.update(m,n,rate);
                 Cell.update();
                 Antibody.update(antibodyAtk,antibodyHP,moveCost,buyCost,antibodyGain);
                 Virus.update(virusAtk,virusHP,virusGain);
