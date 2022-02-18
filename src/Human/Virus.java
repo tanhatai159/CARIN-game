@@ -19,4 +19,7 @@ public class Virus extends Cell {
         Virus.startHP = HP;
         Virus.hpGain = hpGain;
     }
+    public static int getAmountOfVirus(){
+        return amountOfVirus;
+    }
 }

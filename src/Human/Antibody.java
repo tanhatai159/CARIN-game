@@ -26,4 +26,7 @@ public class Antibody extends Cell {
         int typeNumber = elementList.indexOf(type);
         currentOrgan.position[y][x] = new Virus(currentOrgan, typeNumber, x, y);
     }
+    public static int getAmountOfAntibody(){
+        return amountOfAntibody;
+    }
 }
