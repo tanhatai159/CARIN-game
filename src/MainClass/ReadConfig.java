@@ -7,10 +7,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 
 public class ReadConfig {
-    public static void readConfig() throws Exception {
+    public static void readConfig(String path) throws Exception {
         int m,n, credits, buyCost, virusHP, antibodyHP, virusAtk, virusGain, antibodyAtk, antibodyGain, moveCost;
         double rate;
-        Path file = Paths.get("config.txt");
+        Path file = Paths.get(path);
         Charset charset = StandardCharsets.US_ASCII;
         try(BufferedReader reader = Files.newBufferedReader(file,charset)){
             String line = null;
@@ -87,7 +87,7 @@ public class ReadConfig {
     }
 
     public static void main(String[] args) throws Exception {
-        ReadConfig.readConfig();
+        ReadConfig.readConfig("config.txt");
         System.out.println("5555");
     }
 }
