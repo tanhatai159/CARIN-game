@@ -1,4 +1,4 @@
-package MainClass;
+package Human;
 
 import java.util.ArrayList;
 

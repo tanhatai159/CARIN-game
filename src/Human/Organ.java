@@ -1,4 +1,6 @@
-package MainClass;
+package Human;
+
+import MainClass.RandomEverything;
 
 public class Organ {
     static int m,n;

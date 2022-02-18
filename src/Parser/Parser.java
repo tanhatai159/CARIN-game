@@ -1,9 +1,6 @@
 package Parser;
 
 import Node.*;
-import MainClass.Cell;
-
-import java.util.ArrayList;
 
 public class Parser {
     Tokenizer AllToken;

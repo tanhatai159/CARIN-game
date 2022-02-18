@@ -1,6 +1,6 @@
 package Node;
 
-import MainClass.Cell;
+import Human.Cell;
 
 import java.util.Map;
 

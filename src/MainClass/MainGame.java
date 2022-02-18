@@ -1,5 +1,8 @@
 package MainClass;
 
+import Human.Body;
+import Human.Cell;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -17,6 +20,9 @@ public class MainGame extends Thread {
     }
     public static void increaseTimeUnit(int amount){
         timeUnit += amount;
+    }
+    public static Queue<Cell> getCellQueue(){
+        return cellQueue;
     }
 
     @Override

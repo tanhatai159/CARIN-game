@@ -1,9 +1,9 @@
-package MainClass;
+package Human;
 
 import java.util.ArrayList;
 
-import static MainClass.Organ.n;
-import static MainClass.Organ.m;
+import static Human.Organ.n;
+import static Human.Organ.m;
 
 public class Cell {
     protected static ArrayList<String> elementList = null; //grass <-- fire <-- water <-- grass

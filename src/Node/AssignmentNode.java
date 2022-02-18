@@ -1,6 +1,6 @@
 package Node;
 
-import MainClass.Cell;
+import Human.Cell;
 import MainClass.MainGame;
 
 import java.util.Map;

@@ -1,5 +1,10 @@
 package MainClass;
 
+import Human.Antibody;
+import Human.Cell;
+import Human.Organ;
+import Human.Virus;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
