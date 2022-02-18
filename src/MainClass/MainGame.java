@@ -6,6 +6,7 @@ import Human.Organ;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Scanner;
 
 public class MainGame extends Thread {
     private static int timeUnit = 0;
@@ -13,6 +14,7 @@ public class MainGame extends Thread {
     private boolean gameStart = false, gameEnd = false;
     private Body body;
     static Queue<Cell> cellQueue;
+    private Scanner s;
     public static int getTimeUnit(){
         return timeUnit;
     }
@@ -47,11 +49,12 @@ public class MainGame extends Thread {
             System.out.println("-----------------Generate virus state-----------------");
             for(Organ organ : body.getAllOrgan()){
                 organ.generateVirus();
-
             }
         }
         else if(state == 3){
-
+            System.out.println("-----------------Player action state-----------------");
+            s = new Scanner(System.in);
+            String[] arr = s.toString().split(" ");
         }
         else if(state == 4){
 

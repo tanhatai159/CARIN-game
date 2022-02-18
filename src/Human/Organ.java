@@ -32,6 +32,10 @@ public class Organ {
         }
     }
 
+    public Cell[][] getPosition(){
+        return position;
+    }
+
     public static void update(int m, int n, double rate){
         Organ.m = m;
         Organ.n = n;
