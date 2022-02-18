@@ -5,12 +5,14 @@ import MainClass.MainGame;
 public class Virus extends Cell {
     int HP;
     static int amountOfVirus = 0, atk, startHP, hpGain;
-    public Virus(Organ organ, int type, int x, int y){
+    public Virus(Organ organ, int type, int x, int y, String geneticPath){
         this.x = x;
         this.y = y;
         this.currentOrgan = organ;
         this.HP = startHP;
         this.type = elementList.get(type);
+        this.geneticPath = geneticPath;
+        readGenetic_Code(geneticPath);
         amountOfVirus++;
         MainGame.getCellQueue().add(this);
     }

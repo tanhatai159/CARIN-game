@@ -1,6 +1,10 @@
 package Human;
 
+import Node.ProgramNode;
+import Parser.Parser;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static Human.Organ.n;
 import static Human.Organ.m;
@@ -8,13 +12,19 @@ import static Human.Organ.m;
 public class Cell {
     protected static ArrayList<String> elementList = null; //grass <-- fire <-- water <-- grass
     protected final String[] Direction = {"left", "right", "up","down","upleft","upright","downleft","downright",};
-    String type; // type of each cell
+    String type, geneticPath; // type of each cell
     Organ currentOrgan; // เพื่อบอกว่า cell ตัวนี้อยู่ที่ organ ไหน
     int x, y;
     int hp,dmg;
+    ProgramNode genetic;
+    Parser p;
 
     public void readGenetic_Code(String path){
-
+        if(p == null || genetic == null){
+            p = new Parser(path);
+            genetic = p.Parse();
+        }
+        genetic.eval(this,new HashMap<String,Integer>());
     }
 
     public void move(String direction){

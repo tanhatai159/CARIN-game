@@ -12,6 +12,8 @@ public class Antibody extends Cell {
         this.currentOrgan = organ;
         this.type = elementList.get(typeNumber);
         this.HP = Antibody.startHP;
+        this.geneticPath = "Genetic_Code.txt";
+        readGenetic_Code(geneticPath);
         amountOfAntibody++;
         MainGame.getCellQueue().add(this);
     }
@@ -24,7 +26,7 @@ public class Antibody extends Cell {
     }
     public void mutation(){
         int typeNumber = elementList.indexOf(type);
-        currentOrgan.position[y][x] = new Virus(currentOrgan, typeNumber, x, y);
+        currentOrgan.position[y][x] = new Virus(currentOrgan, typeNumber, x, y, "Genetic_Code.txt");
     }
     public static int getAmountOfAntibody(){
         return amountOfAntibody;

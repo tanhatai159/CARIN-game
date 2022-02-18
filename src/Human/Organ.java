@@ -27,7 +27,7 @@ public class Organ {
             int x = RandomEverything.useRandom().nextInt(n);
             int y = RandomEverything.useRandom().nextInt(m);
             if(position[y][x] == null){
-                position[y][x] = new Virus(this, type,x,y);
+                position[y][x] = new Virus(this, type,x,y, "Genetic_Code.txt");
             }
         }
     }

@@ -33,6 +33,7 @@ public class MainGame extends Thread {
 
     public void gameLoop() throws Exception {
         if(state == 1){
+            System.out.println("-----------------Start game state-----------------");
             try {
                 ReadConfig.readConfig("config.txt");
             }catch (Exception e){
@@ -43,6 +44,7 @@ public class MainGame extends Thread {
             state = 2;
         }
         else if(state == 2){
+            System.out.println("-----------------Generate virus state-----------------");
             for(Organ organ : body.getAllOrgan()){
                 organ.generateVirus();
 
