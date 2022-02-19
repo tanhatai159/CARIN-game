@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Body {
     private ArrayList<Organ> AllOrgan;
 
-    public Body(){
-        for(int i = 0;i < 3;i++){
+    public Body(int amount){
+        for(int i = 0;i < amount;i++){
             AllOrgan.add(new Organ());
         }
     }
