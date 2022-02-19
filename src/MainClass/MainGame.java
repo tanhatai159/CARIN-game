@@ -1,5 +1,6 @@
 package MainClass;
 
+import Human.Antibody;
 import Human.Body;
 import Human.Cell;
 import Human.Organ;
@@ -10,11 +11,12 @@ import java.util.Scanner;
 
 public class MainGame extends Thread {
     private static int timeUnit = 0;
-    private int state = 1;
-    private boolean gameStart = false, gameEnd = false;
+    private int state = 1, amountOfOrgan = 1;
+    private boolean gameStart = false, gameEnd = false, playerDone = false;
     private Body body;
     static Queue<Cell> cellQueue;
     private Scanner s;
+
     public static int getTimeUnit(){
         return timeUnit;
     }
@@ -41,7 +43,7 @@ public class MainGame extends Thread {
             }catch (Exception e){
                 throw new Exception("Can't start game because config file path is not correct.");
             }
-            body = new Body();
+            body = new Body(amountOfOrgan);
             cellQueue = new LinkedList<>();
             state = 2;
         }
@@ -53,8 +55,42 @@ public class MainGame extends Thread {
         }
         else if(state == 3){
             System.out.println("-----------------Player action state-----------------");
-            s = new Scanner(System.in);
-            String[] arr = s.toString().split(" ");
+            playerDone = false;
+            int indexOfOrgan = 0, indexOfType = 0, x, y;
+            while (!playerDone){
+                s = new Scanner(System.in);
+                String[] arr = s.toString().split(" ");// command(buy) indexOfOrgan(1|2|3) type(1|2|3) x y
+                try{
+                    if(arr[0].equals("buy")){
+                        if(arr[1] != null && arr[2] != null && arr[3] != null && arr[4] != null){
+                            indexOfOrgan = Integer.parseInt(arr[1]);
+                            indexOfType = Integer.parseInt(arr[2]);
+                            x = Integer.parseInt(arr[3]);
+                            y = Integer.parseInt(arr[4]);
+                            if((indexOfOrgan <= amountOfOrgan && indexOfOrgan > 0) && (indexOfType <= 3 && indexOfType > 0) && (x < Organ.getN() && x >= 0) && (y < Organ.getM() && y >= 0)){
+                                Market.shop(indexOfType-1,body.getAllOrgan().get(indexOfOrgan-1),x,y);
+                                if(Antibody.getAmountOfAntibody() > 0){
+                                    gameStart = true;
+                                }
+                            }
+                            else{
+                                throw new Exception("Command is not correct!!!!!!!!!!!!!!!!");
+                            }
+                        }
+                        else{
+                            throw new Exception("Command is not correct!!!!!!!!!!!!!!!!");
+                        }
+                    }
+                    else if(arr[0].equals("done")){
+                        playerDone = true;
+                    }
+                    else{
+                        throw new Exception("Command is not correct!!!!!!!!!!!!!!!!");
+                    }
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
+            }
         }
         else if(state == 4){
 
