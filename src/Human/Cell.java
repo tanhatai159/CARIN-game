@@ -50,7 +50,6 @@ public class Cell {
         }
     }
 
-
     public void shoot(String direction){
         int xEnemy = x, yEnemy = y;
         switch (direction) {
@@ -139,7 +138,6 @@ public class Cell {
         int xTarget = x, yTarget = y;
         Cell target;
 
-
         do{
             distance++; // update distance
         switch (direction) {
@@ -163,7 +161,7 @@ public class Cell {
         }
             target = currentOrgan.coordinate(xTarget,yTarget); // update target
 
-        }while (distance<range && target == null && x < n && y < m);
+        }while (distance<range && target == null && x <= n && y <= m);
 
         if (target instanceof Virus) {
             return (10*distance)+1;
@@ -171,6 +169,7 @@ public class Cell {
             return (10*distance)+2;
         }else return  0;
     }
+
     public static void update(){
         elementList = new ArrayList<>();
         elementList.add("fire");
