@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 import static Human.Organ.n;
 import static Human.Organ.m;
+import static MainClass.Player.increaseCredit;
 
 public class Cell {
     protected static ArrayList<String> elementList = null; //grass <-- fire <-- water <-- grass
@@ -72,15 +73,34 @@ public class Cell {
             }
         }
         Cell enemy = currentOrgan.coordinate(xEnemy,yEnemy);
-        int enemyHP = enemy.hp;
-        if (enemy instanceof Antibody){
-            ((Antibody) enemy).attackByThisVirus = (Virus) this;
-        }if((this.type.equals("fire") && enemy.type.equals("grass"))||(this.type.equals("water") && enemy.type.equals("fire"))||(this.type.equals("grass") && enemy.type.equals("water"))){
-            enemyHP = enemyHP - (this.dmg*2);
-        }else enemyHP = enemyHP - this.dmg;
-        if(enemyHP<1) { enemyHP = 0;}
-
-
+        if(this instanceof Virus) {
+            if (enemy instanceof Antibody) {
+                ((Antibody) enemy).attackByThisVirus = (Virus) this;
+                if ((this.type.equals("fire") && enemy.type.equals("grass")) || (this.type.equals("water") && enemy.type.equals("fire")) || (this.type.equals("grass") && enemy.type.equals("water"))) {
+                    enemy.hp = enemy.hp - (this.dmg * 2);
+                } else enemy.hp = enemy.hp - this.dmg;
+                if (enemy.hp < 1) {
+                    enemy.hp = 0;
+                }
+                if (enemy.hp == 0) {
+                    ((Antibody) enemy).mutation();
+                }
+            }
+        }
+        if(this instanceof Antibody) {
+            if (enemy instanceof Virus) {
+                if ((this.type.equals("fire") && enemy.type.equals("grass")) || (this.type.equals("water") && enemy.type.equals("fire")) || (this.type.equals("grass") && enemy.type.equals("water"))) {
+                    enemy.hp = enemy.hp - (this.dmg * 2);
+                } else enemy.hp = enemy.hp - this.dmg;
+                if (enemy.hp < 1) {
+                    enemy.hp = 0;
+                }
+                if (enemy.hp == 0) {
+                    currentOrgan.position[yEnemy][xEnemy] = null;
+                    increaseCredit(100);
+                }
+            }
+        }
     }
 
     public int scanVirus(){
