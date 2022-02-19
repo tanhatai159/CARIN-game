@@ -42,4 +42,11 @@ public class Organ {
         Organ.rate = rate;
     }
 
+    public static int getM(){
+        return m;
+    }
+
+    public static int getN(){
+        return n;
+    }
 }

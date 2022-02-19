@@ -31,4 +31,8 @@ public class Antibody extends Cell {
     public static int getAmountOfAntibody(){
         return amountOfAntibody;
     }
+
+    public static int getPlacementCost(){
+        return placementCost;
+    }
 }
