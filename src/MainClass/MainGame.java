@@ -9,7 +9,8 @@ import java.util.Scanner;
 public class MainGame extends Thread {
     private static int timeUnit = 0;
     private int state = 1, amountOfOrgan = 1;
-    private boolean gameStart = false, gameEnd = false, playerDone = false;
+    private boolean gameStart = false;
+    private boolean gameEnd = false;
     private Body body;
     static Queue<Cell> cellQueue;
     private Scanner s;
@@ -52,7 +53,7 @@ public class MainGame extends Thread {
         }
         else if(state == 3){
             System.out.println("-----------------Player action state-----------------");
-            playerDone = false;
+            boolean playerDone = false;
             int indexOfOrgan = 0, indexOfType = 0, x, y;
             while (!playerDone){
                 s = new Scanner(System.in);
