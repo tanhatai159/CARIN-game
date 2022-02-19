@@ -1,9 +1,6 @@
 package MainClass;
 
-import Human.Antibody;
-import Human.Body;
-import Human.Organ;
-import Human.Virus;
+import Human.*;
 
 public class Display {
 
@@ -41,6 +38,10 @@ public class Display {
         body.getAllOrgan().get(0).getPosition()[0][0] = new Antibody(body.getAllOrgan().get(0),0,0,0);
         body.getAllOrgan().get(0).getPosition()[1][1] = new Antibody(body.getAllOrgan().get(0),0,1,1);
         body.getAllOrgan().get(0).getPosition()[2][2] = new Virus(body.getAllOrgan().get(0),0,2,2,"Genetic_Code.txt");
+        render(body);
+        for(Cell cell : MainGame.getCellQueue()){
+            cell.readGenetic_Code();
+        }
         render(body);
     }
 }
