@@ -123,12 +123,6 @@ public class Parser {
         s = nf.newActionNode(command,direction);
         return s;
     }
-//    public void ParseMoveCommand(){
-//
-//    }
-//    public void ParseAttackCommand(){
-//
-//    }
     public StatementNode ParseBlockStatement(){
         BlockStatementNode s = nf.newBlockStatementNode();
         try {

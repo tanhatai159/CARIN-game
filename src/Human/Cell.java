@@ -22,7 +22,7 @@ public class Cell {
 
     public void readGenetic_Code(){
         if(p == null || genetic == null){
-            p = new Parser(geneticPath);
+            p = new Parser("D:\\code\\year2\\OOP\\GPS\\testCase\\forReadConfig\\ttttt");
             genetic = p.Parse();
         }
         genetic.eval(this,new HashMap<String,Integer>());
