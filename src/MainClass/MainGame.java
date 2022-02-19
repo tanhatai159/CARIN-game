@@ -12,7 +12,7 @@ public class MainGame extends Thread {
     private boolean gameStart = false;
     private boolean gameEnd = false;
     private Body body;
-    static Queue<Cell> cellQueue;
+    static Queue<Cell> cellQueue = new LinkedList<>();
     private Scanner s;
 
     public static int getTimeUnit(){
