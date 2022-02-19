@@ -12,7 +12,6 @@ public class Virus extends Cell {
         this.HP = startHP;
         this.type = elementList.get(type);
         this.geneticPath = geneticPath;
-        readGenetic_Code(geneticPath);
         amountOfVirus++;
         MainGame.getCellQueue().add(this);
     }

@@ -13,7 +13,6 @@ public class Antibody extends Cell {
         this.type = elementList.get(typeNumber);
         this.HP = Antibody.startHP;
         this.geneticPath = "Genetic_Code.txt";
-        readGenetic_Code(geneticPath);
         amountOfAntibody++;
         MainGame.getCellQueue().add(this);
     }

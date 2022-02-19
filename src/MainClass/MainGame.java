@@ -93,7 +93,9 @@ public class MainGame extends Thread {
             }
         }
         else if(state == 4){
-
+            for(Cell cell : cellQueue){
+                cell.readGenetic_Code();
+            }
         }
         else if(state == 5){
 

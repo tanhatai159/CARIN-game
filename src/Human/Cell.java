@@ -19,9 +19,9 @@ public class Cell {
     ProgramNode genetic;
     Parser p;
 
-    public void readGenetic_Code(String path){
+    public void readGenetic_Code(){
         if(p == null || genetic == null){
-            p = new Parser(path);
+            p = new Parser(geneticPath);
             genetic = p.Parse();
         }
         genetic.eval(this,new HashMap<String,Integer>());
