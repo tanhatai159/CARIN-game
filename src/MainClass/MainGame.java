@@ -1,9 +1,6 @@
 package MainClass;
 
-import Human.Antibody;
-import Human.Body;
-import Human.Cell;
-import Human.Organ;
+import Human.*;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -91,14 +88,28 @@ public class MainGame extends Thread {
                     System.out.println(e.getMessage());
                 }
             }
+            state = 4;
         }
         else if(state == 4){
+            System.out.println("-----------------Cell action state-----------------");
             for(Cell cell : cellQueue){
                 cell.readGenetic_Code();
             }
+            if((Antibody.getAmountOfAntibody() == 0 || Virus.getAmountOfVirus() == 0) && gameStart){
+                state = 5;
+            }
+            else{
+                state = 2;
+            }
         }
         else if(state == 5){
-
+            gameEnd = true;
+            if(Antibody.getAmountOfAntibody() > 0){
+                System.out.println("Antibody win!!!!!!!!!!!!!");
+            }
+            else{
+                System.out.println("Virus win!!!!!!!!!!!!!!!!");
+            }
         }
     }
 }
