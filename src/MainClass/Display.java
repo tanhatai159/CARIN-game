@@ -3,8 +3,11 @@ package MainClass;
 import Human.*;
 
 public class Display {
+    static int mostAmountOfChar = 6;
 
     public static void render(Body body){
+        String word = "";
+        int hostHP = 0, leftSpace;
         System.out.println("Time Unit: " + MainGame.getTimeUnit());
         System.out.println("Player credits: " + Player.getCredits());
         System.out.println("Antibody: " + Antibody.getAmountOfAntibody());
@@ -13,19 +16,26 @@ public class Display {
         for(int i = 0;i < Organ.getM();i++){
             for(int j = 0;j < body.getAllOrgan().size();j++){
                 for(int k = 0;k < Organ.getN();k++){
-                    System.out.print("[ ");
+                    StringBuilder sb = new StringBuilder();
+                    leftSpace = mostAmountOfChar;
+                    System.out.print("[");
                     if(body.getAllOrgan().get(j).getPosition()[i][k] != null){
+                        hostHP =  body.getAllOrgan().get(j).coordinate(k,i).getHp();
                         if(body.getAllOrgan().get(j).getPosition()[i][k] instanceof Antibody){
-                            System.out.print("A");
+                            sb.append("A:");
                         }
                         else{
-                            System.out.print("V");
+                            sb.append("V:");
                         }
+                        sb.append(hostHP);
+                        leftSpace = mostAmountOfChar - sb.toString().length();
                     }
-                    else {
-                        System.out.print(" ");
+                    for(int l = 0;l < leftSpace;l++){
+                        sb.append(' ');
                     }
-                    System.out.print(" ]");
+                    word = sb.toString();
+                    System.out.print(word);
+                    System.out.print("]");
                 }
                 System.out.print("     ");
             }
@@ -41,10 +51,10 @@ public class Display {
         body.getAllOrgan().get(0).getPosition()[2][2] = new Virus(body.getAllOrgan().get(0),0,2,2,"Genetic_Code/Genetic_Code.txt");
         body.getAllOrgan().get(1).getPosition()[2][4] = new Virus(body.getAllOrgan().get(0),0,4,2,"Genetic_Code/Genetic_Code.txt");
         render(body);
-        for(Cell cell : Body.getCellQueue()){
-            cell.readGenetic_Code();
-        }
-//        body.getAllOrgan().get(0).getPosition()[0][0].move("right");
-        render(body);
+//        for(Cell cell : Body.getCellQueue()){
+//            cell.readGenetic_Code();
+//        }
+////        body.getAllOrgan().get(0).getPosition()[0][0].move("right");
+//        render(body);
     }
 }
