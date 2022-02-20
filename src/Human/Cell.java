@@ -17,14 +17,10 @@ public class Cell {
     Organ currentOrgan; // เพื่อบอกว่า cell ตัวนี้อยู่ที่ organ ไหน
     int x, y;
     int hp,dmg;
-    ProgramNode genetic;
-    Parser p;
 
     public void readGenetic_Code(){
-        if(p == null || genetic == null){
-            p = new Parser("Genetic_Code/Genetic_Code.txt");
-            genetic = p.Parse();
-        }
+        Parser p = new Parser("Genetic_Code/Genetic_Code.txt");
+        ProgramNode genetic = p.Parse();
         genetic.eval(this,new HashMap<String,Integer>());
     }
 
