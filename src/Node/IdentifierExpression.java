@@ -2,6 +2,7 @@ package Node;
 
 import Human.Cell;
 import MainClass.MainGame;
+import MainClass.RandomEverything;
 
 import java.util.Map;
 
@@ -14,6 +15,9 @@ public class IdentifierExpression implements Expression{
     public int eval(Cell host, Map<String,Integer> bindingMap) {
         if(identifier.equals("t")){
             return MainGame.getTimeUnit();
+        }
+        else if(identifier.equals("random")){
+            return RandomEverything.useRandom().nextInt(100);
         }
         else if(bindingMap.containsKey(identifier)){
             return bindingMap.get(identifier);
