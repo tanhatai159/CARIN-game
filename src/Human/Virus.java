@@ -13,7 +13,7 @@ public class Virus extends Cell {
         this.type = elementList.get(type);
         this.geneticPath = geneticPath;
         amountOfVirus++;
-        MainGame.getCellQueue().add(this);
+        Body.getCellQueue().add(this);
     }
     public static void update(int atk, int HP, int hpGain) {
         Virus.atk = atk;
