@@ -29,6 +29,8 @@ public class Cell {
     }
 
     public void move(String direction){
+        int xOld = x;
+        int yOld = y;
         switch (direction) {
             case "left" -> x = x - 1;
             case "right" -> x = x + 1;
@@ -48,6 +50,11 @@ public class Cell {
                 y = y + 1;
             }
         }
+        if(currentOrgan.coordinate(x,y) == null){
+            currentOrgan.position[yOld][xOld] = null;
+            currentOrgan.position[y][x] = this;
+        }
+
     }
 
     public void shoot(String direction){
