@@ -37,7 +37,8 @@ public class Display {
         Body body = new Body(2);
         body.getAllOrgan().get(0).getPosition()[0][0] = new Antibody(body.getAllOrgan().get(0),0,0,0);
         body.getAllOrgan().get(0).getPosition()[1][1] = new Antibody(body.getAllOrgan().get(0),0,1,1);
-        body.getAllOrgan().get(0).getPosition()[2][2] = new Virus(body.getAllOrgan().get(0),0,2,2,"Genetic_Code.txt");
+//        body.getAllOrgan().get(0).getPosition()[2][2] = new Virus(body.getAllOrgan().get(0),0,2,2,"D:\\code\\year2\\OOP\\GPS\\Genetic_Code\\Genetic_Code.txt");
+//        body.getAllOrgan().get(1).getPosition()[2][4] = new Virus(body.getAllOrgan().get(0),0,4,2,"D:\\code\\year2\\OOP\\GPS\\Genetic_Code\\Genetic_Code.txt");
         render(body);
         for(Cell cell : MainGame.getCellQueue()){
             cell.readGenetic_Code();
