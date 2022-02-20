@@ -12,7 +12,7 @@ public class MainGame {
     private boolean gameStart = false;
     private boolean gameEnd = false;
     private Body body;
-    static Queue<Cell> cellQueue = new LinkedList<>();
+
     private Scanner s;
 
     public static int getTimeUnit(){
@@ -23,9 +23,6 @@ public class MainGame {
     }
     public static void increaseTimeUnit(int amount){
         timeUnit += amount;
-    }
-    public static Queue<Cell> getCellQueue(){
-        return cellQueue;
     }
 
 //    @Override
@@ -41,89 +38,110 @@ public class MainGame {
 
     public void gameLoop() throws Exception {
         if(state == 1){
-            System.out.println("-----------------Start game state-----------------");
-            try {
-                ReadConfig.readConfig("config.txt");
-            }catch (Exception e){
-                throw new Exception("Can't start game because config file path is not correct.");
-            }
-            body = new Body(amountOfOrgan);
-            cellQueue = new LinkedList<>();
-            state = 2;
-            Display.render(body);
+            gameState1();
         }
         else if(state == 2){
-            System.out.println("-----------------Generate virus state-----------------");
-            for(Organ organ : body.getAllOrgan()){
-                organ.generateVirus();
-            }
-            Display.render(body);
-            state = 3;
+            gameState2();
         }
         else if(state == 3){
-            System.out.println("-----------------Player action state-----------------");
-            boolean playerDone = false;
-            int indexOfOrgan = 0, indexOfType = 0, x, y;
-            while (!playerDone){
-                System.out.print("Type Command: ");
-                s = new Scanner(System.in);
-                String[] arr = s.toString().split(" ");// command(buy) indexOfOrgan(1|2|3) type(1|2|3) x y
-                try{
-                    if(arr[0].equals("buy")){
-                        if(arr[1] != null && arr[2] != null && arr[3] != null && arr[4] != null){
-                            indexOfOrgan = Integer.parseInt(arr[1]);
-                            indexOfType = Integer.parseInt(arr[2]);
-                            x = Integer.parseInt(arr[3]);
-                            y = Integer.parseInt(arr[4]);
-                            if((indexOfOrgan <= amountOfOrgan && indexOfOrgan > 0) && (indexOfType <= 3 && indexOfType > 0) && (x < Organ.getN() && x >= 0) && (y < Organ.getM() && y >= 0)){
-                                Market.shop(indexOfType-1,body.getAllOrgan().get(indexOfOrgan-1),x,y);
-                                if(Antibody.getAmountOfAntibody() > 0){
-                                    gameStart = true;
-                                }
-                            }
-                            else{
-                                throw new Exception("Command is not correct!!!!!!!!!!!!!!!!");
+            gameState3();
+        }
+        else if(state == 4){
+            gameState4();
+        }
+        else if(state == 5){
+            gameState5();
+        }
+    }
+
+    private void gameState1() throws Exception {
+        System.out.println("-----------------Start game state-----------------");
+        try {
+            ReadConfig.readConfig("config.txt");
+        }catch (Exception e){
+            throw new Exception("Can't start game because config file path is not correct.");
+        }
+        body = new Body(amountOfOrgan);
+        state = 2;
+        Display.render(body);
+    }
+
+    private void gameState2(){
+        System.out.println("-----------------Generate virus state-----------------");
+        for(Organ organ : body.getAllOrgan()){
+            organ.generateVirus();
+        }
+        Display.render(body);
+        state = 3;
+    }
+
+    private void gameState3(){
+        System.out.println("-----------------Player action state-----------------");
+        boolean playerDone = false, typeSomething = false;
+        String command = "";
+        int indexOfOrgan = 0, indexOfType = 0, x, y;
+        while (!playerDone){
+            System.out.print("Type Command: ");
+            s = new Scanner(System.in);
+            command = s.nextLine();
+            String[] arr = command.split(" ");// command(buy) indexOfOrgan(1|2|3) type(1|2|3) x y
+            try{
+                if(arr[0].equals("buy")){
+                    if(arr[1] != null && arr[2] != null && arr[3] != null && arr[4] != null){
+                        indexOfOrgan = Integer.parseInt(arr[1]);
+                        indexOfType = Integer.parseInt(arr[2]);
+                        x = Integer.parseInt(arr[3]);
+                        y = Integer.parseInt(arr[4]);
+                        if((indexOfOrgan <= amountOfOrgan && indexOfOrgan > 0) && (indexOfType <= 3 && indexOfType > 0) && (x < Organ.getN() && x >= 0) && (y < Organ.getM() && y >= 0)){
+                            Market.shop(indexOfType-1,body.getAllOrgan().get(indexOfOrgan-1),x,y);
+                            if(Antibody.getAmountOfAntibody() > 0){
+                                gameStart = true;
                             }
                         }
                         else{
                             throw new Exception("Command is not correct!!!!!!!!!!!!!!!!");
                         }
                     }
-                    else if(arr[0].equals("done")){
-                        playerDone = true;
-                    }
                     else{
                         throw new Exception("Command is not correct!!!!!!!!!!!!!!!!");
                     }
-                }catch (Exception e){
-                    System.out.println(e.getMessage());
                 }
-                Display.render(body);
+                else if(arr[0].equals("done")){
+                    playerDone = true;
+                }
+                else{
+                    throw new Exception("Command is not correct!!!!!!!!!!!!!!!!");
+                }
+            }catch (Exception e){
+                System.out.println(e.getMessage());
             }
-            state = 4;
             Display.render(body);
         }
-        else if(state == 4){
-            System.out.println("-----------------Cell action state-----------------");
-            for(Cell cell : cellQueue){
-                cell.readGenetic_Code();
-                Display.render(body);
-            }
-            if((Antibody.getAmountOfAntibody() == 0 || Virus.getAmountOfVirus() == 0) && gameStart){
-                state = 5;
-            }
-            else{
-                state = 2;
-            }
+        state = 4;
+        Display.render(body);
+    }
+
+    private void gameState4(){
+        System.out.println("-----------------Cell action state-----------------");
+        for(Cell cell : Body.getCellQueue()){
+            cell.readGenetic_Code();
+            Display.render(body);
         }
-        else if(state == 5){
-            gameEnd = true;
-            if(Antibody.getAmountOfAntibody() > 0){
-                System.out.println("Antibody win!!!!!!!!!!!!!");
-            }
-            else{
-                System.out.println("Virus win!!!!!!!!!!!!!!!!");
-            }
+        if((Antibody.getAmountOfAntibody() == 0 || Virus.getAmountOfVirus() == 0) && gameStart){
+            state = 5;
+        }
+        else{
+            state = 2;
+        }
+    }
+
+    private void gameState5(){
+        gameEnd = true;
+        if(Antibody.getAmountOfAntibody() > 0){
+            System.out.println("Antibody win!!!!!!!!!!!!!");
+        }
+        else{
+            System.out.println("Virus win!!!!!!!!!!!!!!!!");
         }
     }
 

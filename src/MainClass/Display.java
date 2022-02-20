@@ -41,7 +41,7 @@ public class Display {
         body.getAllOrgan().get(0).getPosition()[2][2] = new Virus(body.getAllOrgan().get(0),0,2,2,"Genetic_Code/Genetic_Code.txt");
         body.getAllOrgan().get(1).getPosition()[2][4] = new Virus(body.getAllOrgan().get(0),0,4,2,"Genetic_Code/Genetic_Code.txt");
         render(body);
-        for(Cell cell : MainGame.getCellQueue()){
+        for(Cell cell : Body.getCellQueue()){
             cell.readGenetic_Code();
         }
 //        body.getAllOrgan().get(0).getPosition()[0][0].move("right");

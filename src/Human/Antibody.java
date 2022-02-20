@@ -14,7 +14,7 @@ public class Antibody extends Cell {
         this.HP = Antibody.startHP;
         this.geneticPath = "Genetic_Code.txt";
         amountOfAntibody++;
-        MainGame.getCellQueue().add(this);
+        Body.getCellQueue().add(this);
     }
     public static void update(int atk, int HP, int moveCost,int placementCost ,int hpGain){
         Antibody.atk = atk;
