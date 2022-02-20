@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class MainGame extends Thread {
+public class MainGame {
     private static int timeUnit = 0;
     private int state = 1, amountOfOrgan = 1;
     private boolean gameStart = false;
@@ -28,10 +28,16 @@ public class MainGame extends Thread {
         return cellQueue;
     }
 
-    @Override
-    public void run(){
-
-    }
+//    @Override
+//    public void run(){
+//        while (!gameEnd){
+//            try {
+//                gameLoop();
+//            } catch (Exception e) {
+//                System.out.println(e.getMessage());
+//            }
+//        }
+//    }
 
     public void gameLoop() throws Exception {
         if(state == 1){
@@ -44,18 +50,22 @@ public class MainGame extends Thread {
             body = new Body(amountOfOrgan);
             cellQueue = new LinkedList<>();
             state = 2;
+            Display.render(body);
         }
         else if(state == 2){
             System.out.println("-----------------Generate virus state-----------------");
             for(Organ organ : body.getAllOrgan()){
                 organ.generateVirus();
             }
+            Display.render(body);
+            state = 3;
         }
         else if(state == 3){
             System.out.println("-----------------Player action state-----------------");
             boolean playerDone = false;
             int indexOfOrgan = 0, indexOfType = 0, x, y;
             while (!playerDone){
+                System.out.print("Type Command: ");
                 s = new Scanner(System.in);
                 String[] arr = s.toString().split(" ");// command(buy) indexOfOrgan(1|2|3) type(1|2|3) x y
                 try{
@@ -88,13 +98,16 @@ public class MainGame extends Thread {
                 }catch (Exception e){
                     System.out.println(e.getMessage());
                 }
+                Display.render(body);
             }
             state = 4;
+            Display.render(body);
         }
         else if(state == 4){
             System.out.println("-----------------Cell action state-----------------");
             for(Cell cell : cellQueue){
                 cell.readGenetic_Code();
+                Display.render(body);
             }
             if((Antibody.getAmountOfAntibody() == 0 || Virus.getAmountOfVirus() == 0) && gameStart){
                 state = 5;
@@ -111,6 +124,13 @@ public class MainGame extends Thread {
             else{
                 System.out.println("Virus win!!!!!!!!!!!!!!!!");
             }
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        MainGame game = new MainGame();
+        while (!game.gameEnd){
+            game.gameLoop();
         }
     }
 }
