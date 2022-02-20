@@ -50,6 +50,10 @@ public class Cell {
                 y = y + 1;
             }
         }
+        if(x < 0) x = 0;
+        if(x > n-1) x = n-1;
+        if(y < 0) y = 0;
+        if(y > m-1) y = m-1;
         if(currentOrgan.coordinate(x,y) == null){
             currentOrgan.position[yOld][xOld] = null;
             currentOrgan.position[y][x] = this;
