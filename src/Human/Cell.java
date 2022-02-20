@@ -198,4 +198,8 @@ public class Cell {
         elementList.add("water");
         elementList.add("grass");
     }
+
+    public int getHp(){
+        return hp;
+    }
 }
