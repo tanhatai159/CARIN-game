@@ -22,7 +22,7 @@ public class Cell {
 
     public void readGenetic_Code(){
         if(p == null || genetic == null){
-            p = new Parser("D:\\code\\year2\\OOP\\GPS\\testCase\\forReadConfig\\ttttt");
+            p = new Parser("Genetic_Code/Genetic_Code.txt");
             genetic = p.Parse();
         }
         genetic.eval(this,new HashMap<String,Integer>());
@@ -71,6 +71,10 @@ public class Cell {
                 yEnemy = y + 1;
             }
         }
+        if(xEnemy < 0) xEnemy = 0;
+        if(xEnemy > n) xEnemy = n;
+        if(yEnemy < 0) xEnemy = 0;
+        if(yEnemy > m) xEnemy = m;
         Cell enemy = currentOrgan.coordinate(xEnemy,yEnemy);
         if(this instanceof Virus) {
             if (enemy instanceof Antibody) {
