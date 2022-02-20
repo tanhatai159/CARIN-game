@@ -3,7 +3,7 @@ package Human;
 import MainClass.MainGame;
 
 public class Antibody extends Cell {
-    int HP;
+//    int HP;
     static int placementCost, atk, startHP, hpGain, moveCost,amountOfAntibody = 0;
     Virus attackByThisVirus; //to tell which current virus attack this antibody and to use when this antibody dead.
     public Antibody(Organ organ, int typeNumber, int x, int y){
@@ -11,7 +11,7 @@ public class Antibody extends Cell {
         this.y = y;
         this.currentOrgan = organ;
         this.type = elementList.get(typeNumber);
-        this.HP = Antibody.startHP;
+        this.hp = Antibody.startHP;
         this.geneticPath = "Genetic_Code.txt";
         amountOfAntibody++;
         Body.getCellQueue().add(this);

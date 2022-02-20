@@ -3,13 +3,13 @@ package Human;
 import MainClass.MainGame;
 
 public class Virus extends Cell {
-    int HP;
+//    int HP;
     static int amountOfVirus = 0, atk, startHP, hpGain;
     public Virus(Organ organ, int type, int x, int y, String geneticPath){
         this.x = x;
         this.y = y;
         this.currentOrgan = organ;
-        this.HP = startHP;
+        this.hp = startHP;
         this.type = elementList.get(type);
         this.geneticPath = geneticPath;
         amountOfVirus++;
