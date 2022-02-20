@@ -80,8 +80,8 @@ public class Cell {
         }
         if(xEnemy < 0) xEnemy = 0;
         if(xEnemy > n) xEnemy = n;
-        if(yEnemy < 0) xEnemy = 0;
-        if(yEnemy > m) xEnemy = m;
+        if(yEnemy < 0) yEnemy = 0;
+        if(yEnemy > m) yEnemy = m;
         Cell enemy = currentOrgan.coordinate(xEnemy,yEnemy);
         if(this instanceof Virus) {
             if (enemy instanceof Antibody) {
