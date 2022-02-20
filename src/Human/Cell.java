@@ -136,7 +136,7 @@ public class Cell {
     public int nearby(String direction){
         int range = 3, distance = 0;
         int xTarget = x, yTarget = y;
-        Cell target;
+        Cell target = null ;
 
         do{
             distance++; // update distance
@@ -159,9 +159,12 @@ public class Cell {
                 yTarget = y + distance;
             }
         }
+            if ((xTarget <0 || yTarget<0)||(xTarget>n-1 || yTarget>n-1)){
+                break;
+        }
             target = currentOrgan.coordinate(xTarget,yTarget); // update target
 
-        }while (distance<range && target == null && x <= n && y <= m);
+        }while (distance<range && target == null && xTarget <= n && yTarget <= m );
 
         if (target instanceof Virus) {
             return (10*distance)+1;
