@@ -94,7 +94,7 @@ public class MainGame {
                         y = Integer.parseInt(arr[4]);
                         if((indexOfOrgan <= amountOfOrgan && indexOfOrgan > 0) && (indexOfType <= 3 && indexOfType > 0) && (x < Organ.getN() && x >= 0) && (y < Organ.getM() && y >= 0)){
                             Market.shop(indexOfType-1,body.getAllOrgan().get(indexOfOrgan-1),x,y);
-                            if(Antibody.getAmountOfAntibody() > 0){
+                            if(Antibody.getAmountOfAntibody() > 0 && Virus.getAmountOfVirus() > 0){
                                 gameStart = true;
                             }
                         }
@@ -123,10 +123,18 @@ public class MainGame {
 
     private void gameState4(){
         System.out.println("-----------------Cell action state-----------------");
+
+        Body.getCellQueueNew().clear();
+        Body.getCellQueueNew().addAll(Body.getCellQueue());
+
         for(Cell cell : Body.getCellQueue()){
             cell.readGenetic_Code();
             Display.render(body);
         }
+
+        Body.getCellQueue().clear();
+        Body.getCellQueue().addAll(Body.getCellQueueNew());
+
         if((Antibody.getAmountOfAntibody() == 0 || Virus.getAmountOfVirus() == 0) && gameStart){
             state = 5;
         }

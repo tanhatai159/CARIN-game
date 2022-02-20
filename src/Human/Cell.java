@@ -98,6 +98,7 @@ public class Cell {
                 }
                 if (enemy.hp == 0) {
                     ((Antibody) enemy).mutation();
+                    Body.getCellQueueNew().remove(enemy);
                     Antibody.amountOfAntibody--;
                 }
             }
@@ -112,6 +113,7 @@ public class Cell {
                 }
                 if (enemy.hp == 0) {
                     currentOrgan.position[yEnemy][xEnemy] = null;
+                    Body.getCellQueueNew().remove(enemy);
                     Virus.amountOfVirus--;
                     increaseCredit(100);
                 }

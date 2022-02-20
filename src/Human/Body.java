@@ -6,7 +6,7 @@ import java.util.Queue;
 
 public class Body {
     private ArrayList<Organ> AllOrgan;
-    static Queue<Cell> cellQueue = new LinkedList<>();
+    static Queue<Cell> cellQueue = new LinkedList<>(), cellQueueNew = new LinkedList<>();
 
     public Body(int amount){
         AllOrgan = new ArrayList<>();
@@ -22,6 +22,10 @@ public class Body {
 
     public static Queue<Cell> getCellQueue(){
         return cellQueue;
+    }
+
+    public static Queue<Cell> getCellQueueNew(){
+        return cellQueueNew;
     }
 
 }
