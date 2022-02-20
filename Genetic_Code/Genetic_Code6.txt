@@ -1,0 +1,13 @@
+t = t + 1
+virusLoc = virus
+if (virusLoc / 10 - 1)
+then
+  if (virusLoc % 10 - 7) then move upleft
+  else if (virusLoc % 10 - 6) then move left
+  else if (virusLoc % 10 - 5) then move downleft
+  else if (virusLoc % 10 - 4) then move down
+  else if (virusLoc % 10 - 3) then move downright
+  else if (virusLoc % 10 - 2) then move right
+  else if (virusLoc % 10 - 1) then move upright
+  else move up
+
