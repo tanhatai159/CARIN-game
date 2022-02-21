@@ -52,6 +52,7 @@ public class MainGame {
         else if(state == 5){
             gameState5();
         }
+        increaseTimeUnit(1);
     }
 
     private void gameState1() throws Exception {
@@ -123,16 +124,22 @@ public class MainGame {
 
     private void gameState4(){
         System.out.println("-----------------Cell action state-----------------");
-
+        Queue<Cell> surviveCell = new LinkedList<>();
         Body.getCellQueueNew().clear();
-        Body.getCellQueueNew().addAll(Body.getCellQueue());
 
         for(Cell cell : Body.getCellQueue()){
             cell.readGenetic_Code();
             Display.render(body);
         }
+        //find cell that survive
+        for(Cell cell : Body.getCellQueue()){
+            if(cell.getHp() > 0){
+                surviveCell.add(cell);
+            }
+        }
 
         Body.getCellQueue().clear();
+        Body.getCellQueue().addAll(surviveCell);
         Body.getCellQueue().addAll(Body.getCellQueueNew());
 
         if((Antibody.getAmountOfAntibody() == 0 || Virus.getAmountOfVirus() == 0) && gameStart){

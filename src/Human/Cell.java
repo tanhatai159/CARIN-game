@@ -16,10 +16,10 @@ public class Cell {
     String type, geneticPath; // type of each cell
     Organ currentOrgan; // เพื่อบอกว่า cell ตัวนี้อยู่ที่ organ ไหน
     int x, y;
-    int hp,dmg;
+    int hp;
 
     public void readGenetic_Code(){
-        Parser p = new Parser("Genetic_Code/Genetic_Code.txt");
+        Parser p = new Parser("Genetic_Code/Genetic_Code2.txt");
         ProgramNode genetic = p.Parse();
         genetic.eval(this,new HashMap<String,Integer>());
     }
@@ -87,10 +87,10 @@ public class Cell {
             if (enemy instanceof Antibody) {
                 ((Antibody) enemy).attackByThisVirus = (Virus) this;
                 if ((this.type.equals("fire") && enemy.type.equals("grass")) || (this.type.equals("water") && enemy.type.equals("fire")) || (this.type.equals("grass") && enemy.type.equals("water"))) {
-                    enemy.hp = enemy.hp - (this.dmg * 2);
-                } else enemy.hp = enemy.hp - this.dmg;
+                    enemy.setHP(enemy.hp - (Virus.atk * 2));
+                } else enemy.hp = enemy.hp - Virus.atk;
                 if (enemy.hp < 1) {
-                    enemy.hp = 0;
+                    enemy.setHP(0);
                 }
                 if (enemy.hp == 0) {
                     ((Antibody) enemy).mutation();
@@ -102,8 +102,8 @@ public class Cell {
         if(this instanceof Antibody) {
             if (enemy instanceof Virus) {
                 if ((this.type.equals("fire") && enemy.type.equals("grass")) || (this.type.equals("water") && enemy.type.equals("fire")) || (this.type.equals("grass") && enemy.type.equals("water"))) {
-                    enemy.hp = enemy.hp - (this.dmg * 2);
-                } else enemy.hp = enemy.hp - this.dmg;
+                    enemy.hp = enemy.hp - (Antibody.atk * 2);
+                } else enemy.hp = enemy.hp - Antibody.atk;
                 if (enemy.hp < 1) {
                     enemy.hp = 0;
                 }
@@ -197,5 +197,9 @@ public class Cell {
 
     public int getHp(){
         return hp;
+    }
+
+    public void setHP(int newHP){
+        hp = newHP;
     }
 }

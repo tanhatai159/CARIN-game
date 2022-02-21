@@ -6,11 +6,10 @@ import java.util.Queue;
 
 public class Body {
     private ArrayList<Organ> AllOrgan;
-    static Queue<Cell> cellQueue = new LinkedList<>(), cellQueueNew = new LinkedList<>();
+    public static Queue<Cell> cellQueue = new LinkedList<>(), cellQueueNew = new LinkedList<>();
 
     public Body(int amount){
         AllOrgan = new ArrayList<>();
-        cellQueue = new LinkedList<>();
         for(int i = 0;i < amount;i++){
             AllOrgan.add(new Organ());
         }
