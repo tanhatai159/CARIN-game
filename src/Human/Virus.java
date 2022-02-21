@@ -5,7 +5,7 @@ import MainClass.MainGame;
 public class Virus extends Cell {
 //    int HP;
     static int amountOfVirus = 0, atk, startHP, hpGain;
-    public Virus(Organ organ, int type, int x, int y, String geneticPath){
+    public Virus(Organ organ, int type, int x, int y, String geneticPath, boolean isNewCellQ){
         this.x = x;
         this.y = y;
         this.currentOrgan = organ;
@@ -13,7 +13,12 @@ public class Virus extends Cell {
         this.type = elementList.get(type);
         this.geneticPath = geneticPath;
         amountOfVirus++;
-        Body.getCellQueue().add(this);
+        if(!isNewCellQ){
+            Body.getCellQueue().add(this);
+        }
+        else{
+            Body.getCellQueueNew().add(this);
+        }
     }
     public static void update(int atk, int HP, int hpGain) {
         Virus.atk = atk;

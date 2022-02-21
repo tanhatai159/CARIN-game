@@ -48,8 +48,8 @@ public class Display {
         Body body = new Body(2);
         body.getAllOrgan().get(0).getPosition()[0][0] = new Antibody(body.getAllOrgan().get(0),0,0,0);
         body.getAllOrgan().get(0).getPosition()[1][1] = new Antibody(body.getAllOrgan().get(0),0,1,1);
-        body.getAllOrgan().get(0).getPosition()[2][2] = new Virus(body.getAllOrgan().get(0),0,2,2,"Genetic_Code/Genetic_Code.txt");
-        body.getAllOrgan().get(1).getPosition()[2][4] = new Virus(body.getAllOrgan().get(0),0,4,2,"Genetic_Code/Genetic_Code.txt");
+        body.getAllOrgan().get(0).getPosition()[2][2] = new Virus(body.getAllOrgan().get(0),0,2,2,"Genetic_Code/Genetic_Code.txt",false);
+        body.getAllOrgan().get(1).getPosition()[2][4] = new Virus(body.getAllOrgan().get(0),0,4,2,"Genetic_Code/Genetic_Code.txt",false);
         render(body);
 //        for(Cell cell : Body.getCellQueue()){
 //            cell.readGenetic_Code();

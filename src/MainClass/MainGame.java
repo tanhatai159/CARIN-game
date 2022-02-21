@@ -128,7 +128,9 @@ public class MainGame {
         Body.getCellQueueNew().clear();
 
         for(Cell cell : Body.getCellQueue()){
-            cell.readGenetic_Code();
+            if(cell.getHp() > 0){
+                cell.readGenetic_Code();
+            }
             Display.render(body);
         }
         //find cell that survive

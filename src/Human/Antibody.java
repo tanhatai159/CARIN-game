@@ -25,7 +25,7 @@ public class Antibody extends Cell {
     }
     public void mutation(){
         int typeNumber = elementList.indexOf(type);
-        currentOrgan.position[y][x] = new Virus(currentOrgan, typeNumber, x, y, "Genetic_Code/Genetic_Code.txt");
+        currentOrgan.position[y][x] = new Virus(currentOrgan, typeNumber, x, y, "Genetic_Code/Genetic_Code.txt",true);
         Body.getCellQueueNew().add(currentOrgan.coordinate(x,y));
     }
     public static int getAmountOfAntibody(){
