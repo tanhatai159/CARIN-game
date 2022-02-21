@@ -19,7 +19,7 @@ public class AssignmentNode implements StatementNode{
             MainGame.setTimeUnit(result);
         }
         else{
-            bindingMap.put(name,e.eval(host,bindingMap));
+            bindingMap.put(name,result);
         }
     }
 }

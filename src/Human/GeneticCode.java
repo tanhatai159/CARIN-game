@@ -6,4 +6,8 @@ public class GeneticCode {
     public static int getAmountOfGeneticPath(){
         return amountOfGeneticPath = allGeneticPath.length;
     }
+
+    public static String[] getAllGeneticPath(){
+        return allGeneticPath;
+    }
 }

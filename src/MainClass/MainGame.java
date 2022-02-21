@@ -13,8 +13,6 @@ public class MainGame {
     private boolean gameEnd = false;
     private Body body;
 
-    private Scanner s;
-
     public static int getTimeUnit(){
         return timeUnit;
     }
@@ -39,9 +37,11 @@ public class MainGame {
     public void gameLoop() throws Exception {
         if(state == 1){
             gameState1();
+            increaseTimeUnit(1);
         }
         else if(state == 2){
             gameState2();
+            increaseTimeUnit(1);
         }
         else if(state == 3){
             gameState3();
@@ -52,7 +52,6 @@ public class MainGame {
         else if(state == 5){
             gameState5();
         }
-        increaseTimeUnit(1);
     }
 
     private void gameState1() throws Exception {
@@ -83,11 +82,11 @@ public class MainGame {
         int indexOfOrgan = 0, indexOfType = 0, x, y;
         while (!playerDone){
             System.out.print("Type Command: ");
-            s = new Scanner(System.in);
+            Scanner s = new Scanner(System.in);
             command = s.nextLine();
             String[] arr = command.split(" ");// command(buy) indexOfOrgan(1|2|3) type(1|2|3) x y
             try{
-                if(arr[0].equals("buy")){
+                if(arr[0].equalsIgnoreCase("buy")){
                     if(arr[1] != null && arr[2] != null && arr[3] != null && arr[4] != null){
                         indexOfOrgan = Integer.parseInt(arr[1]);
                         indexOfType = Integer.parseInt(arr[2]);
@@ -107,7 +106,7 @@ public class MainGame {
                         throw new Exception("Command is not correct!!!!!!!!!!!!!!!!");
                     }
                 }
-                else if(arr[0].equals("done")){
+                else if(arr[0].equalsIgnoreCase("done")){
                     playerDone = true;
                 }
                 else{
@@ -116,6 +115,7 @@ public class MainGame {
             }catch (Exception e){
                 System.out.println(e.getMessage());
             }
+            increaseTimeUnit(1);
             Display.render(body);
         }
         state = 4;
@@ -160,6 +160,10 @@ public class MainGame {
         else{
             System.out.println("Virus win!!!!!!!!!!!!!!!!");
         }
+    }
+
+    private void moveByPlayer(){
+
     }
 
     public static void main(String[] args) throws Exception {
