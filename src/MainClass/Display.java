@@ -3,10 +3,11 @@ package MainClass;
 import Human.*;
 
 public class Display {
-    static int mostAmountOfChar = 6;
+    static int mostAmountOfChar = 7;
 
     public static void render(Body body){
         String word = "";
+        char type ;
         int hostHP = 0, leftSpace;
         System.out.println("Time Unit: " + MainGame.getTimeUnit());
         System.out.println("Player credits: " + Player.getCredits());
@@ -21,12 +22,15 @@ public class Display {
                     System.out.print("[");
                     if(body.getAllOrgan().get(j).getPosition()[i][k] != null){
                         hostHP =  body.getAllOrgan().get(j).coordinate(k,i).getHp();
+                        type = Character.toUpperCase(body.getAllOrgan().get(j).coordinate(k,i).getType().charAt(0));
                         if(body.getAllOrgan().get(j).getPosition()[i][k] instanceof Antibody){
-                            sb.append("A:");
+                            sb.append("A");
                         }
                         else{
-                            sb.append("V:");
+                            sb.append("V");
                         }
+                        sb.append(type);
+                        sb.append(":");
                         sb.append(hostHP);
                         leftSpace = mostAmountOfChar - sb.toString().length();
                     }
@@ -37,7 +41,7 @@ public class Display {
                     System.out.print(word);
                     System.out.print("]");
                 }
-                System.out.print("     ");
+                System.out.print("          ");
             }
             System.out.println("");
         }

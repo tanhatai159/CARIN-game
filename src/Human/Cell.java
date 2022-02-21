@@ -202,4 +202,8 @@ public class Cell {
     public void setHP(int newHP){
         hp = newHP;
     }
+
+    public String getType(){
+        return type;
+    }
 }
