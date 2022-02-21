@@ -20,6 +20,7 @@ public class BinaryExpression implements Expression{
             case "-" -> left - right;
             case "*" -> left * right;
             case "/" -> left / right;
+            case "%" -> left % right;
             case "^" -> left ^ right;
             default -> 0;
         };
