@@ -8,6 +8,10 @@ import java.util.HashMap;
 
 import static Human.Organ.n;
 import static Human.Organ.m;
+import static Human.Virus.VirusHpGain;
+import static Human.Virus.VirusStartHP;
+import static Human.Antibody.AntibodyHpGain;
+import static Human.Antibody.AntibodyStartHP;
 import static MainClass.Player.increaseCredit;
 
 public class Cell {
@@ -89,6 +93,8 @@ public class Cell {
                 if ((this.type.equals("fire") && enemy.type.equals("grass")) || (this.type.equals("water") && enemy.type.equals("fire")) || (this.type.equals("grass") && enemy.type.equals("water"))) {
                     enemy.setHP(enemy.hp - (Virus.atk * 2));
                 } else enemy.hp = enemy.hp - Virus.atk;
+                hp += VirusHpGain;
+                if(hp > VirusStartHP) hp = VirusStartHP;
                 if (enemy.hp < 1) {
                     enemy.setHP(0);
                 }
@@ -104,6 +110,8 @@ public class Cell {
                 if ((this.type.equals("fire") && enemy.type.equals("grass")) || (this.type.equals("water") && enemy.type.equals("fire")) || (this.type.equals("grass") && enemy.type.equals("water"))) {
                     enemy.hp = enemy.hp - (Antibody.atk * 2);
                 } else enemy.hp = enemy.hp - Antibody.atk;
+                hp = AntibodyHpGain;
+                if(hp > AntibodyStartHP) hp = AntibodyStartHP;
                 if (enemy.hp < 1) {
                     enemy.hp = 0;
                 }
