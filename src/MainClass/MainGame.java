@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class MainGame {
     private static int timeUnit = 0;
-    private int state = 1, amountOfOrgan = 1;
+    private int state = 1, amountOfOrgan = 2;
     private boolean gameStart = false;
     private boolean gameEnd = false;
     private Body body;
@@ -62,8 +62,8 @@ public class MainGame {
             throw new Exception("Can't start game because config file path is not correct.");
         }
         body = new Body(amountOfOrgan);
-        state = 2;
         Display.render(body);
+        state = 2;
     }
 
     private void gameState2(){

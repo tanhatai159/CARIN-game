@@ -23,7 +23,7 @@ public class Cell {
     int hp;
 
     public void readGenetic_Code(){
-        Parser p = new Parser("Genetic_Code/Genetic_Code5.txt");
+        Parser p = new Parser("Genetic_Code/Genetic_Code2.txt");
         ProgramNode genetic = p.Parse();
         genetic.eval(this,new HashMap<String,Integer>());
     }
@@ -110,7 +110,7 @@ public class Cell {
                 if ((this.type.equals("fire") && enemy.type.equals("grass")) || (this.type.equals("water") && enemy.type.equals("fire")) || (this.type.equals("grass") && enemy.type.equals("water"))) {
                     enemy.hp = enemy.hp - (Antibody.atk * 2);
                 } else enemy.hp = enemy.hp - Antibody.atk;
-                hp = AntibodyHpGain;
+                hp += AntibodyHpGain;
                 if(hp > AntibodyStartHP) hp = AntibodyStartHP;
                 if (enemy.hp < 1) {
                     enemy.hp = 0;
