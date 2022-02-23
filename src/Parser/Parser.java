@@ -103,7 +103,7 @@ public class Parser {
         }catch (Exception ex){
             System.err.println("Can't use this genetic code.");
         }
-        s = new AssignmentNode(identifier, e);
+        s = nf.newAssignmentNode(identifier,e);
         return s;
     }
     public StatementNode ParseActionCommand(){
