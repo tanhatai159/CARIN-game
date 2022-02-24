@@ -38,7 +38,7 @@ public class Parser {
                 word.equals("else") || word.equals("if") || word.equals("left") || word.equals("move") ||
                 word.equals("nearby") || word.equals("right") || word.equals("shoot") || word.equals("then") ||
                 word.equals("up") || word.equals("upleft") || word.equals("upright") || word.equals("virus") ||
-                word.equals("while");
+                word.equals("while") || word.equals("antibody");
     }
 
     public Parser(String path){
