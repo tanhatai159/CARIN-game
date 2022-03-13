@@ -16,12 +16,6 @@ public class IdentifierExpression implements Expression{
         if(identifier.equals("t")){
             return MainGame.getTimeUnit();
         }
-        if(identifier.equals("virus")){
-            return host.scanVirus();
-        }
-        if(identifier.equals("antibody")){
-            return host.scanAntibody();
-        }
         else if(identifier.equals("random")){
             return RandomEverything.useRandom().nextInt(100);
         }
