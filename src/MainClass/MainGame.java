@@ -131,6 +131,12 @@ public class MainGame {
             if(cell.getHp() > 0){
                 cell.readGenetic_Code();
             }
+            try{
+                Thread.sleep(2000);
+            }
+            catch (InterruptedException e){
+
+            }
             Display.render(body);
         }
         //find cell that survive
