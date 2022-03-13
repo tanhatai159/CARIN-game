@@ -22,8 +22,8 @@ public class Cell {
     int x, y;
     int hp;
 
-    public void readGenetic_Code(){
-        Parser p = new Parser("Genetic_Code/Genetic_Code1.txt");
+    public void readGenetic_Code() throws Exception {
+        Parser p = new Parser(geneticPath);
         ProgramNode genetic = p.Parse();
         genetic.eval(this,new HashMap<String,Integer>());
     }

@@ -1,6 +1,9 @@
 package Human;
 
 import MainClass.MainGame;
+import MainClass.RandomEverything;
+
+import java.util.Random;
 
 public class Antibody extends Cell {
 //    int HP;
@@ -12,9 +15,13 @@ public class Antibody extends Cell {
         this.currentOrgan = organ;
         this.type = elementList.get(typeNumber);
         this.hp = Antibody.AntibodyStartHP;
-        this.geneticPath = "Genetic_Code.txt";
         amountOfAntibody++;
         Body.getCellQueue().add(this);
+
+        //random genetic
+        int maxBound = GeneticCode.getAmountOfAntibodyGeneticPath();
+        Random rand = RandomEverything.useRandom();
+        super.geneticPath = GeneticCode.getAntibodyGeneticPath(rand.nextInt(maxBound));
     }
     public static void update(int atk, int HP, int moveCost,int placementCost ,int hpGain){
         Antibody.atk = atk;

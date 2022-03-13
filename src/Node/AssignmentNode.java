@@ -12,7 +12,7 @@ public class AssignmentNode implements StatementNode{
         this.i = i;
         this.e = e;
     }
-    public void eval(Cell host, Map<String,Integer> bindingMap){
+    public void eval(Cell host, Map<String,Integer> bindingMap) throws Exception {
         String name = ((IdentifierExpression)i).getName();
         int result = e.eval(host,bindingMap);
         if(name.equals("t")){

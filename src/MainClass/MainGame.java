@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class MainGame {
     private static int timeUnit = 0;
-    private int state = 1, amountOfOrgan = 2;
+    private int state = 1, amountOfOrgan = 1;
     private boolean gameStart = false;
     private boolean gameEnd = false;
     private Body body;
@@ -122,7 +122,7 @@ public class MainGame {
         Display.render(body);
     }
 
-    private void gameState4(){
+    private void gameState4() throws Exception {
         System.out.println("-----------------Cell action state-----------------");
         Queue<Cell> surviveCell = new LinkedList<>();
         Body.getCellQueueNew().clear();

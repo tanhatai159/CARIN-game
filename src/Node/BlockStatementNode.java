@@ -16,7 +16,7 @@ public class BlockStatementNode implements StatementNode{
     }
 
     @Override
-    public void eval(Cell host, Map<String,Integer> bindingMap){
+    public void eval(Cell host, Map<String,Integer> bindingMap) throws Exception {
         while(!q.isEmpty()){
             q.poll().eval(host,bindingMap);
         }

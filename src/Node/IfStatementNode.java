@@ -14,7 +14,7 @@ public class IfStatementNode implements StatementNode {
         this.e = e;
     }
     @Override
-    public void eval(Cell host, Map<String,Integer> bindingMap){
+    public void eval(Cell host, Map<String,Integer> bindingMap) throws Exception {
         if(e.eval(host,bindingMap) > 0){
             statement1.eval(host,bindingMap);
         }

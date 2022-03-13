@@ -12,7 +12,7 @@ public class WhileStatementNode implements StatementNode {
         this.e = e;
     }
     @Override
-    public void eval(Cell host, Map<String,Integer> bindingMap){
+    public void eval(Cell host, Map<String,Integer> bindingMap) throws Exception {
 
         while (e.eval(host,bindingMap) > 0){
             statement.eval(host,bindingMap);
