@@ -23,7 +23,7 @@ public class Cell {
     int hp;
 
     public void readGenetic_Code(){
-        Parser p = new Parser("Genetic_Code/Genetic_Code2.txt");
+        Parser p = new Parser("Genetic_Code/Genetic_Code1.txt");
         ProgramNode genetic = p.Parse();
         genetic.eval(this,new HashMap<String,Integer>());
     }
