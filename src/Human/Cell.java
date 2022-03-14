@@ -16,7 +16,7 @@ import static MainClass.Player.increaseCredit;
 
 public class Cell {
     protected static ArrayList<String> elementList = null; //grass <-- fire <-- water <-- grass
-    protected final String[] Direction = {"left", "right", "up","down","upleft","upright","downleft","downright",};
+    protected final String[] Direction = {"left", "right", "up","down","upleft","upright","downleft","downright"};
     String type, geneticPath; // type of each cell
     Organ currentOrgan; // เพื่อบอกว่า cell ตัวนี้อยู่ที่ organ ไหน
     int x, y;
@@ -131,7 +131,18 @@ public class Cell {
             if(nearby(Direction[i]) != 0){
                 int findCloset = nearby(Direction[i]);
                 if(findCloset< closest){
-                    if((findCloset%10)-1 == 0) closest = findCloset;
+                    if((findCloset%10)-1 == 0) {
+                        switch (Direction[i]) {
+                            case "up" -> closest = findCloset;
+                            case "upright" -> closest = findCloset+1;
+                            case "right" -> closest = findCloset+2;
+                            case "downright" -> closest = findCloset+3;
+                            case "down" -> closest = findCloset+4;
+                            case "downleft" -> closest = findCloset+5;
+                            case "left" -> closest = findCloset+6;
+                            case "upleft" -> closest = findCloset+7;
+                        }
+                    }
                 }
             }
         }
@@ -146,7 +157,18 @@ public class Cell {
             if(nearby(Direction[i]) != 0){
                 int findCloset = nearby(Direction[i]);
                 if(findCloset< closest){
-                    if((findCloset%10)-2 == 0) closest = findCloset;
+                    if((findCloset%10)-2 == 0) {
+                        switch (Direction[i]) {
+                            case "up" -> closest = findCloset-1;
+                            case "upright" -> closest = findCloset;
+                            case "right" -> closest = findCloset+1;
+                            case "downright" -> closest = findCloset+2;
+                            case "down" -> closest = findCloset+3;
+                            case "downleft" -> closest = findCloset+4;
+                            case "left" -> closest = findCloset+5;
+                            case "upleft" -> closest = findCloset+6;
+                        }
+                    }
                 }
             }
         }
@@ -182,7 +204,7 @@ public class Cell {
                 yTarget = y + distance;
             }
         }
-            if ((xTarget <0 || yTarget<0)||(xTarget>n-1 || yTarget>n-1)){
+            if ((xTarget <0 || yTarget<0)||(xTarget>n-1 || yTarget>m-1)){
                 break;
         }
             target = currentOrgan.coordinate(xTarget,yTarget); // update target
