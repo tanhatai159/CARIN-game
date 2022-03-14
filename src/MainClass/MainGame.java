@@ -5,6 +5,7 @@ import Human.*;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
+import static MainClass.GameStates.*;
 
 public class MainGame {
     private static int timeUnit = 0;
@@ -23,34 +24,41 @@ public class MainGame {
         timeUnit += amount;
     }
 
-//    @Override
-//    public void run(){
-//        while (!gameEnd){
-//            try {
-//                gameLoop();
-//            } catch (Exception e) {
-//                System.out.println(e.getMessage());
-//            }
-//        }
-//    }
-
     public void gameLoop() throws Exception {
-        if(state == 1){
-            gameState1();
-            increaseTimeUnit(1);
-        }
-        else if(state == 2){
-            gameState2();
-            increaseTimeUnit(1);
-        }
-        else if(state == 3){
-            gameState3();
-        }
-        else if(state == 4){
-            gameState4();
-        }
-        else if(state == 5){
-            gameState5();
+//        if(state == 1){
+//            gameState1();
+//            increaseTimeUnit(1);
+//        }
+//        else if(state == 2){
+//            gameState2();
+//            increaseTimeUnit(1);
+//        }
+//        else if(state == 3){
+//            gameState3();
+//        }
+//        else if(state == 4){
+//            gameState4();
+//        }
+//        else if(state == 5){
+//            gameState5();
+//        }
+
+        switch (GameStates.gameStates){
+            case menu:
+                gameState1();
+                break;
+            case generateVirus:
+                gameState2();
+                break;
+            case playerAction:
+                gameState3();
+                break;
+            case cellAction:
+                gameState4();
+                break;
+            case end:
+                gameState5();
+                break;
         }
     }
 
@@ -64,6 +72,7 @@ public class MainGame {
         body = new Body(amountOfOrgan);
         Display.render(body);
         state = 2;
+        GameStates.gameStates = generateVirus;
     }
 
     private void gameState2(){
@@ -73,6 +82,7 @@ public class MainGame {
         }
         Display.render(body);
         state = 3;
+        GameStates.gameStates = playerAction;
     }
 
     private void gameState3(){
@@ -119,6 +129,7 @@ public class MainGame {
             Display.render(body);
         }
         state = 4;
+        gameStates = cellAction;
         Display.render(body);
     }
 
@@ -152,9 +163,11 @@ public class MainGame {
 
         if((Antibody.getAmountOfAntibody() == 0 || Virus.getAmountOfVirus() == 0) && gameStart){
             state = 5;
+            gameStates = end;
         }
         else{
             state = 2;
+            gameStates = generateVirus;
         }
     }
 
