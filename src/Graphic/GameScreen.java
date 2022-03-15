@@ -5,6 +5,8 @@ import Human.Virus;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GameScreen extends JPanel {
 
@@ -18,7 +20,7 @@ public class GameScreen extends JPanel {
     private int amountOfAntiPositionText_X = antiPositionText_X + 160, amountOfAntiPositionText_Y = antiPositionText_Y;
     private int virusPositionText_X = 60, virusPositionText_Y = 130;
     private int amountOfVirusPositionText_X = virusPositionText_X + 100, amountOfVirusPositionText_Y = virusPositionText_Y;
-    private JButton brainButton, heartButton, liverButton, antiRedButton, antiGreenButton, antiBlueButton, buyButton, doneButton;
+    private JButton brainButton, heartButton, liverButton, antiRedButton, antiGreenButton, antiBlueButton, buyButton, doneButton,exitButton;
     private Icon antiRed = new ImageIcon("src/resource/redAnti.png");
     private Icon antiGreen = new ImageIcon("src/resource/greenAnti.png");
     private Icon antiBlue = new ImageIcon("src/resource/blueAnti.png");
@@ -26,8 +28,8 @@ public class GameScreen extends JPanel {
     private int brainButtonPosition_X = 440, brainButtonPosition_Y = 95;
     private int heartButtonPosition_X = 590, heartButtonPosition_Y = 95;
     private int liverButtonPosition_X = 740, liverButtonPosition_Y = 95;
-    private int carinPositionText_X = 1000, carinPositionText_Y = 60;
-    private int creditPositionText_X = 1125, creditPositionText_Y =175;
+    private int carinPositionText_X = 995, carinPositionText_Y = 60;
+    private int creditPositionText_X = 1125, creditPositionText_Y =165;
     private int amountOfCreditPositionText_X = 1130, amountOfCreditPositionText_Y = 220;
     private int antibodyButtonWidth = 120, antibodyButtonHeight = 120;
     private int antiRedButtonPosition_X = 945, antiRedButtonPosition_Y = 295;
@@ -38,6 +40,11 @@ public class GameScreen extends JPanel {
     private int costRedPositionAnti_X = 955, costRedPositionAnti_Y = 420;
     private int costBluePositionAnti_X = 955, costBluePositionAnti_Y = 600;
     private int costGreenPositionAnti_X = 1125, costGreenPositionAnti_Y = 420;
+    private int exitButtonPosition_X = 945, exitButtonPosition_Y = 650;
+    private int exitButtonWidth = 290, exitButtonHeight = 50;
+    private Icon elementImage = new ImageIcon("src/resource/element.png");
+    private JLabel element =  new JLabel(elementImage);
+    private int elementPosition_X = 955, elementPosition_Y = 165;
 
     public GameScreen(JPanel panel){
         contentPane = panel;
@@ -85,6 +92,10 @@ public class GameScreen extends JPanel {
         g2D.setColor(Color.white);
         g2D.drawString("CARIN",carinPositionText_X,carinPositionText_Y+fontMetrics.getAscent());
 
+        //element image
+        this.add(element);
+        element.setBounds(elementPosition_X,elementPosition_Y,100,100);
+
         //Credits text
         font = new Font("Roboto Condensed",Font.PLAIN,36);
         g2D.setFont(font);
@@ -120,6 +131,9 @@ public class GameScreen extends JPanel {
         fontMetrics = g2D.getFontMetrics();
         g2D.setColor(Color.white);
         g2D.drawString("COST: " + String.valueOf(Antibody.getPlacementCost() + "$"),costBluePositionAnti_X,costBluePositionAnti_Y+fontMetrics.getAscent());
+
+
+
 
     }
 
@@ -160,16 +174,28 @@ public class GameScreen extends JPanel {
         // buyButton
         buyButton = new JButton("BUY");
         buyButton.setForeground(Color.white);
-        buyButton.setBackground(new Color(151,52,46));
+        buyButton.setBackground(new Color(193,82,75));
         buyButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
         buyButton.setBounds(buyButtonPosition_X,buyButtonPosition_Y,trioButtonWidth,trioButtonHeight);
 
         //doneButton
         doneButton = new JButton("DONE");
         doneButton.setForeground(Color.white);
-        doneButton.setBackground(new Color(151,52,46));
+        doneButton.setBackground(new Color(193,82,75));
         doneButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
         doneButton.setBounds(doneButtonPosition_X,doneButtonPosition_Y,trioButtonWidth,trioButtonHeight);
+
+        //exitButton
+        exitButton = new JButton("EXIT");
+        exitButton.setForeground(Color.white);
+        exitButton.setBackground(new Color(151,52,46));
+        exitButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
+        exitButton.setBounds(exitButtonPosition_X,exitButtonPosition_Y,exitButtonWidth,exitButtonHeight);
+        exitButton.addActionListener( new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {System.exit(0);}
+        });
 
         this.add(brainButton);
         this.add(heartButton);
@@ -179,6 +205,8 @@ public class GameScreen extends JPanel {
         this.add(antiBlueButton);
         this.add(buyButton);
         this.add(doneButton);
+        this.add(exitButton);
+
     }
 
     public void createButtonForShopRec(){
