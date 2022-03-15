@@ -1,5 +1,7 @@
 package Graphic;
 
+import Human.Antibody;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -102,21 +104,21 @@ public class GameScreen extends JPanel {
         g2D.setFont(font);
         fontMetrics = g2D.getFontMetrics();
         g2D.setColor(Color.white);
-        g2D.drawString("COST: 10$",costRedPositionAnti_X,costRedPositionAnti_Y+fontMetrics.getAscent());
+        g2D.drawString("COST: " + String.valueOf(Antibody.getPlacementCost())+ "$",costRedPositionAnti_X,costRedPositionAnti_Y+fontMetrics.getAscent());
 
         //cost greenAntibody
         font = new Font("Roboto Condensed",Font.PLAIN,24);
         g2D.setFont(font);
         fontMetrics = g2D.getFontMetrics();
         g2D.setColor(Color.white);
-        g2D.drawString("COST: 10$",costGreenPositionAnti_X,costGreenPositionAnti_Y+fontMetrics.getAscent());
+        g2D.drawString("COST: " + String.valueOf(Antibody.getPlacementCost()) + "$",costGreenPositionAnti_X,costGreenPositionAnti_Y+fontMetrics.getAscent());
 
         //cost blueAntibody
         font = new Font("Roboto Condensed",Font.PLAIN,24);
         g2D.setFont(font);
         fontMetrics = g2D.getFontMetrics();
         g2D.setColor(Color.white);
-        g2D.drawString("COST: 10$",costBluePositionAnti_X,costBluePositionAnti_Y+fontMetrics.getAscent());
+        g2D.drawString("COST: " + String.valueOf(Antibody.getPlacementCost() + "$"),costBluePositionAnti_X,costBluePositionAnti_Y+fontMetrics.getAscent());
 
     }
 

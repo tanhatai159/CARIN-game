@@ -1,5 +1,7 @@
 package Graphic;
 
+import Human.Body;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -24,6 +26,10 @@ public class MainFrame extends JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(true);
+    }
+
+    public void render(Body body){
+        repaint();
     }
 
     public static void main(String[] args) {
