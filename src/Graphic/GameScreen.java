@@ -1,6 +1,7 @@
 package Graphic;
 
 import Human.Antibody;
+import Human.Virus;
 
 import javax.swing.*;
 import java.awt.*;
@@ -67,15 +68,15 @@ public class GameScreen extends JPanel {
         FontMetrics fontMetrics = g2D.getFontMetrics();
         g2D.setColor(Color.white);
         g2D.drawString("Antibody: ",antiPositionText_X,antiPositionText_Y+fontMetrics.getAscent());
-        g2D.drawString(String.valueOf(200),amountOfAntiPositionText_X,amountOfAntiPositionText_Y + fontMetrics.getAscent());
+        g2D.drawString(String.valueOf(Antibody.getAmountOfAntibody()),amountOfAntiPositionText_X,amountOfAntiPositionText_Y + fontMetrics.getAscent());
 
-        //amount of antibody's text on first Rec
+        //amount of virus's text on first Rec
         font = new Font("Roboto Condensed",Font.PLAIN,36);
         g2D.setFont(font);
         fontMetrics = g2D.getFontMetrics();
         g2D.setColor(Color.white);
         g2D.drawString("Virus: ",virusPositionText_X,virusPositionText_Y+fontMetrics.getAscent());
-        g2D.drawString(String.valueOf(200),amountOfVirusPositionText_X,amountOfVirusPositionText_Y + fontMetrics.getAscent());
+        g2D.drawString(String.valueOf(Virus.getAmountOfVirus()),amountOfVirusPositionText_X,amountOfVirusPositionText_Y + fontMetrics.getAscent());
 
         //CARIN header on Shop Rec
         font = new Font("Roboto Condensed",Font.PLAIN,80);
