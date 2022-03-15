@@ -9,12 +9,12 @@ import java.awt.event.*;
 
 public class StartScreen extends JPanel{
     private JPanel contentPane;
-    private JFrame mainScreen;
     private Icon startMenuImage = new ImageIcon("src/resource/startMenu.png");
     private JLabel startMenu =  new JLabel(startMenuImage);
     private int windowWidth = 1280, windowHeight = 720;
-    private JButton startButton;
-    private int startButtonPosition_X = 540, startButtonPosition_Y = 400;
+    private JButton startButton,exitButton;
+    private int startButtonPosition_X = 340, startButtonPosition_Y = 450;
+    private int exitButtonPosition_X = 740, exitButtonPosition_Y = 450;
     private int startButtonWidth = 200, startButtonHeight =100;
     private int startMenuPosition_X = 140, startMenuPosition_Y = 100;
     private int startMenuWidth = 1000, startMenuHeight = 300;
@@ -56,8 +56,21 @@ public class StartScreen extends JPanel{
         startButton.setFont(new Font("Roboto Condensed",Font.PLAIN,60));
         startButton.setBounds(startButtonPosition_X,startButtonPosition_Y,startButtonWidth,startButtonHeight);
 
+        exitButton = new JButton("EXIT");
+        exitButton.addActionListener( new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                System.exit(0);
+            }
+        });
+        exitButton.setBackground(new Color(222,156,151));
+        exitButton.setForeground(Color.white);
+        exitButton.setFont(new Font("Roboto Condensed",Font.PLAIN,60));
+        exitButton.setBounds(exitButtonPosition_X,exitButtonPosition_Y,startButtonWidth,startButtonHeight);
 
         this.add(startButton);
+        this.add(exitButton);
     }
 
 
