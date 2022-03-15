@@ -2,6 +2,7 @@ package Graphic;
 
 import Human.Antibody;
 import Human.Virus;
+import MainClass.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -109,8 +110,8 @@ public class GameScreen extends JPanel {
         g2D.setFont(font);
         fontMetrics = g2D.getFontMetrics();
         g2D.setColor(Color.white);
-        g2D.drawString(String.valueOf(200),amountOfCreditPositionText_X,amountOfCreditPositionText_Y + fontMetrics.getAscent());
-        g2D.drawString("$",amountOfCreditPositionText_X+85,amountOfCreditPositionText_Y+fontMetrics.getAscent());
+        g2D.drawString(String.valueOf(Player.getCredits() + "$"),amountOfCreditPositionText_X,amountOfCreditPositionText_Y + fontMetrics.getAscent());
+//        g2D.drawString("$",amountOfCreditPositionText_X+85,amountOfCreditPositionText_Y+fontMetrics.getAscent());
 
         //cost redAntibody
         font = new Font("Roboto Condensed",Font.PLAIN,24);

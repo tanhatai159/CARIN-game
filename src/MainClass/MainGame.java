@@ -1,5 +1,6 @@
 package MainClass;
 
+import Graphic.MainFrame;
 import Human.*;
 
 import java.util.LinkedList;
@@ -12,7 +13,13 @@ public class MainGame {
     private int state = 1, amountOfOrgan = 1;
     private boolean gameStart = false;
     private boolean gameEnd = false;
+    private boolean firstTime = false;
     private Body body;
+    private MainFrame window;
+
+    public MainGame(){
+        window = new MainFrame();
+    }
 
     public static int getTimeUnit(){
         return timeUnit;
@@ -63,16 +70,20 @@ public class MainGame {
     }
 
     private void gameState1() throws Exception {
-        System.out.println("-----------------Start game state-----------------");
-        try {
-            ReadConfig.readConfig("config.txt");
-        }catch (Exception e){
-            throw new Exception("Can't start game because config file path is not correct.");
+        if(!firstTime){
+            System.out.println("-----------------Start game state-----------------");
+            try {
+                ReadConfig.readConfig("config.txt");
+            }catch (Exception e){
+                throw new Exception("Can't start game because config file path is not correct.");
+            }
+            body = new Body(amountOfOrgan);
+            firstTime = true;
+            Display.render(body);
         }
-        body = new Body(amountOfOrgan);
-        Display.render(body);
-        state = 2;
-        GameStates.gameStates = generateVirus;
+        window.render();
+//        state = 2;
+//        GameStates.gameStates = generateVirus;
     }
 
     private void gameState2(){
@@ -81,6 +92,7 @@ public class MainGame {
             organ.generateVirus();
         }
         Display.render(body);
+        window.render();
         state = 3;
         GameStates.gameStates = playerAction;
     }
@@ -127,10 +139,12 @@ public class MainGame {
             }
             increaseTimeUnit(1);
             Display.render(body);
+            window.render();
         }
         state = 4;
         gameStates = cellAction;
         Display.render(body);
+        window.render();
     }
 
     private void gameState4() throws Exception {
@@ -149,6 +163,7 @@ public class MainGame {
 
             }
             Display.render(body);
+            window.render();
         }
         //find cell that survive
         for(Cell cell : Body.getCellQueue()){
