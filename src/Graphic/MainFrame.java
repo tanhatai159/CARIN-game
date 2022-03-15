@@ -28,11 +28,14 @@ public class MainFrame extends JFrame {
         this.setVisible(true);
     }
 
-    public void render(Body body){
+    public void render(){
         repaint();
     }
 
     public static void main(String[] args) {
         MainFrame m = new MainFrame();
+        while (true){
+            m.render();
+        }
     }
 }

@@ -45,6 +45,7 @@ public class GameScreen extends JPanel {
     private Icon elementImage = new ImageIcon("src/resource/element.png");
     private JLabel element =  new JLabel(elementImage);
     private int elementPosition_X = 955, elementPosition_Y = 165;
+    private boolean updated = false;
 
     public GameScreen(JPanel panel){
         contentPane = panel;
@@ -131,9 +132,6 @@ public class GameScreen extends JPanel {
         fontMetrics = g2D.getFontMetrics();
         g2D.setColor(Color.white);
         g2D.drawString("COST: " + String.valueOf(Antibody.getPlacementCost() + "$"),costBluePositionAnti_X,costBluePositionAnti_Y+fontMetrics.getAscent());
-
-
-
 
     }
 

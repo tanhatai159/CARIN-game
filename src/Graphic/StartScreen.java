@@ -1,10 +1,12 @@
 package Graphic;
 
 
+import MainClass.GameStates;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
+import static MainClass.GameStates.*;
 
 
 public class StartScreen extends JPanel{
@@ -49,6 +51,7 @@ public class StartScreen extends JPanel{
             {
                 CardLayout cardLayout = (CardLayout) contentPane.getLayout();
                 cardLayout.next(contentPane);
+                GameStates.gameStates = generateVirus;
             }
         });
         startButton.setBackground(new Color(222,156,151));
