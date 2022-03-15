@@ -16,20 +16,15 @@ public class GameScreen extends JPanel {
     private int amountOfVirusPositionText_X = virusPositionText_X + 100, amountOfVirusPositionText_Y = virusPositionText_Y;
     private JButton brainButton, heartButton, liverButton;
     private int trioButtonWidth = 120, trioButtonHeight = 60;
-    private int brainButtonPosition_X = 440, brainButtonPosition_Y = 600;
+    private int brainButtonPosition_X = 440, brainButtonPosition_Y = 95;
     private int heartButtonPosition_X = 0, heartButtonPosition_Y = 0;
     private int liverButtonPosition_X = 0, liverButtonPosition_Y = 0;
 
     public GameScreen(){
 
         this.setPreferredSize(new Dimension(windowWidth,windowHeight));
-        //brain button
-//        brainButton = new JButton("hello");
-//        brainButton.setPreferredSize(new Dimension(trioButtonWidth,trioButtonHeight));
-//        brainButton.setLocation(new Point(brainButtonPosition_X,brainButtonPosition_Y));
-//        brainButton.setLocation(brainButtonPosition_X,brainButtonPosition_Y);
-//        brainButton.setBounds(brainButtonPosition_X,brainButtonPosition_Y,trioButtonWidth,trioButtonHeight);
-//        this.add(brainButton);
+        this.setLayout(null);
+        createButtonForFirstRec();
     }
     public void paint(Graphics g){
         Graphics g2D = (Graphics2D) g;
@@ -62,5 +57,14 @@ public class GameScreen extends JPanel {
         g2D.drawString("Virus: ",virusPositionText_X,virusPositionText_Y+fontMetrics.getAscent());
         g2D.drawString(String.valueOf(200),amountOfVirusPositionText_X,amountOfVirusPositionText_Y + fontMetrics.getAscent());
 
+    }
+
+    public void createButtonForFirstRec(){
+        //brain button
+        brainButton = new JButton("");
+        brainButton.setBounds(brainButtonPosition_X,brainButtonPosition_Y,trioButtonWidth,trioButtonHeight);
+        this.add(brainButton);
+
+        //heart button
     }
 }
