@@ -17,11 +17,10 @@ public class GameScreen extends JPanel {
     private JButton brainButton, heartButton, liverButton;
     private int trioButtonWidth = 120, trioButtonHeight = 60;
     private int brainButtonPosition_X = 440, brainButtonPosition_Y = 95;
-    private int heartButtonPosition_X = 0, heartButtonPosition_Y = 0;
-    private int liverButtonPosition_X = 0, liverButtonPosition_Y = 0;
+    private int heartButtonPosition_X = 590, heartButtonPosition_Y = 95;
+    private int liverButtonPosition_X = 740, liverButtonPosition_Y = 95;
 
     public GameScreen(){
-
         this.setPreferredSize(new Dimension(windowWidth,windowHeight));
         this.setLayout(null);
         createButtonForFirstRec();
@@ -61,10 +60,23 @@ public class GameScreen extends JPanel {
 
     public void createButtonForFirstRec(){
         //brain button
-        brainButton = new JButton("");
+        brainButton = new JButton("brain");
         brainButton.setBounds(brainButtonPosition_X,brainButtonPosition_Y,trioButtonWidth,trioButtonHeight);
-        this.add(brainButton);
 
         //heart button
+        heartButton = new JButton("heart");
+        heartButton.setBounds(heartButtonPosition_X,heartButtonPosition_Y,trioButtonWidth,trioButtonHeight);
+
+        //liver button
+        liverButton = new JButton("liver");
+        liverButton.setBounds(liverButtonPosition_X,liverButtonPosition_Y,trioButtonWidth,trioButtonHeight);
+
+        this.add(brainButton);
+        this.add(heartButton);
+        this.add(liverButton);
+    }
+
+    public void createButtonForShopRec(){
+
     }
 }
