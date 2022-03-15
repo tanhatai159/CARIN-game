@@ -1,18 +1,25 @@
 package Graphic;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MainFrame extends JFrame {
 
     GameScreen gameScreen;
+    StartScreen startScreen;
 
     public MainFrame(){
         //for inside game
-        gameScreen = new GameScreen();
+        JPanel contentPane = new JPanel();
+        startScreen = new StartScreen(contentPane);
+        gameScreen = new GameScreen(contentPane);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        contentPane.setLayout(new CardLayout());
+        contentPane.add(startScreen);
+        contentPane.add(gameScreen);
 
-        this.add(gameScreen);
+        this.setContentPane(contentPane);
         this.pack();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
