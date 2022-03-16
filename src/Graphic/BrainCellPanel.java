@@ -11,10 +11,10 @@ import java.util.ArrayList;
 public class BrainCellPanel extends JPanel {
     private int cellPanelWidth = 900,cellPanelHeight = 500;
     private ArrayList<JButton> button = new ArrayList<>();
-    private JPanel contentPane;
 
-    public BrainCellPanel(JPanel panel){
-        contentPane = panel;
+
+    public BrainCellPanel(){
+//        contentPane = panel;
         setOpaque(true);
         this.setLayout(null);
         this.setBounds(0,220,cellPanelWidth,cellPanelHeight);
@@ -31,10 +31,10 @@ public class BrainCellPanel extends JPanel {
             for (int j = 0; j < Organ.getN(); j++) {
                 JButton button = new CellButton();
                 button.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
-                button.setBackground(new Color(0,0,0));
+                button.setBackground(new Color(230,190,185));
+                button.setBorder(BorderFactory.createLineBorder(new Color(151,52,46)));
                 this.add(button);
             }
-
         }
     }
 

@@ -10,10 +10,10 @@ public class HeartCellPanel extends JPanel{
     private int cellPanelWidth = 900,cellPanelHeight = 500;
     private ArrayList<JButton> button = new ArrayList<>();
     private int x =100;
-    private JPanel contentPane;
 
-    public HeartCellPanel(JPanel panel){
-        contentPane = panel;
+
+    public HeartCellPanel(){
+//        contentPane = panel;
         setOpaque(true);
 
         this.setLayout(null);
@@ -31,7 +31,8 @@ public class HeartCellPanel extends JPanel{
             for (int j = 0; j < Organ.getN(); j++) {
                 JButton button = new CellButton();
                 button.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
-                button.setBackground(new Color(151,52,46));
+                button.setBackground(new Color(255,103,103));
+                button.setBorder(BorderFactory.createLineBorder(new Color(151,52,46)));
                 this.add(button);
             }
         }
