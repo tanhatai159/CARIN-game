@@ -13,6 +13,9 @@ import static MainClass.GameStates.*;
 
 public class ShopRecPanel extends JPanel {
 
+    private int speed = 1;
+    private int speedPositionButton_X = 45, speedPositionButton_Y = 650;
+    private int speedButtonWidth = 60, speedButtonHeight = 50;
     private int windowWidth = 1280, windowHeight = 720;
     private int firstRecWidth = 900, firstRecHeight = 220;
     private int shopRecWidth = 380, shopRecHeight = 720;
@@ -20,7 +23,7 @@ public class ShopRecPanel extends JPanel {
     private int amountOfAntiPositionText_X = antiPositionText_X + 160, amountOfAntiPositionText_Y = antiPositionText_Y;
     private int virusPositionText_X = 60, virusPositionText_Y = 130;
     private int amountOfVirusPositionText_X = virusPositionText_X + 100, amountOfVirusPositionText_Y = virusPositionText_Y;
-    private static JButton antiRedButton, antiGreenButton, antiBlueButton, buyButton, doneButton,exitButton;
+    private static JButton antiRedButton, antiGreenButton, antiBlueButton, buyButton, doneButton,exitButton, speedButton;
     private Icon antiRed = new ImageIcon("src/resource/redAntiButton.png");
     private Icon antiGreen = new ImageIcon("src/resource/greenAntiButton.png");
     private Icon antiBlue = new ImageIcon("src/resource/blueAntiButton.png");
@@ -37,8 +40,8 @@ public class ShopRecPanel extends JPanel {
     private int costRedPositionAnti_X = 55, costRedPositionAnti_Y = 420;
     private int costBluePositionAnti_X = 55, costBluePositionAnti_Y = 600;
     private int costGreenPositionAnti_X = 225, costGreenPositionAnti_Y = 420;
-    private int exitButtonPosition_X = 45, exitButtonPosition_Y = 650;
-    private int exitButtonWidth = 290, exitButtonHeight = 50;
+    private int exitButtonPosition_X = 120, exitButtonPosition_Y = 650;
+    private int exitButtonWidth = 215, exitButtonHeight = 50;
     private Icon elementImage = new ImageIcon("src/resource/element.png");
     private JLabel element =  new JLabel(elementImage);
     private int elementPosition_X = 55, elementPosition_Y = 165;
@@ -194,11 +197,21 @@ public class ShopRecPanel extends JPanel {
             {System.exit(0);}
         });
 
+
+        speedButton = new JButton("X"+speed);
+        speedButton.setForeground(Color.white);
+        speedButton.setBackground(new Color(151,52,46));
+        speedButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
+        speedButton.setBounds(speedPositionButton_X,speedPositionButton_Y,speedButtonWidth,speedButtonHeight);
+
+
+
         this.add(antiRedButton);
         this.add(antiGreenButton);
         this.add(antiBlueButton);
         this.add(buyButton);
         this.add(doneButton);
+        this.add(speedButton);
         this.add(exitButton);
     }
 
