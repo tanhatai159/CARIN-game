@@ -53,7 +53,6 @@ public class FirstRecPanel extends JPanel {
         g2D.setFont(font);
         fontMetrics = g2D.getFontMetrics();
         g2D.setColor(Color.white);
-        g2D.drawString("Time Unit: ",timeUnitPosition_X,timeUnitPosition_Y+fontMetrics.getAscent());
-        g2D.drawString(String.valueOf(MainGame.getTimeUnit()),timeUnitPosition_X+145,timeUnitPosition_Y + fontMetrics.getAscent());
+        g2D.drawString("Time Unit: " +MainGame.getTimeUnit(),timeUnitPosition_X,timeUnitPosition_Y+fontMetrics.getAscent());
     }
 }
