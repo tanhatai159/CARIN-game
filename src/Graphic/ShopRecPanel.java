@@ -1,7 +1,6 @@
 package Graphic;
 
 import Human.Antibody;
-import Human.Virus;
 import MainClass.Player;
 
 import javax.swing.*;
@@ -9,8 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GameScreen extends JPanel {
-
+public class ShopRecPanel extends JPanel {
     private JPanel contentPane;
     private JFrame mainScreen;
     private int windowWidth = 1280, windowHeight = 720;
@@ -46,47 +44,17 @@ public class GameScreen extends JPanel {
     private Icon elementImage = new ImageIcon("src/resource/element.png");
     private JLabel element =  new JLabel(elementImage);
     private int elementPosition_X = 955, elementPosition_Y = 165;
-    private boolean updated = false;
 
-    public GameScreen(JPanel panel){
-        contentPane = panel;
+    public ShopRecPanel(){
         setOpaque(true);
-        this.setPreferredSize(new Dimension(windowWidth,windowHeight));
-        this.setLayout(null);
-        createButtonForFirstRec();
-        this.add(new FirstRecPanel());
+        createButtonForShopRec();
     }
+
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics g2D = (Graphics2D) g;
-
-        //first Rec
-        g2D.setColor(new Color(151,52,46));
-        g2D.fillRect(0,0,firstRecWidth,firstRecHeight);
-
-        //shop Rec
-        g2D.setColor(new Color(222,156,151));
-        g2D.fillRect(firstRecWidth,0,shopRecWidth,shopRecHeight);
-
-        //background Rec
-        g2D.setColor(new Color(193,82,75));
-        g2D.fillRect(0,firstRecHeight,backgroundWidth,backgroundHeight);
-
-        //amount of antibody's text on first Rec
-        Font font = new Font("Roboto Condensed",Font.PLAIN,36);
-//        g2D.setFont(font);
+        Font font;
         FontMetrics fontMetrics = g2D.getFontMetrics();
-//        g2D.setColor(Color.white);
-//        g2D.drawString("Antibody: ",antiPositionText_X,antiPositionText_Y+fontMetrics.getAscent());
-//        g2D.drawString(String.valueOf(Antibody.getAmountOfAntibody()),amountOfAntiPositionText_X,amountOfAntiPositionText_Y + fontMetrics.getAscent());
-//
-//        //amount of virus's text on first Rec
-//        font = new Font("Roboto Condensed",Font.PLAIN,36);
-//        g2D.setFont(font);
-//        fontMetrics = g2D.getFontMetrics();
-//        g2D.setColor(Color.white);
-//        g2D.drawString("Virus: ",virusPositionText_X,virusPositionText_Y+fontMetrics.getAscent());
-//        g2D.drawString(String.valueOf(Virus.getAmountOfVirus()),amountOfVirusPositionText_X,amountOfVirusPositionText_Y + fontMetrics.getAscent());
 
         //CARIN header on Shop Rec
         font = new Font("Roboto Condensed",Font.PLAIN,80);
@@ -137,25 +105,7 @@ public class GameScreen extends JPanel {
 
     }
 
-    public void createButtonForFirstRec(){
-        //brain button
-        brainButton = new JButton("BRAIN");
-        brainButton.setBackground(new Color(222,156,151));
-        brainButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
-        brainButton.setBounds(brainButtonPosition_X,brainButtonPosition_Y,trioButtonWidth,trioButtonHeight);
-
-        //heart button
-        heartButton = new JButton("HEART");
-        heartButton.setBackground(new Color(222,156,151));
-        heartButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
-        heartButton.setBounds(heartButtonPosition_X,heartButtonPosition_Y,trioButtonWidth,trioButtonHeight);
-
-        //liver button
-        liverButton = new JButton("LIVER");
-        liverButton.setBackground(new Color(222,156,151));
-        liverButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
-        liverButton.setBounds(liverButtonPosition_X,liverButtonPosition_Y,trioButtonWidth,trioButtonHeight);
-
+    public void createButtonForShopRec(){
         //AntivirusRed button
         antiRedButton = new JButton(antiRed);
         antiRedButton.setBackground(new Color(240,191,187));
@@ -197,19 +147,12 @@ public class GameScreen extends JPanel {
             {System.exit(0);}
         });
 
-        this.add(brainButton);
-        this.add(heartButton);
-        this.add(liverButton);
         this.add(antiRedButton);
         this.add(antiGreenButton);
         this.add(antiBlueButton);
         this.add(buyButton);
         this.add(doneButton);
         this.add(exitButton);
-
     }
 
-    public void createButtonForShopRec(){
-
-    }
 }

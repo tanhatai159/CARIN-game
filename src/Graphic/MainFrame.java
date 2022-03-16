@@ -4,11 +4,13 @@ import Human.Body;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
 
     GameScreen gameScreen;
     StartScreen startScreen;
+    private ArrayList<JPanel> allScreen = new ArrayList<>();
 
     public MainFrame(){
         //for inside game
@@ -18,8 +20,10 @@ public class MainFrame extends JFrame {
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         contentPane.setLayout(new CardLayout());
-        contentPane.add(startScreen);
-        contentPane.add(gameScreen);
+//        allScreen.add(startScreen);
+//        allScreen.add(gameScreen);
+        contentPane.add(startScreen, "startScreen");
+        contentPane.add(gameScreen, "gameScreen");
 
         this.setContentPane(contentPane);
         this.pack();

@@ -50,7 +50,9 @@ public class StartScreen extends JPanel{
             public void actionPerformed(ActionEvent e)
             {
                 CardLayout cardLayout = (CardLayout) contentPane.getLayout();
-                cardLayout.next(contentPane);
+//                cardLayout.next(contentPane);
+                cardLayout.show(contentPane, "gameScreen");
+
                 GameStates.gameStates = generateVirus;
             }
         });
