@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static MainClass.GameStates.generateVirus;
+import static MainClass.GameStates.*;
 
 public class ShopRecPanel extends JPanel {
 
@@ -20,7 +20,7 @@ public class ShopRecPanel extends JPanel {
     private int amountOfAntiPositionText_X = antiPositionText_X + 160, amountOfAntiPositionText_Y = antiPositionText_Y;
     private int virusPositionText_X = 60, virusPositionText_Y = 130;
     private int amountOfVirusPositionText_X = virusPositionText_X + 100, amountOfVirusPositionText_Y = virusPositionText_Y;
-    private JButton antiRedButton, antiGreenButton, antiBlueButton, buyButton, doneButton,exitButton;
+    private static JButton antiRedButton, antiGreenButton, antiBlueButton, buyButton, doneButton,exitButton;
     private Icon antiRed = new ImageIcon("src/resource/redAntiButton.png");
     private Icon antiGreen = new ImageIcon("src/resource/greenAntiButton.png");
     private Icon antiBlue = new ImageIcon("src/resource/blueAntiButton.png");
@@ -42,8 +42,9 @@ public class ShopRecPanel extends JPanel {
     private Icon elementImage = new ImageIcon("src/resource/element.png");
     private JLabel element =  new JLabel(elementImage);
     private int elementPosition_X = 55, elementPosition_Y = 165;
-    private boolean buyButtonClicked = false;
-    private int elementIndex = 0;
+    private static boolean buyButtonClicked = false;
+    private static int elementIndex = 0;
+    private static int choosedElementIndex = 0;
 
     public ShopRecPanel(){
         setOpaque(true);
@@ -114,18 +115,32 @@ public class ShopRecPanel extends JPanel {
         antiRedButton.setBackground(new Color(240,191,187));
         antiRedButton.setBounds(antiRedButtonPosition_X,antiRedButtonPosition_Y,antibodyButtonWidth,antibodyButtonHeight);
         antiRedButton.addActionListener(e -> {
-
+            if(gameStates == playerAction){
+                elementIndex = 1;
+                updateButton();
+            }
         });
 
         //AntivirusGreen button
         antiGreenButton = new JButton(antiGreen);
         antiGreenButton.setBackground(new Color(240,191,187));
         antiGreenButton.setBounds(antiGreenButtonPosition_X,antiGreenButtonPosition_Y,antibodyButtonWidth,antibodyButtonHeight);
+        antiGreenButton.addActionListener(e ->{
+            if(gameStates == playerAction){
+                elementIndex = 3;
+                updateButton();
+            }
+        });
+
 
         //AntivirusBlue button
         antiBlueButton = new JButton(antiBlue);
         antiBlueButton.setBackground(new Color(240,191,187));
         antiBlueButton.setBounds(antiBlueButtonPosition_X,antiBlueButtonPosition_Y,antibodyButtonWidth,antibodyButtonHeight);
+        antiBlueButton.addActionListener(e ->{
+            elementIndex = 2;
+            updateButton();
+        });
 
         // buyButton
         buyButton = new JButton("BUY");
@@ -133,6 +148,16 @@ public class ShopRecPanel extends JPanel {
         buyButton.setBackground(new Color(193,82,75));
         buyButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
         buyButton.setBounds(buyButtonPosition_X,buyButtonPosition_Y,trioButtonWidth,trioButtonHeight);
+        buyButton.addActionListener(e ->{
+            if(gameStates == playerAction){
+                if(!buyButtonClicked){
+                    buyButtonClicked = true;
+                    choosedElementIndex = elementIndex;
+                    elementIndex = 0;
+                    updateButton();
+                }
+            }
+        });
 
         //doneButton
         doneButton = new JButton("DONE");
@@ -140,6 +165,11 @@ public class ShopRecPanel extends JPanel {
         doneButton.setBackground(new Color(193,82,75));
         doneButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
         doneButton.setBounds(doneButtonPosition_X,doneButtonPosition_Y,trioButtonWidth,trioButtonHeight);
+        doneButton.addActionListener(e -> {
+            if(gameStates == playerAction && !buyButtonClicked){
+                gameStates = cellAction;
+            }
+        });
 
         //exitButton
         exitButton = new JButton("EXIT");
@@ -159,6 +189,41 @@ public class ShopRecPanel extends JPanel {
         this.add(buyButton);
         this.add(doneButton);
         this.add(exitButton);
+    }
+
+    public static void updateButton(){
+        if(elementIndex == 1){
+            antiRedButton.setBorder(BorderFactory.createLineBorder(new Color(193,82,75), 5));
+            antiBlueButton.setBorder(null);
+            antiGreenButton.setBorder(null);
+        }
+        else if(elementIndex == 2){
+            antiBlueButton.setBorder(BorderFactory.createLineBorder(new Color(193,82,75), 5));
+            antiRedButton.setBorder(null);
+            antiGreenButton.setBorder(null);
+        }
+        else if(elementIndex == 3){
+            antiGreenButton.setBorder(BorderFactory.createLineBorder(new Color(193,82,75), 5));
+            antiRedButton.setBorder(null);
+            antiBlueButton.setBorder(null);
+        }
+        else{
+            antiRedButton.setBorder(null);
+            antiBlueButton.setBorder(null);
+            antiGreenButton.setBorder(null);
+        }
+    }
+
+    public static boolean getBuyButtonClicked(){
+        return buyButtonClicked;
+    }
+
+    public static void setBuyButtonClicked(boolean status){
+        buyButtonClicked = status;
+    }
+
+    public static int getChoosedElementIndex(){
+        return choosedElementIndex;
     }
 
 }

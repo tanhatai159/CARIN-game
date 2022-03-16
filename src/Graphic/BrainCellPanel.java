@@ -1,6 +1,8 @@
 package Graphic;
 
 import Human.*;
+import MainClass.MainGame;
+import MainClass.Market;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,6 +40,21 @@ public class BrainCellPanel extends JPanel {
                 button.setBorder(BorderFactory.createLineBorder(new Color(151,52,46)));
                 button.setX(j);
                 button.setY(i);
+                button.addActionListener(e ->{
+                    int elementIndex = ShopRecPanel.getChoosedElementIndex() - 1;
+                    int x = button.getThisX(), y = button.getThisY();
+                    if(ShopRecPanel.getBuyButtonClicked()){
+                        if(organ.coordinate(button.getThisX(),button.getThisY()) == null){
+                            Market.shop(elementIndex,organ,x,y);
+                            ShopRecPanel.setBuyButtonClicked(false);
+                            MainGame.increaseTimeUnit(1);
+                        }
+                        else{
+                            System.out.println("Can't place here!!!!!");
+                        }
+
+                    }
+                });
                 buttons.add(button);
                 this.add(button);
             }
