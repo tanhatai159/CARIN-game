@@ -8,6 +8,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static MainClass.GameStates.gameStates;
+import static MainClass.GameStates.playerAction;
+
 public class HeartCellPanel extends JPanel{
     private int cellPanelWidth = 900,cellPanelHeight = 500;
     private static ArrayList<CellButton> buttons = new ArrayList<>();
@@ -18,7 +21,8 @@ public class HeartCellPanel extends JPanel{
     private static Icon redAnti = new ImageIcon("src/resource/redAnti.png");
     private static Icon greenAnti = new ImageIcon("src/resource/greenAnti.png");
     private static Icon blueAnti = new ImageIcon("src/resource/blueAnti.png");
-
+    private static Color beforeClickedColor = new Color(255,103,103);
+    private static Color afterClickedColor = new Color(225,238,229);
 
     public HeartCellPanel(){
         setOpaque(true);
@@ -34,34 +38,69 @@ public class HeartCellPanel extends JPanel{
         Graphics g2D = (Graphics2D) g;
     }
     public void createButtonForFirstRec(){
+        int index = 0;
         for(int i=0;i<Organ.getM();i++){
             for (int j = 0; j < Organ.getN(); j++) {
                 CellButton button = new CellButton();
                 button.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
-                button.setBackground(new Color(255,103,103));
+                button.setBackground(beforeClickedColor);
                 button.setBorder(BorderFactory.createLineBorder(new Color(151,52,46)));
                 button.setX(j);
                 button.setY(i);
                 button.addActionListener(e ->{
                     int elementIndex = ShopRecPanel.getChoosedElementIndex() - 1;
                     int x = button.getThisX(), y = button.getThisY();
-                    if(ShopRecPanel.getBuyButtonClicked()){
-                        if(organ.coordinate(button.getThisX(),button.getThisY()) == null){
-                            Market.shop(elementIndex,organ,x,y);
-                            ShopRecPanel.setBuyButtonClicked(false);
-                            MainGame.increaseTimeUnit(1);
-                        }
-                        else{
-                            System.out.println("Can't place here!!!!!");
-                        }
+                    Cell cell = organ.coordinate(x,y);
+                    if(gameStates == playerAction){
+                        //if buy button is clicked.
+                        if(ShopRecPanel.getBuyButtonClicked()){
+                            if(cell == null){
+                                Market.shop(elementIndex,organ,x,y);
+                                ShopRecPanel.setBuyButtonClicked(false);
+                                MainGame.increaseTimeUnit(1);
+                            }
+                            else{
+                                System.out.println("Can't place here!!!!!");
+                            }
 
+                            button.setClicked(false);
+                            button.setBackground(beforeClickedColor);
+                            CellPanel.wasClicked = false;
+                        }
+                        //if buy button isn't clicked.
+                        else{
+                            if(!CellPanel.wasClicked){
+                                if(cell instanceof Antibody && cell.getHp() > Antibody.getMoveCost()){
+                                    ShopRecPanel.setElementIndex(0);
+                                    ShopRecPanel.updateButton();
+                                    CellPanel.wasClicked = true;
+                                    button.setClicked(true);
+                                    button.setBackground(afterClickedColor);
+                                    CellPanel.x = x;
+                                    CellPanel.y = y;
+                                    CellPanel.oldCellIndex = button.getIndexOfThisButton();
+                                }
+                            }
+                            else{
+                                if(cell == null){
+                                    Antibody anti = (Antibody) organ.coordinate(CellPanel.x,CellPanel.y);
+                                    organ.getPosition()[y][x] = organ.getPosition()[CellPanel.y][CellPanel.x];
+                                    organ.getPosition()[y][x].decreaseHP(Antibody.getMoveCost());
+                                    organ.getPosition()[CellPanel.y][CellPanel.x] = null;
+                                    CellPanel.wasClicked = false;
+                                    buttons.get(CellPanel.oldCellIndex).setClicked(false);
+                                }
+                            }
+                        }
                     }
                 });
                 buttons.add(button);
                 this.add(button);
+                button.setIndexOfThisButton(index);
+                index++;
             }
         }
-}
+    }
     public static void updateButton(){
         int count = 0;
         for(int i = 0;i < Organ.getM();i++){
@@ -96,6 +135,12 @@ public class HeartCellPanel extends JPanel{
                 else{
                     button.setIcon(null);
                     buttons.get(count).setText("");
+                }
+                if(!button.getClicked()){
+                    button.setBackground(beforeClickedColor);
+                }
+                if(!CellPanel.wasClicked){
+                    button.setBackground(beforeClickedColor);
                 }
                 count++;
             }

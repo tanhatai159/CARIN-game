@@ -47,12 +47,14 @@ public class Antibody extends Cell {
         return moveCost;
     }
 
-    public void moveByPlayer(int x ,int y){
+    public void moveByPlayer(int x ,int y,Organ organ){
         int xOld = this.x;
         int yOld = this.y;
         if(currentOrgan.coordinate(x,y) == null && this.hp > moveCost){
-            currentOrgan.position[yOld][xOld] = null;
-            currentOrgan.position[y][x] = this;
+            currentOrgan.position[y][x] = currentOrgan.position[this.y][this.x];
+            organ.position[y][x] = organ.position[this.x][this.y];
+            currentOrgan.position[this.y][this.x] = null;
+            organ.position[this.y][this.x] = null;
             this.hp -= moveCost;
         }
     }

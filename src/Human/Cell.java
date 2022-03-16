@@ -55,8 +55,9 @@ public class Cell {
         if(y < 0) y = 0;
         if(y > m-1) y = m-1;
         if(currentOrgan.coordinate(x,y) == null){
+            currentOrgan.position[y][x] = currentOrgan.position[yOld][xOld];
             currentOrgan.position[yOld][xOld] = null;
-            currentOrgan.position[y][x] = this;
+//            currentOrgan.position[y][x] = this;
         }
 
     }
@@ -235,5 +236,9 @@ public class Cell {
 
     public String getType(){
         return type;
+    }
+
+    public void decreaseHP(int number){
+        hp -= number;
     }
 }

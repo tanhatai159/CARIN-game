@@ -49,4 +49,8 @@ public class Organ {
     public static int getN(){
         return n;
     }
+
+    public void setNull(int x, int y){
+        position[y][x] = null;
+    }
 }

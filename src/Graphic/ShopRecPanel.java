@@ -123,6 +123,7 @@ public class ShopRecPanel extends JPanel {
                 if(buyButtonClicked){
                     buyButtonClicked = false;
                 }
+                CellPanel.wasClicked = false;
                 updateButton();
             }
         });
@@ -137,6 +138,7 @@ public class ShopRecPanel extends JPanel {
                 if(buyButtonClicked){
                     buyButtonClicked = false;
                 }
+                CellPanel.wasClicked = false;
                 updateButton();
             }
         });
@@ -151,6 +153,7 @@ public class ShopRecPanel extends JPanel {
             if(buyButtonClicked){
                 buyButtonClicked = false;
             }
+            CellPanel.wasClicked = false;
             updateButton();
         });
 
@@ -162,12 +165,13 @@ public class ShopRecPanel extends JPanel {
         buyButton.setBounds(buyButtonPosition_X,buyButtonPosition_Y,trioButtonWidth,trioButtonHeight);
         buyButton.addActionListener(e ->{
             if(gameStates == playerAction){
-                if(!buyButtonClicked){
+                if(!buyButtonClicked && !CellPanel.wasClicked && elementIndex > 0){
                     buyButtonClicked = true;
                     choosedElementIndex = elementIndex;
                     elementIndex = 0;
                     updateButton();
                 }
+                CellPanel.wasClicked = false;
             }
         });
 
@@ -178,11 +182,13 @@ public class ShopRecPanel extends JPanel {
         doneButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
         doneButton.setBounds(doneButtonPosition_X,doneButtonPosition_Y,trioButtonWidth,trioButtonHeight);
         doneButton.addActionListener(e -> {
-            if(gameStates == playerAction && !buyButtonClicked){
+            if(gameStates == playerAction && !buyButtonClicked && !CellPanel.wasClicked){
                 gameStates = cellAction;
                 elementIndex = 0;
+                CellPanel.wasClicked = false;
                 updateButton();
             }
+            CellPanel.wasClicked = false;
         });
 
         //exitButton
@@ -231,7 +237,7 @@ public class ShopRecPanel extends JPanel {
             antiRedButton.setBorder(null);
             antiBlueButton.setBorder(null);
         }
-        else{
+        else {
             antiRedButton.setBorder(null);
             antiBlueButton.setBorder(null);
             antiGreenButton.setBorder(null);
@@ -248,6 +254,10 @@ public class ShopRecPanel extends JPanel {
 
     public static int getChoosedElementIndex(){
         return choosedElementIndex;
+    }
+
+    public static void setElementIndex(int index){
+        elementIndex = index;
     }
 
 }

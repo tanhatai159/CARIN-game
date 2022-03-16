@@ -7,6 +7,7 @@ import MainClass.Market;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import static MainClass.GameStates.*;
 
 public class BrainCellPanel extends JPanel {
     private int cellPanelWidth = 900,cellPanelHeight = 500;
@@ -18,8 +19,8 @@ public class BrainCellPanel extends JPanel {
     private static Icon redAnti = new ImageIcon("src/resource/redAnti.png");
     private static Icon greenAnti = new ImageIcon("src/resource/greenAnti.png");
     private static Icon blueAnti = new ImageIcon("src/resource/blueAnti.png");
-    private Color beforeClickedColor = new Color(230,190,185);
-    private Color AfterClickedColor = new Color(225,238,229);
+    private static Color beforeClickedColor = new Color(230,190,185);
+    private static Color afterClickedColor = new Color(225,238,229);
 
     public BrainCellPanel(){
         setOpaque(true);
@@ -47,40 +48,44 @@ public class BrainCellPanel extends JPanel {
                     int elementIndex = ShopRecPanel.getChoosedElementIndex() - 1;
                     int x = button.getThisX(), y = button.getThisY();
                     Cell cell = organ.coordinate(x,y);
-
-                    //if buy button is clicked.
-                    if(ShopRecPanel.getBuyButtonClicked()){
-                        if(cell == null){
-                            Market.shop(elementIndex,organ,x,y);
-                            ShopRecPanel.setBuyButtonClicked(false);
-                            MainGame.increaseTimeUnit(1);
-                        }
-                        else{
-                            System.out.println("Can't place here!!!!!");
-                        }
-
-                        button.setClicked(false);
-                        button.setBackground(beforeClickedColor);
-                        CellPanel.wasClicked = false;
-                    }
-                    //if buy button isn't clicked.
-                    else{
-                        if(!CellPanel.wasClicked){
-                            if(cell instanceof Antibody && cell.getHp() > Antibody.getMoveCost()){
-                                CellPanel.wasClicked = true;
-                                button.setClicked(true);
-                                button.setBackground(AfterClickedColor);
-                                CellPanel.x = x;
-                                CellPanel.y = y;
-                                CellPanel.oldCellIndex = button.getIndexOfThisButton();
-                            }
-                        }
-                        else{
+                    if(gameStates == playerAction){
+                        //if buy button is clicked.
+                        if(ShopRecPanel.getBuyButtonClicked()){
                             if(cell == null){
-                                Antibody anti = (Antibody) organ.coordinate(CellPanel.x,CellPanel.y);
-                                anti.moveByPlayer(x,y);
-                                CellPanel.wasClicked = false;
-                                buttons.get(CellPanel.oldCellIndex).setClicked(false);
+                                Market.shop(elementIndex,organ,x,y);
+                                ShopRecPanel.setBuyButtonClicked(false);
+                                MainGame.increaseTimeUnit(1);
+                            }
+                            else{
+                                System.out.println("Can't place here!!!!!");
+                            }
+
+                            button.setClicked(false);
+                            button.setBackground(beforeClickedColor);
+                            CellPanel.wasClicked = false;
+                        }
+                        //if buy button isn't clicked.
+                        else{
+                            if(!CellPanel.wasClicked){
+                                if(cell instanceof Antibody && cell.getHp() > Antibody.getMoveCost()){
+                                    ShopRecPanel.setElementIndex(0);
+                                    ShopRecPanel.updateButton();
+                                    CellPanel.wasClicked = true;
+                                    button.setClicked(true);
+                                    button.setBackground(afterClickedColor);
+                                    CellPanel.x = x;
+                                    CellPanel.y = y;
+                                    CellPanel.oldCellIndex = button.getIndexOfThisButton();
+                                }
+                            }
+                            else{
+                                if(cell == null){
+                                    organ.getPosition()[y][x] = organ.getPosition()[CellPanel.y][CellPanel.x];
+                                    organ.getPosition()[y][x].decreaseHP(Antibody.getMoveCost());
+                                    organ.getPosition()[CellPanel.y][CellPanel.x] = null;
+                                    CellPanel.wasClicked = false;
+                                    buttons.get(CellPanel.oldCellIndex).setClicked(false);
+                                }
                             }
                         }
                     }
@@ -127,6 +132,12 @@ public class BrainCellPanel extends JPanel {
                 else if(organ.coordinate(buttons.get(count).getThisX(),buttons.get(count).getThisY()) == null){
                     button.setIcon(null);
                     buttons.get(count).setText("");
+                }
+                if(!button.getClicked()){
+                    button.setBackground(beforeClickedColor);
+                }
+                if(!CellPanel.wasClicked){
+                    button.setBackground(beforeClickedColor);
                 }
                 count++;
             }
