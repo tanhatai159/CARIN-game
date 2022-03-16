@@ -10,7 +10,7 @@ import static MainClass.GameStates.*;
 
 public class MainGame {
     private static int timeUnit = 0;
-    private int state = 1, amountOfOrgan = 1;
+    private int state = 1, amountOfOrgan = 3;
     private boolean gameStart = false;
     private boolean gameEnd = false;
     private boolean firstTime = false;
@@ -22,6 +22,7 @@ public class MainGame {
             ReadConfig.readConfig("config.txt");
         }catch (Exception e){
         }
+        body = new Body(amountOfOrgan);
         window = new MainFrame();
     }
 
@@ -76,7 +77,6 @@ public class MainGame {
     private void gameState1() throws Exception {
         if(!firstTime){
             System.out.println("-----------------Start game state-----------------");
-            body = new Body(amountOfOrgan);
             firstTime = true;
             Display.render(body);
         }

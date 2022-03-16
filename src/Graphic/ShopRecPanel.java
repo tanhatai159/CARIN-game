@@ -1,12 +1,15 @@
 package Graphic;
 
 import Human.Antibody;
+import MainClass.GameStates;
 import MainClass.Player;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import static MainClass.GameStates.generateVirus;
 
 public class ShopRecPanel extends JPanel {
 
@@ -40,6 +43,8 @@ public class ShopRecPanel extends JPanel {
     private Icon elementImage = new ImageIcon("src/resource/element.png");
     private JLabel element =  new JLabel(elementImage);
     private int elementPosition_X = 55, elementPosition_Y = 165;
+    private boolean buyButtonClicked = false;
+    private int elementIndex = 0;
 
     public ShopRecPanel(){
         setOpaque(true);
@@ -109,6 +114,9 @@ public class ShopRecPanel extends JPanel {
         antiRedButton = new JButton(antiRed);
         antiRedButton.setBackground(new Color(240,191,187));
         antiRedButton.setBounds(antiRedButtonPosition_X,antiRedButtonPosition_Y,antibodyButtonWidth,antibodyButtonHeight);
+        antiRedButton.addActionListener(e -> {
+
+        });
 
         //AntivirusGreen button
         antiGreenButton = new JButton(antiGreen);

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class LiverCellPanel extends JPanel {
     private int cellPanelWidth = 900,cellPanelHeight = 500;
-    private ArrayList<JButton> button = new ArrayList<>();
+    private ArrayList<CellButton> button = new ArrayList<>();
     private int x =100;
 
 

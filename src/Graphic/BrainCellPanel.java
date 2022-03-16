@@ -1,7 +1,6 @@
 package Graphic;
 
-import Human.Cell;
-import Human.Organ;
+import Human.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +8,14 @@ import java.util.ArrayList;
 
 public class BrainCellPanel extends JPanel {
     private int cellPanelWidth = 900,cellPanelHeight = 500;
-    private ArrayList<JButton> button = new ArrayList<>();
+    private static ArrayList<CellButton> buttons = new ArrayList<>();
+    private static Organ organ = Body.getAllOrgan().get(0);
+    private static Icon redVirus = new ImageIcon("src/resource/redVirus.png");
+    private static Icon greenVirus = new ImageIcon("src/resource/greenVirus.png");
+    private static Icon blueVirus = new ImageIcon("src/resource/blueVirus.png");
+    private static Icon redAnti = new ImageIcon("src/resource/redAnti.png");
+    private static Icon greenAnti = new ImageIcon("src/resource/greenAnti.png");
+    private static Icon blueAnti = new ImageIcon("src/resource/blueAnti.png");
 
     public BrainCellPanel(){
         setOpaque(true);
@@ -26,11 +32,54 @@ public class BrainCellPanel extends JPanel {
     public void createButtonForFirstRec(){
         for(int i=0;i<Organ.getM();i++){
             for (int j = 0; j < Organ.getN(); j++) {
-                JButton button = new CellButton();
+                CellButton button = new CellButton();
                 button.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
                 button.setBackground(new Color(230,190,185));
                 button.setBorder(BorderFactory.createLineBorder(new Color(151,52,46)));
+                button.setX(j);
+                button.setY(i);
+                buttons.add(button);
                 this.add(button);
+            }
+        }
+    }
+
+    public static void updateButton(){
+        int count = 0;
+        for(int i = 0;i < Organ.getM();i++){
+            for(int j = 0;j < Organ.getN();j++){
+                Cell cell = organ.coordinate(buttons.get(count).getThisX(),buttons.get(count).getThisY());
+                CellButton button = buttons.get(count);
+                if( cell instanceof Virus){
+                    if(cell.getType().equals("fire")){
+                        button.setIcon(redVirus);
+                    }
+                    else if(cell.getType().equals("water")){
+                        button.setIcon(blueVirus);
+                    }
+                    else if(cell.getType().equals("grass")){
+                        button.setIcon(greenVirus);
+                    }
+                    button.setText(String.valueOf(cell.getHp()));
+
+                }
+                else if( organ.coordinate(buttons.get(count).getThisX(),buttons.get(count).getThisY()) instanceof Antibody){
+                    if(cell.getType().equals("fire")){
+                        button.setIcon(redAnti);
+                    }
+                    else if(cell.getType().equals("water")){
+                        button.setIcon(blueAnti);
+                    }
+                    else if(cell.getType().equals("grass")){
+                        button.setIcon(greenAnti);
+                    }
+                    button.setText(String.valueOf(cell.getHp()));
+                }
+                else{
+                    button.setIcon(null);
+                    buttons.get(count).setText("");
+                }
+                count++;
             }
         }
     }

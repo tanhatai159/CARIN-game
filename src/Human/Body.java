@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Body {
-    private ArrayList<Organ> AllOrgan;
+    private static ArrayList<Organ> AllOrgan;
     public static Queue<Cell> cellQueue = new LinkedList<>(), cellQueueNew = new LinkedList<>();
 
     public Body(int amount){
@@ -15,7 +15,7 @@ public class Body {
         }
     }
 
-    public ArrayList<Organ> getAllOrgan(){
+    public static ArrayList<Organ> getAllOrgan(){
         return AllOrgan;
     }
 
