@@ -5,18 +5,16 @@ import Human.Organ;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class CellPanel extends JPanel {
+
+public class BrainCellPanel extends JPanel {
     private int cellPanelWidth = 900,cellPanelHeight = 500;
     private ArrayList<JButton> button = new ArrayList<>();
-    private int x =100;
-//    private GridPanel grid = new GridPanel();
+    private JPanel contentPane;
 
-    public CellPanel(){
+    public BrainCellPanel(JPanel panel){
+        contentPane = panel;
         setOpaque(true);
         this.setLayout(null);
         this.setBounds(0,220,cellPanelWidth,cellPanelHeight);
@@ -27,26 +25,18 @@ public class CellPanel extends JPanel {
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics g2D = (Graphics2D) g;
-
-
     }
     public void createButtonForFirstRec(){
         for(int i=0;i<Organ.getM();i++){
             for (int j = 0; j < Organ.getN(); j++) {
-                JButton button = new JButton("");
+                JButton button = new CellButton();
                 button.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
-//                button.setBounds(x*i+5,x*i+5,100,100);
+                button.setBackground(new Color(0,0,0));
                 this.add(button);
             }
 
         }
-
-
-
     }
-//    protected void paintComponent(Graphics g){
-//        super.paintComponent(g);
-//        Graphics g2D = (Graphics2D) g;
-//    }
+
 }
 

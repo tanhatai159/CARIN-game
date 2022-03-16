@@ -2,12 +2,18 @@ package Graphic;
 
 import Human.Antibody;
 import Human.Virus;
+import MainClass.GameStates;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static MainClass.GameStates.generateVirus;
 
 public class FirstRecPanel extends JPanel {
 
+    private JPanel organScreen;
     private int windowWidth = 1280, windowHeight = 720;
     private int firstRecWidth = 900, firstRecHeight = 220;
     private int shopRecWidth = 380, shopRecHeight = 720;
@@ -62,18 +68,41 @@ public class FirstRecPanel extends JPanel {
         brainButton.setBackground(new Color(222,156,151));
         brainButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
         brainButton.setBounds(brainButtonPosition_X,brainButtonPosition_Y,trioButtonWidth,trioButtonHeight);
+        brainButton.addActionListener( new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                CardLayout cardLayout = (CardLayout) organScreen.getLayout();
+                cardLayout.show(organScreen, "brainCell");
+
+            }});
 
         //heart button
         heartButton = new JButton("HEART");
         heartButton.setBackground(new Color(222,156,151));
         heartButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
         heartButton.setBounds(heartButtonPosition_X,heartButtonPosition_Y,trioButtonWidth,trioButtonHeight);
+        heartButton.addActionListener( new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                CardLayout cardLayout = (CardLayout) organScreen.getLayout();
+                cardLayout.show(organScreen, "heartCell");
+            }});
 
         //liver button
         liverButton = new JButton("LIVER");
         liverButton.setBackground(new Color(222,156,151));
         liverButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
         liverButton.setBounds(liverButtonPosition_X,liverButtonPosition_Y,trioButtonWidth,trioButtonHeight);
+        liverButton.addActionListener( new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                CardLayout cardLayout = (CardLayout) organScreen.getLayout();
+                cardLayout.show(organScreen, "liverCell");
+            }});
+
 
         this.add(brainButton);
         this.add(heartButton);

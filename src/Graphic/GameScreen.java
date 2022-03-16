@@ -1,9 +1,5 @@
 package Graphic;
 
-import Human.Antibody;
-import Human.Virus;
-import MainClass.Player;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -48,15 +44,18 @@ public class GameScreen extends JPanel {
     private int elementPosition_X = 955, elementPosition_Y = 165;
     private boolean updated = false;
 
+
     public GameScreen(JPanel panel){
         contentPane = panel;
         setOpaque(true);
         this.setPreferredSize(new Dimension(windowWidth,windowHeight));
         this.setLayout(null);
-//        createButtonForFirstRec();
         this.add(new FirstRecPanel());
         this.add(new ShopRecPanel());
-        this.add(new CellPanel());
+        this.add(new cellPanel());
+
+
+
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);
