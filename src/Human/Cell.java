@@ -15,7 +15,7 @@ import static Human.Antibody.AntibodyStartHP;
 import static MainClass.Player.increaseCredit;
 
 public class Cell {
-    protected static ArrayList<String> elementList = null; //grass <-- fire <-- water <-- grass
+    public static ArrayList<String> elementList = null; //grass <-- fire <-- water <-- grass
     protected final String[] Direction = {"left", "right", "up","down","upleft","upright","downleft","downright"};
     String type, geneticPath; // type of each cell
     Organ currentOrgan; // เพื่อบอกว่า cell ตัวนี้อยู่ที่ organ ไหน

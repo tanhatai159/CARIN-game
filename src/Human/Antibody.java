@@ -31,7 +31,7 @@ public class Antibody extends Cell {
         Antibody.AntibodyHpGain = hpGain;
     }
     public void mutation(){
-        int typeNumber = elementList.indexOf(type);
+        int typeNumber = elementList.indexOf(attackByThisVirus.type);
         currentOrgan.position[y][x] = new Virus(currentOrgan, typeNumber, x, y, "Genetic_Code/Genetic_Code.txt",true);
         Body.getCellQueueNew().add(currentOrgan.coordinate(x,y));
     }
