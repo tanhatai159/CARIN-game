@@ -31,6 +31,7 @@ public class FirstRecPanel extends JPanel {
         this.setBackground(new Color(151,52,46));
         this.setBounds(0,0,firstRecWidth,firstRecHeight);
         this.setLayout(null);
+        createButtonForFirstRec();
     }
 
     public void paintComponent(Graphics g){
@@ -55,7 +56,27 @@ public class FirstRecPanel extends JPanel {
 
     }
 
-//    public void createButtonForShopRec(){
-//
-//    }
+    public void createButtonForFirstRec(){
+        //brain button
+        brainButton = new JButton("BRAIN");
+        brainButton.setBackground(new Color(222,156,151));
+        brainButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
+        brainButton.setBounds(brainButtonPosition_X,brainButtonPosition_Y,trioButtonWidth,trioButtonHeight);
+
+        //heart button
+        heartButton = new JButton("HEART");
+        heartButton.setBackground(new Color(222,156,151));
+        heartButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
+        heartButton.setBounds(heartButtonPosition_X,heartButtonPosition_Y,trioButtonWidth,trioButtonHeight);
+
+        //liver button
+        liverButton = new JButton("LIVER");
+        liverButton.setBackground(new Color(222,156,151));
+        liverButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
+        liverButton.setBounds(liverButtonPosition_X,liverButtonPosition_Y,trioButtonWidth,trioButtonHeight);
+
+        this.add(brainButton);
+        this.add(heartButton);
+        this.add(liverButton);
+    }
 }
