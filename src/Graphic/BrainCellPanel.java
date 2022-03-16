@@ -82,6 +82,7 @@ public class BrainCellPanel extends JPanel {
                                 if(cell == null){
                                     organ.getPosition()[y][x] = organ.getPosition()[CellPanel.y][CellPanel.x];
                                     organ.getPosition()[y][x].decreaseHP(Antibody.getMoveCost());
+                                    MainGame.increaseTimeUnit(1);
                                     organ.getPosition()[CellPanel.y][CellPanel.x] = null;
                                     CellPanel.wasClicked = false;
                                     buttons.get(CellPanel.oldCellIndex).setClicked(false);

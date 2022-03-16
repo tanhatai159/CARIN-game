@@ -86,6 +86,7 @@ public class HeartCellPanel extends JPanel{
                                     Antibody anti = (Antibody) organ.coordinate(CellPanel.x,CellPanel.y);
                                     organ.getPosition()[y][x] = organ.getPosition()[CellPanel.y][CellPanel.x];
                                     organ.getPosition()[y][x].decreaseHP(Antibody.getMoveCost());
+                                    MainGame.increaseTimeUnit(1);
                                     organ.getPosition()[CellPanel.y][CellPanel.x] = null;
                                     CellPanel.wasClicked = false;
                                     buttons.get(CellPanel.oldCellIndex).setClicked(false);
