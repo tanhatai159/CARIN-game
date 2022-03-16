@@ -148,7 +148,8 @@ public class MainGame {
 //        state = 4;
 //        gameStates = cellAction;
 //        Display.render(body);
-//        Display.render(body);
+        if(Antibody.getAmountOfAntibody() > 0 && Virus.getAmountOfVirus() > 0) gameStart = true;
+        Display.render(body);
         window.render();
         try {
             Thread.sleep(1000);
