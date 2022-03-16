@@ -15,7 +15,7 @@ public class ShopRecPanel extends JPanel {
 
     private int speed = 1;
     private int speedPositionButton_X = 45, speedPositionButton_Y = 650;
-    private int speedButtonWidth = 60, speedButtonHeight = 50;
+    private int speedButtonWidth = 70, speedButtonHeight = 50;
     private int windowWidth = 1280, windowHeight = 720;
     private int firstRecWidth = 900, firstRecHeight = 220;
     private int shopRecWidth = 380, shopRecHeight = 720;
