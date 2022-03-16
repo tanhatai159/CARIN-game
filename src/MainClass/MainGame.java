@@ -5,7 +5,7 @@ import Human.*;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Scanner;
+
 import static MainClass.GameStates.*;
 
 public class MainGame {
@@ -38,23 +38,6 @@ public class MainGame {
     }
 
     public void gameLoop() throws Exception {
-//        if(state == 1){
-//            gameState1();
-//            increaseTimeUnit(1);
-//        }
-//        else if(state == 2){
-//            gameState2();
-//            increaseTimeUnit(1);
-//        }
-//        else if(state == 3){
-//            gameState3();
-//        }
-//        else if(state == 4){
-//            gameState4();
-//        }
-//        else if(state == 5){
-//            gameState5();
-//        }
 
         switch (GameStates.gameStates){
             case menu:
@@ -87,7 +70,7 @@ public class MainGame {
 
     private void gameState2(){
         System.out.println("-----------------Generate virus state-----------------");
-        for(Organ organ : body.getAllOrgan()){
+        for(Organ organ : Body.getAllOrgan()){
             organ.generateVirus();
             try {
                 Thread.sleep(1000);
@@ -103,53 +86,9 @@ public class MainGame {
     }
 
     private void gameState3(){
-//        System.out.println("-----------------Player action state-----------------");
-//        boolean playerDone = false, typeSomething = false;
-//        String command = "";
-//        int indexOfOrgan = 0, indexOfType = 0, x, y;
-//        while (!playerDone){
-//            System.out.print("Type Command: ");
-//            Scanner s = new Scanner(System.in);
-//            command = s.nextLine();
-//            String[] arr = command.split(" ");// command(buy) indexOfOrgan(1|2|3) type(1|2|3) x y
-//            try{
-//                if(arr[0].equalsIgnoreCase("buy")){
-//                    if(arr[1] != null && arr[2] != null && arr[3] != null && arr[4] != null){
-//                        indexOfOrgan = Integer.parseInt(arr[1]);
-//                        indexOfType = Integer.parseInt(arr[2]);
-//                        x = Integer.parseInt(arr[3]);
-//                        y = Integer.parseInt(arr[4]);
-//                        if((indexOfOrgan <= amountOfOrgan && indexOfOrgan > 0) && (indexOfType <= 3 && indexOfType > 0) && (x < Organ.getN() && x >= 0) && (y < Organ.getM() && y >= 0)){
-//                            Market.shop(indexOfType-1,body.getAllOrgan().get(indexOfOrgan-1),x,y);
-//                            if(Antibody.getAmountOfAntibody() > 0 && Virus.getAmountOfVirus() > 0){
-//                                gameStart = true;
-//                            }
-//                        }
-//                        else{
-//                            throw new Exception("Command is not correct!!!!!!!!!!!!!!!!");
-//                        }
-//                    }
-//                    else{
-//                        throw new Exception("Command is not correct!!!!!!!!!!!!!!!!");
-//                    }
-//                }
-//                else if(arr[0].equalsIgnoreCase("done")){
-//                    playerDone = true;
-//                }
-//                else{
-//                    throw new Exception("Command is not correct!!!!!!!!!!!!!!!!");
-//                }
-//            }catch (Exception e){
-//                System.out.println(e.getMessage());
-//            }
-//            Display.render(body);
-//            window.render();
-//        }
-//        state = 4;
-//        gameStates = cellAction;
-//        Display.render(body);
-        if(Antibody.getAmountOfAntibody() > 0 && Virus.getAmountOfVirus() > 0) gameStart = true;
-        Display.render(body);
+        if(Antibody.getAmountOfAntibody() > 0 && Virus.getAmountOfVirus() > 0){
+            gameStart = true;
+        }
         window.render();
         try {
             Thread.sleep(1000);
@@ -167,6 +106,7 @@ public class MainGame {
             if(cell.getHp() > 0){
                 cell.readGenetic_Code();
             }
+            window.render();
             try{
                 Thread.sleep(2000);
             }
@@ -174,7 +114,6 @@ public class MainGame {
 
             }
             Display.render(body);
-            window.render();
         }
         //find cell that survive
         for(Cell cell : Body.getCellQueue()){
@@ -215,12 +154,21 @@ public class MainGame {
 
     public static void main(String[] args) throws Exception {
         MainGame game = new MainGame();
-        while (!game.gameEnd){
-            game.gameLoop();
-        }
+        game.play();
+
     }
 
     public static boolean getPlayerWin(){
         return playerWin;
+    }
+
+    public void play(){
+        while (!gameEnd){
+            try {
+                gameLoop();
+            }catch (Exception e){
+
+            }
+        }
     }
 }
