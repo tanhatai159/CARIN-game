@@ -89,6 +89,11 @@ public class MainGame {
         System.out.println("-----------------Generate virus state-----------------");
         for(Organ organ : body.getAllOrgan()){
             organ.generateVirus();
+            try {
+                Thread.sleep(1000);
+            }catch (InterruptedException e){
+
+            }
         }
         Display.render(body);
         window.render();
@@ -142,7 +147,7 @@ public class MainGame {
 //        state = 4;
 //        gameStates = cellAction;
 //        Display.render(body);
-        Display.render(body);
+//        Display.render(body);
         window.render();
         try {
             Thread.sleep(1000);

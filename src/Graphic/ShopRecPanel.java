@@ -117,6 +117,9 @@ public class ShopRecPanel extends JPanel {
         antiRedButton.addActionListener(e -> {
             if(gameStates == playerAction){
                 elementIndex = 1;
+                if(buyButtonClicked){
+                    buyButtonClicked = false;
+                }
                 updateButton();
             }
         });
@@ -128,6 +131,9 @@ public class ShopRecPanel extends JPanel {
         antiGreenButton.addActionListener(e ->{
             if(gameStates == playerAction){
                 elementIndex = 3;
+                if(buyButtonClicked){
+                    buyButtonClicked = false;
+                }
                 updateButton();
             }
         });
@@ -139,6 +145,9 @@ public class ShopRecPanel extends JPanel {
         antiBlueButton.setBounds(antiBlueButtonPosition_X,antiBlueButtonPosition_Y,antibodyButtonWidth,antibodyButtonHeight);
         antiBlueButton.addActionListener(e ->{
             elementIndex = 2;
+            if(buyButtonClicked){
+                buyButtonClicked = false;
+            }
             updateButton();
         });
 
@@ -168,6 +177,8 @@ public class ShopRecPanel extends JPanel {
         doneButton.addActionListener(e -> {
             if(gameStates == playerAction && !buyButtonClicked){
                 gameStates = cellAction;
+                elementIndex = 0;
+                updateButton();
             }
         });
 
