@@ -94,6 +94,7 @@ public class MainGame {
             }catch (InterruptedException e){
 
             }
+            window.render();
         }
         Display.render(body);
         window.render();
