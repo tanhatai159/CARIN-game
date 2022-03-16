@@ -58,6 +58,5 @@ public class FirstRecPanel extends JPanel {
         g2D.setColor(Color.white);
         g2D.drawString("Virus: ",virusPositionText_X,virusPositionText_Y+fontMetrics.getAscent());
         g2D.drawString(String.valueOf(Virus.getAmountOfVirus()),amountOfVirusPositionText_X,amountOfVirusPositionText_Y + fontMetrics.getAscent());
-
     }
 }
