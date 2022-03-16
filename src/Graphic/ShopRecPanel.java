@@ -9,8 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ShopRecPanel extends JPanel {
-    private JPanel contentPane;
-    private JFrame mainScreen;
+
     private int windowWidth = 1280, windowHeight = 720;
     private int firstRecWidth = 900, firstRecHeight = 220;
     private int shopRecWidth = 380, shopRecHeight = 720;
@@ -19,7 +18,7 @@ public class ShopRecPanel extends JPanel {
     private int amountOfAntiPositionText_X = antiPositionText_X + 160, amountOfAntiPositionText_Y = antiPositionText_Y;
     private int virusPositionText_X = 60, virusPositionText_Y = 130;
     private int amountOfVirusPositionText_X = virusPositionText_X + 100, amountOfVirusPositionText_Y = virusPositionText_Y;
-    private JButton brainButton, heartButton, liverButton, antiRedButton, antiGreenButton, antiBlueButton, buyButton, doneButton,exitButton;
+    private JButton antiRedButton, antiGreenButton, antiBlueButton, buyButton, doneButton,exitButton;
     private Icon antiRed = new ImageIcon("src/resource/redAnti.png");
     private Icon antiGreen = new ImageIcon("src/resource/greenAnti.png");
     private Icon antiBlue = new ImageIcon("src/resource/blueAnti.png");

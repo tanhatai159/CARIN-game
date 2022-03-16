@@ -8,7 +8,6 @@ import java.awt.*;
 import java.awt.event.*;
 import static MainClass.GameStates.*;
 
-
 public class StartScreen extends JPanel{
     private JPanel contentPane;
     private Icon startMenuImage = new ImageIcon("src/resource/startMenu.png");

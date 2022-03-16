@@ -7,14 +7,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-
 public class BrainCellPanel extends JPanel {
     private int cellPanelWidth = 900,cellPanelHeight = 500;
     private ArrayList<JButton> button = new ArrayList<>();
 
-
     public BrainCellPanel(){
-//        contentPane = panel;
         setOpaque(true);
         this.setLayout(null);
         this.setBounds(0,220,cellPanelWidth,cellPanelHeight);

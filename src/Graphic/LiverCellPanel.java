@@ -13,7 +13,6 @@ public class LiverCellPanel extends JPanel {
 
 
     public LiverCellPanel(){
-//        contentPane = panel;
         setOpaque(true);
 
         this.setLayout(null);

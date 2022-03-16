@@ -60,32 +60,4 @@ public class FirstRecPanel extends JPanel {
         g2D.drawString(String.valueOf(Virus.getAmountOfVirus()),amountOfVirusPositionText_X,amountOfVirusPositionText_Y + fontMetrics.getAscent());
 
     }
-
-    //move button to GameScreen
-//    public void createButtonForFirstRec(){
-//        //brain button
-//        brainButton = new JButton("BRAIN");
-//        brainButton.setBackground(new Color(222,156,151));
-//        brainButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
-//        brainButton.setBounds(brainButtonPosition_X,brainButtonPosition_Y,trioButtonWidth,trioButtonHeight);
-//
-//
-//        //heart button
-//        heartButton = new JButton("HEART");
-//        heartButton.setBackground(new Color(222,156,151));
-//        heartButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
-//        heartButton.setBounds(heartButtonPosition_X,heartButtonPosition_Y,trioButtonWidth,trioButtonHeight);
-//
-//
-//        //liver button
-//        liverButton = new JButton("LIVER");
-//        liverButton.setBackground(new Color(222,156,151));
-//        liverButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
-//        liverButton.setBounds(liverButtonPosition_X,liverButtonPosition_Y,trioButtonWidth,trioButtonHeight);
-//
-//
-//        this.add(brainButton);
-//        this.add(heartButton);
-//        this.add(liverButton);
-//    }
 }

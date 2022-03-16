@@ -13,7 +13,6 @@ public class HeartCellPanel extends JPanel{
 
 
     public HeartCellPanel(){
-//        contentPane = panel;
         setOpaque(true);
 
         this.setLayout(null);
