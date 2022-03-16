@@ -37,7 +37,7 @@ public class MainFrame extends JFrame {
     public void render(){
         repaint();
         if(gameStates != menu){
-            BrainCellPanel.updateButton();
+            CellPanel.updateButton();
         }
     }
 

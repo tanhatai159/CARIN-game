@@ -79,6 +79,7 @@ public class GameScreen extends JPanel {
                 cell.brainCell.setVisible(true);
                 cell.liverCell.setVisible(false);
                 cell.heartCell.setVisible(false);
+                CellPanel.updateButton();
             }});
 
         //heart button
@@ -93,6 +94,7 @@ public class GameScreen extends JPanel {
                 cell.brainCell.setVisible(false);
                 cell.heartCell.setVisible(true);
                 cell.liverCell.setVisible(false);
+                CellPanel.updateButton();
             }});
 
         //liver button
@@ -107,6 +109,7 @@ public class GameScreen extends JPanel {
                 cell.brainCell.setVisible(false);
                 cell.liverCell.setVisible(true);
                 cell.heartCell.setVisible(false);
+                CellPanel.updateButton();
             }});
 
         this.add(brainButton);
