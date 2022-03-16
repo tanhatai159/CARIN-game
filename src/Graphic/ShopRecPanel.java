@@ -16,7 +16,6 @@ public class ShopRecPanel extends JPanel {
     private int windowWidth = 1280, windowHeight = 720;
     private int firstRecWidth = 900, firstRecHeight = 220;
     private int shopRecWidth = 380, shopRecHeight = 720;
-    private int backgroundWidth = 900, backgroundHeight = 500;
     private int antiPositionText_X = 60, antiPositionText_Y = 60;
     private int amountOfAntiPositionText_X = antiPositionText_X + 160, amountOfAntiPositionText_Y = antiPositionText_Y;
     private int virusPositionText_X = 60, virusPositionText_Y = 130;
@@ -26,7 +25,7 @@ public class ShopRecPanel extends JPanel {
     private Icon antiGreen = new ImageIcon("src/resource/greenAntiButton.png");
     private Icon antiBlue = new ImageIcon("src/resource/blueAntiButton.png");
     private int trioButtonWidth = 120, trioButtonHeight = 60;
-    private int carinPositionText_X = 95, carinPositionText_Y = 60;
+    private int carinPositionText_X = 85, carinPositionText_Y = 60;
     private int creditPositionText_X = 225, creditPositionText_Y =165;
     private int amountOfCreditPositionText_X = 230, amountOfCreditPositionText_Y = 220;
     private int antibodyButtonWidth = 120, antibodyButtonHeight = 120;
