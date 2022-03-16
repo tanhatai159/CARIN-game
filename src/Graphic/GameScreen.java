@@ -55,18 +55,19 @@ public class GameScreen extends JPanel {
         this.setLayout(null);
         createButtonForFirstRec();
         this.add(new FirstRecPanel());
+        this.add(new ShopRecPanel());
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics g2D = (Graphics2D) g;
 
-        //first Rec
-        g2D.setColor(new Color(151,52,46));
-        g2D.fillRect(0,0,firstRecWidth,firstRecHeight);
-
-        //shop Rec
-        g2D.setColor(new Color(222,156,151));
-        g2D.fillRect(firstRecWidth,0,shopRecWidth,shopRecHeight);
+//        //first Rec
+//        g2D.setColor(new Color(151,52,46));
+//        g2D.fillRect(0,0,firstRecWidth,firstRecHeight);
+//
+//        //shop Rec
+//        g2D.setColor(new Color(222,156,151));
+//        g2D.fillRect(firstRecWidth,0,shopRecWidth,shopRecHeight);
 
         //background Rec
         g2D.setColor(new Color(193,82,75));
@@ -88,52 +89,51 @@ public class GameScreen extends JPanel {
 //        g2D.drawString("Virus: ",virusPositionText_X,virusPositionText_Y+fontMetrics.getAscent());
 //        g2D.drawString(String.valueOf(Virus.getAmountOfVirus()),amountOfVirusPositionText_X,amountOfVirusPositionText_Y + fontMetrics.getAscent());
 
-        //CARIN header on Shop Rec
-        font = new Font("Roboto Condensed",Font.PLAIN,80);
-        g2D.setFont(font);
-        fontMetrics = g2D.getFontMetrics();
-        g2D.setColor(Color.white);
-        g2D.drawString("CARIN",carinPositionText_X,carinPositionText_Y+fontMetrics.getAscent());
-
-        //element image
-        this.add(element);
-        element.setBounds(elementPosition_X,elementPosition_Y,100,100);
-
-        //Credits text
-        font = new Font("Roboto Condensed",Font.PLAIN,36);
-        g2D.setFont(font);
-        fontMetrics = g2D.getFontMetrics();
-        g2D.setColor(Color.white);
-        g2D.drawString("Credits:",creditPositionText_X,creditPositionText_Y+fontMetrics.getAscent());
-
-        //CreditAmount Text
-        font = new Font("Roboto Condensed",Font.PLAIN,36);
-        g2D.setFont(font);
-        fontMetrics = g2D.getFontMetrics();
-        g2D.setColor(Color.white);
-        g2D.drawString(String.valueOf(Player.getCredits() + "$"),amountOfCreditPositionText_X,amountOfCreditPositionText_Y + fontMetrics.getAscent());
-//        g2D.drawString("$",amountOfCreditPositionText_X+85,amountOfCreditPositionText_Y+fontMetrics.getAscent());
-
-        //cost redAntibody
-        font = new Font("Roboto Condensed",Font.PLAIN,24);
-        g2D.setFont(font);
-        fontMetrics = g2D.getFontMetrics();
-        g2D.setColor(Color.white);
-        g2D.drawString("COST: " + String.valueOf(Antibody.getPlacementCost())+ "$",costRedPositionAnti_X,costRedPositionAnti_Y+fontMetrics.getAscent());
-
-        //cost greenAntibody
-        font = new Font("Roboto Condensed",Font.PLAIN,24);
-        g2D.setFont(font);
-        fontMetrics = g2D.getFontMetrics();
-        g2D.setColor(Color.white);
-        g2D.drawString("COST: " + String.valueOf(Antibody.getPlacementCost()) + "$",costGreenPositionAnti_X,costGreenPositionAnti_Y+fontMetrics.getAscent());
-
-        //cost blueAntibody
-        font = new Font("Roboto Condensed",Font.PLAIN,24);
-        g2D.setFont(font);
-        fontMetrics = g2D.getFontMetrics();
-        g2D.setColor(Color.white);
-        g2D.drawString("COST: " + String.valueOf(Antibody.getPlacementCost() + "$"),costBluePositionAnti_X,costBluePositionAnti_Y+fontMetrics.getAscent());
+//        //CARIN header on Shop Rec
+//        font = new Font("Roboto Condensed",Font.PLAIN,80);
+//        g2D.setFont(font);
+//        fontMetrics = g2D.getFontMetrics();
+//        g2D.setColor(Color.white);
+//        g2D.drawString("CARIN",carinPositionText_X,carinPositionText_Y+fontMetrics.getAscent());
+//
+//        //element image
+//        this.add(element);
+//        element.setBounds(elementPosition_X,elementPosition_Y,100,100);
+//
+//        //Credits text
+//        font = new Font("Roboto Condensed",Font.PLAIN,36);
+//        g2D.setFont(font);
+//        fontMetrics = g2D.getFontMetrics();
+//        g2D.setColor(Color.white);
+//        g2D.drawString("Credits:",creditPositionText_X,creditPositionText_Y+fontMetrics.getAscent());
+//
+//        //CreditAmount Text
+//        font = new Font("Roboto Condensed",Font.PLAIN,36);
+//        g2D.setFont(font);
+//        fontMetrics = g2D.getFontMetrics();
+//        g2D.setColor(Color.white);
+//        g2D.drawString(String.valueOf(Player.getCredits() + "$"),amountOfCreditPositionText_X,amountOfCreditPositionText_Y + fontMetrics.getAscent());
+//
+//        //cost redAntibody
+//        font = new Font("Roboto Condensed",Font.PLAIN,24);
+//        g2D.setFont(font);
+//        fontMetrics = g2D.getFontMetrics();
+//        g2D.setColor(Color.white);
+//        g2D.drawString("COST: " + String.valueOf(Antibody.getPlacementCost())+ "$",costRedPositionAnti_X,costRedPositionAnti_Y+fontMetrics.getAscent());
+//
+//        //cost greenAntibody
+//        font = new Font("Roboto Condensed",Font.PLAIN,24);
+//        g2D.setFont(font);
+//        fontMetrics = g2D.getFontMetrics();
+//        g2D.setColor(Color.white);
+//        g2D.drawString("COST: " + String.valueOf(Antibody.getPlacementCost()) + "$",costGreenPositionAnti_X,costGreenPositionAnti_Y+fontMetrics.getAscent());
+//
+//        //cost blueAntibody
+//        font = new Font("Roboto Condensed",Font.PLAIN,24);
+//        g2D.setFont(font);
+//        fontMetrics = g2D.getFontMetrics();
+//        g2D.setColor(Color.white);
+//        g2D.drawString("COST: " + String.valueOf(Antibody.getPlacementCost() + "$"),costBluePositionAnti_X,costBluePositionAnti_Y+fontMetrics.getAscent());
 
     }
 
