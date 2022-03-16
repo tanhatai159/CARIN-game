@@ -14,6 +14,7 @@ public class MainGame {
     private boolean gameStart = false;
     private boolean gameEnd = false;
     private boolean firstTime = false;
+    private static boolean playerWin = false;
     private Body body;
     private MainFrame window;
 
@@ -74,15 +75,14 @@ public class MainGame {
         }
     }
 
-    private void gameState1() throws Exception {
+    private void gameState1() {
         if(!firstTime){
             System.out.println("-----------------Start game state-----------------");
             firstTime = true;
+            playerWin = false;
             Display.render(body);
         }
         window.render();
-//        state = 2;
-//        GameStates.gameStates = generateVirus;
     }
 
     private void gameState2(){
@@ -189,10 +189,12 @@ public class MainGame {
         gameEnd = true;
         if(Antibody.getAmountOfAntibody() > 0){
             System.out.println("Antibody win!!!!!!!!!!!!!");
+            playerWin = true;
         }
         else{
             System.out.println("Virus win!!!!!!!!!!!!!!!!");
         }
+        window.render();
     }
 
     private void moveByPlayer(){
@@ -204,5 +206,9 @@ public class MainGame {
         while (!game.gameEnd){
             game.gameLoop();
         }
+    }
+
+    public static boolean getPlayerWin(){
+        return playerWin;
     }
 }
