@@ -42,4 +42,14 @@ public class Antibody extends Cell {
     public static int getPlacementCost(){
         return placementCost;
     }
+
+    public void moveByPlayer(int x ,int y){
+        int xOld = this.x;
+        int yOld = this.y;
+        if(currentOrgan.coordinate(x,y) == null && this.hp > moveCost){
+            currentOrgan.position[yOld][xOld] = null;
+            currentOrgan.position[y][x] = this;
+            this.hp -= moveCost;
+        }
+    }
 }
