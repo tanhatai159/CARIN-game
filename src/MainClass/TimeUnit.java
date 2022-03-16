@@ -5,9 +5,13 @@ import java.util.TimerTask;
 
 public class TimeUnit{
     static int second = 0;
+    static Timer time;
     public static void counter(){
         second++;
         System.out.println(second);
+        if(second == 10){
+            time.cancel();
+        }
     }
 
     public static void main(String[] args) {
@@ -17,7 +21,7 @@ public class TimeUnit{
                 counter();
             }
         };
-        Timer time = new Timer();
+        time = new Timer();
         time.schedule(timerTask,1000,1000);
     }
 }
