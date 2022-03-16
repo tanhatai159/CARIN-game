@@ -43,6 +43,10 @@ public class Antibody extends Cell {
         return placementCost;
     }
 
+    public static int getMoveCost(){
+        return moveCost;
+    }
+
     public void moveByPlayer(int x ,int y){
         int xOld = this.x;
         int yOld = this.y;
