@@ -22,9 +22,9 @@ public class ShopRecPanel extends JPanel {
     private int virusPositionText_X = 60, virusPositionText_Y = 130;
     private int amountOfVirusPositionText_X = virusPositionText_X + 100, amountOfVirusPositionText_Y = virusPositionText_Y;
     private JButton antiRedButton, antiGreenButton, antiBlueButton, buyButton, doneButton,exitButton;
-    private Icon antiRed = new ImageIcon("src/resource/redAnti.png");
-    private Icon antiGreen = new ImageIcon("src/resource/greenAnti.png");
-    private Icon antiBlue = new ImageIcon("src/resource/blueAnti.png");
+    private Icon antiRed = new ImageIcon("src/resource/redAntiButton.png");
+    private Icon antiGreen = new ImageIcon("src/resource/greenAntiButton.png");
+    private Icon antiBlue = new ImageIcon("src/resource/blueAntiButton.png");
     private int trioButtonWidth = 120, trioButtonHeight = 60;
     private int carinPositionText_X = 95, carinPositionText_Y = 60;
     private int creditPositionText_X = 225, creditPositionText_Y =165;
