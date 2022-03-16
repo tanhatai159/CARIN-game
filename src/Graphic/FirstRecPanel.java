@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static MainClass.GameStates.generateVirus;
+import static MainClass.GameStates.*;
 
 public class FirstRecPanel extends JPanel {
 
@@ -19,7 +19,7 @@ public class FirstRecPanel extends JPanel {
     private int amountOfAntiPositionText_X = antiPositionText_X + 160, amountOfAntiPositionText_Y = antiPositionText_Y;
     private int virusPositionText_X = 60, virusPositionText_Y = 130;
     private int amountOfVirusPositionText_X = virusPositionText_X + 100, amountOfVirusPositionText_Y = virusPositionText_Y;
-    private int timeUnitPosition_X = 440, timeUnitPosition_Y = 60;
+    private int timeUnitPosition_X = 440, timeUnitPosition_Y = 65;
 
     public FirstRecPanel(){
         this.setBackground(new Color(151,52,46));
@@ -54,5 +54,13 @@ public class FirstRecPanel extends JPanel {
         fontMetrics = g2D.getFontMetrics();
         g2D.setColor(Color.white);
         g2D.drawString("Time Unit: " +MainGame.getTimeUnit(),timeUnitPosition_X,timeUnitPosition_Y+fontMetrics.getAscent());
+
+        //gameState
+        font = new Font("Roboto Condensed",Font.PLAIN,36);
+        g2D.setFont(font);
+        fontMetrics = g2D.getFontMetrics();
+        g2D.setColor(Color.white);
+        g2D.drawString("Game State : " + gameStates,timeUnitPosition_X,timeUnitPosition_Y-45+fontMetrics.getAscent());
+
     }
 }
