@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JPanel;
-
+//draw rect version
 //public class GridPanel extends JPanel {
 //
 //        private final int NUM_SQUARES = 144;
@@ -46,27 +46,25 @@ import javax.swing.JPanel;
 //            }
 //        }
 //    }
-public class GridPanel extends JPanel implements ActionListener {
+
+//draw
+public class GridPanel extends JPanel {
 
     JPanel buttonP = new JPanel();
     JButton[] btn = new JButton[9];
 
     public GridPanel(){
         buttonP.setLayout(new GridLayout(3,3));
-        buttonP.setBackground(Color.white);
+        buttonP.setBackground(Color.red);
         for(int i=0;i<9;i++){
-            btn[i] = new JButton();
+            btn[i] = new JButton(" ");
             buttonP.add(btn[i]);
             btn[i].setFont(new Font("Roboto Condensed",Font.PLAIN,80));
             btn[i].setFocusable(false);
-            btn[i].addActionListener(this);
+
         }
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 }
 
 

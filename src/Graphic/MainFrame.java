@@ -1,6 +1,7 @@
 package Graphic;
 
 import Human.Body;
+import MainClass.ReadConfig;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,6 +31,13 @@ public class MainFrame extends JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(true);
+
+        try {
+            ReadConfig.readConfig("config.txt");
+        }catch (Exception e){
+
+        }
+
     }
 
     public void render(){
