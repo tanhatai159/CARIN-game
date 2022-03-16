@@ -1,5 +1,6 @@
 package Graphic;
 
+import Human.Cell;
 import Human.Organ;
 
 import javax.swing.*;
@@ -43,5 +44,9 @@ public class CellPanel extends JPanel {
 
 
     }
+//    protected void paintComponent(Graphics g){
+//        super.paintComponent(g);
+//        Graphics g2D = (Graphics2D) g;
+//    }
 }
 

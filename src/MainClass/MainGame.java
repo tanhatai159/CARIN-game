@@ -18,6 +18,10 @@ public class MainGame {
     private MainFrame window;
 
     public MainGame(){
+        try {
+            ReadConfig.readConfig("config.txt");
+        }catch (Exception e){
+        }
         window = new MainFrame();
     }
 
@@ -72,11 +76,6 @@ public class MainGame {
     private void gameState1() throws Exception {
         if(!firstTime){
             System.out.println("-----------------Start game state-----------------");
-            try {
-                ReadConfig.readConfig("config.txt");
-            }catch (Exception e){
-                throw new Exception("Can't start game because config file path is not correct.");
-            }
             body = new Body(amountOfOrgan);
             firstTime = true;
             Display.render(body);
