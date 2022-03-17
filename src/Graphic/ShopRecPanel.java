@@ -2,6 +2,7 @@ package Graphic;
 
 import Human.Antibody;
 import MainClass.GameStates;
+import MainClass.MainGame;
 import MainClass.Player;
 
 import javax.swing.*;
@@ -13,7 +14,6 @@ import static MainClass.GameStates.*;
 
 public class ShopRecPanel extends JPanel {
 
-    private int speed = 1;
     private int speedPositionButton_X = 45, speedPositionButton_Y = 650;
     private int speedButtonWidth = 70, speedButtonHeight = 50;
     private int windowWidth = 1280, windowHeight = 720;
@@ -185,7 +185,6 @@ public class ShopRecPanel extends JPanel {
             if(gameStates == playerAction && !buyButtonClicked && !CellPanel.wasClicked){
                 gameStates = cellAction;
                 elementIndex = 0;
-                CellPanel.wasClicked = false;
                 updateButton();
             }
             CellPanel.wasClicked = false;
@@ -204,12 +203,21 @@ public class ShopRecPanel extends JPanel {
         });
 
 
-        speedButton = new JButton("X"+speed);
+        speedButton = new JButton("X"+ MainGame.gameSpeed);
         speedButton.setForeground(Color.white);
         speedButton.setBackground(new Color(151,52,46));
         speedButton.setFont(new Font("Roboto Condensed",Font.PLAIN,24));
         speedButton.setBounds(speedPositionButton_X,speedPositionButton_Y,speedButtonWidth,speedButtonHeight);
-
+        speedButton.addActionListener(e ->{
+            if(MainGame.gameSpeed == 1){
+                MainGame.gameSpeed = 2;
+                speedButton.setText("X"+ MainGame.gameSpeed);
+            }
+            else{
+                MainGame.gameSpeed = 1;
+                speedButton.setText("X"+ MainGame.gameSpeed);
+            }
+        });
 
 
         this.add(antiRedButton);

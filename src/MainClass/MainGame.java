@@ -17,6 +17,7 @@ public class MainGame {
     private static boolean playerWin = false;
     private Body body;
     private MainFrame window;
+    public static int gameSpeed = 1;
 
     public MainGame(){
         try {
@@ -73,7 +74,7 @@ public class MainGame {
         for(Organ organ : Body.getAllOrgan()){
             organ.generateVirus();
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1000/gameSpeed);
             }catch (InterruptedException e){
 
             }
@@ -91,7 +92,7 @@ public class MainGame {
         }
         window.render();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(1000/gameSpeed);
         }catch (InterruptedException e){
 
         }
@@ -108,7 +109,7 @@ public class MainGame {
             }
             window.render();
             try{
-                Thread.sleep(2000);
+                Thread.sleep(1000/gameSpeed);
             }
             catch (InterruptedException e){
 
