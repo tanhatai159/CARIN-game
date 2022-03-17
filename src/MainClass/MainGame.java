@@ -62,6 +62,7 @@ public class MainGame {
     private void gameState1() {
         if(!firstTime){
             System.out.println("-----------------Start game state-----------------");
+            gameSpeed = 1;
             firstTime = true;
             playerWin = false;
             Display.render(body);
